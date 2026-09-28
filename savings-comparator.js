@@ -61,6 +61,27 @@ EE:"Estonia",FI:"Finland",FR:"France",DE:"Germany",GR:"Greece",HU:"Hungary",IS:"
 IT:"Italy",LV:"Latvia",LI:"Liechtenstein",LT:"Lithuania",LU:"Luxembourg",MT:"Malta",NL:"Netherlands",
 NO:"Norway",PL:"Poland",PT:"Portugal",RO:"Romania",SK:"Slovakia",SI:"Slovenia",ES:"Spain",SE:"Sweden"};
 
+const LOGO = {
+"trade-republic":"https://traderepublic.com/favicon.ico",
+"trading212-eu":"https://www.trading212.com/android-chrome-192x192.png",
+"trading212-cy":"https://www.trading212.com/android-chrome-192x192.png",
+"scalable-instant":"https://assets.scalable.capital/touch-icons/android-chrome-192x192.png",
+"scalable-fixed":"https://assets.scalable.capital/touch-icons/android-chrome-192x192.png",
+"bunq-savings":"https://framerusercontent.com/images/ziGDZruFQDclo0tQlc6TKONVk.png",
+"bunq-term":"https://framerusercontent.com/images/ziGDZruFQDclo0tQlc6TKONVk.png",
+"revolut-savings":"https://assets.revolut.com/assets/favicons/apple-touch-icon.png",
+"n26-savings":"https://n26.com/_build/logo-256x256.png",
+"lightyear-vaults":"https://lightyear.com/resources/favicon/apple-touch-icon.png",
+"wise-interest":"https://wise.com/public-resources/assets/icons/wise-personal/android_chrome_256x256.png",
+"ibkr-cash":"https://www.interactivebrokers.ie/images/web/favicons/home-screen-icon-192x192.png",
+"medirect-fixed":"https://www.medirect.com.mt/wp-content/uploads/cropped-Me-Logo-Black2-192x192.png",
+"bluor-fixed":"https://bluorbank.lv/favicons/apple-touch-icon.png",
+"raisin":"https://www.raisin.com/favicon.ico",
+"bux-cash":"https://bux.com/wp-content/uploads/2023/01/cropped-Favicon-512x512-1-260x260.png",
+"openbank-es":"https://www.openbank.es/favicon.ico",
+"bigbank-de":"https://www.bigbank.de/apple-touch-icon.png",
+"klarna-fixed":"https://owp.klarna.com/public/klarna/appIcon.png"};
+
 const TYPE = {instant:"Instant access", fixed:"Fixed term", mmf:"Money market fund"};
 const PROT = {dgs:"Deposit guarantee", investor:"Investor compensation", none:"No protection"};
 
@@ -95,6 +116,8 @@ function guessCountry(){
 
 const state = {country:guessCountry(), amount:10000, filters:new Set(), sort:"rate", open:null};
 
+const ini = n => { const p = String(n).trim().split(/\s+/);
+  return (p.length > 1 ? p[0][0] + p[1][0] : String(n).slice(0,2)).toUpperCase(); };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const eur = n => "€" + Math.round(n).toLocaleString("en-GB");
 const eur2 = n => "€" + n.toLocaleString("en-GB",{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -170,10 +193,14 @@ function card(a, i){
 
   return '<div class="sc-card' + (open ? " sc-open" : "") + '">'
     + '<div class="sc-row"><div class="sc-rank">' + (i+1) + "</div>"
-    + '<div class="sc-who"><div class="sc-name">' + esc(a.provider) + "</div>"
+    + '<div class="sc-who">'
+    + '<span class="sc-logo"><span class="sc-ini">' + esc(ini(a.provider)) + "</span>"
+    + (LOGO[a.id] ? '<img src="' + esc(LOGO[a.id]) + '" alt="" loading="lazy" decoding="async" onload="this.classList.add(\'is-on\')" onerror="this.remove()">' : "")
+    + "</span>"
+    + '<div class="sc-whotext"><div class="sc-name">' + esc(a.provider) + "</div>"
     + '<div class="sc-prod">' + esc(a.product) + "</div>"
     + '<div class="sc-tags"><span class="sc-tag">' + TYPE[a.type] + "</span>"
-    + (a.kind === "marketplace" ? '<span class="sc-tag">Marketplace</span>' : "") + "</div></div>"
+    + (a.kind === "marketplace" ? '<span class="sc-tag">Marketplace</span>' : "") + "</div></div></div>"
     + '<div class="sc-kpis">'
     + '<div class="sc-kpi"><div class="sc-k">Rate</div><div class="sc-v">' + pct(a.rate) + "</div>"
     + '<div class="sc-s">' + (a.type === "fixed" ? "fixed" : "variable") + "</div></div>"
@@ -184,7 +211,7 @@ function card(a, i){
     + '<div class="sc-s">' + maxLabel + "</div></div>"
     + "</div>"
     + '<div class="sc-cta"><a class="sc-btn" href="' + esc(a.url) + '" target="_blank" rel="noopener nofollow sponsored">Visit ' + esc(a.provider) + "</a>"
-    + '<span class="sc-prot sc-' + a.protection + '">' + PROT[a.protection]
+    + '<span class="sc-prot sc-' + a.protection + '"><i class="sc-dot sc-' + a.protection + '"></i>' + PROT[a.protection]
     + (a.protection === "none" ? "" : " " + eur(a.protection_amount)) + "</span></div>"
     + "</div>"
     + detail
@@ -213,7 +240,8 @@ function render(){
     + "Rates on instant-access accounts are variable and can change at any time; promotional rates run for a limited period. "
     + "A deposit guarantee protects your money if the bank fails, up to €100,000 per person per bank. "
     + "Investor compensation is a different, weaker protection, and money market funds carry no guarantee at all: your capital is at risk. "
-    + "Always confirm on the provider's own site before opening an account.";
+    + "Always confirm on the provider's own site before opening an account. "
+    + '<a href="/articles/best-savings-accounts-europe">Read the full write-up on these accounts</a>, or work out the interest on a single deposit with the <a href="/term-deposit-calculator">term deposit calculator</a>.';
 }
 
 function init(){
