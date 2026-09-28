@@ -63,24 +63,24 @@ NO:"Norway",PL:"Poland",PT:"Portugal",RO:"Romania",SK:"Slovakia",SI:"Slovenia",E
 
 const LOGO = {
 "trade-republic":"https://traderepublic.com/favicon.ico",
-"trading212-eu":"https://www.trading212.com/android-chrome-192x192.png",
-"trading212-cy":"https://www.trading212.com/android-chrome-192x192.png",
-"scalable-instant":"https://assets.scalable.capital/touch-icons/android-chrome-192x192.png",
-"scalable-fixed":"https://assets.scalable.capital/touch-icons/android-chrome-192x192.png",
-"bunq-savings":"https://framerusercontent.com/images/ziGDZruFQDclo0tQlc6TKONVk.png",
-"bunq-term":"https://framerusercontent.com/images/ziGDZruFQDclo0tQlc6TKONVk.png",
-"revolut-savings":"https://assets.revolut.com/assets/favicons/apple-touch-icon.png",
+"trading212-eu":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa075fc792ee729382296_logo-trading212.png",
+"trading212-cy":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa075fc792ee729382296_logo-trading212.png",
+"scalable-instant":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa07aa3abd369895dfd60_logo-scalable-capital.png",
+"scalable-fixed":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa07aa3abd369895dfd60_logo-scalable-capital.png",
+"bunq-savings":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0881caa3a3d390c4291_logo-bunq.png",
+"bunq-term":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0881caa3a3d390c4291_logo-bunq.png",
+"revolut-savings":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa08d2b1c712b5c1882c6_logo-revolut.png",
 "n26-savings":"https://n26.com/_build/logo-256x256.png",
-"lightyear-vaults":"https://lightyear.com/resources/favicon/apple-touch-icon.png",
-"wise-interest":"https://wise.com/public-resources/assets/icons/wise-personal/android_chrome_256x256.png",
-"ibkr-cash":"https://www.interactivebrokers.ie/images/web/favicons/home-screen-icon-192x192.png",
+"lightyear-vaults":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa09373d0a98ce68dec40_logo-lightyear.png",
+"wise-interest":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa095d4237aefb4df878f_logo-wise.png",
+"ibkr-cash":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0b0d64c0b19d90acc6f_logo-interactive-brokers.png",
 "medirect-fixed":"https://www.medirect.com.mt/wp-content/uploads/cropped-Me-Logo-Black2-192x192.png",
-"bluor-fixed":"https://bluorbank.lv/favicons/apple-touch-icon.png",
+"bluor-fixed":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0b4671568efde374863_logo-bluor-bank.png",
 "raisin":"https://www.raisin.com/favicon.ico",
-"bux-cash":"https://bux.com/wp-content/uploads/2023/01/cropped-Favicon-512x512-1-260x260.png",
+"bux-cash":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0b8128777da2039054b_logo-bux.png",
 "openbank-es":"https://www.openbank.es/favicon.ico",
-"bigbank-de":"https://www.bigbank.de/apple-touch-icon.png",
-"klarna-fixed":"https://owp.klarna.com/public/klarna/appIcon.png"};
+"bigbank-de":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0bc7b694573d575667b_logo-bigbank.png",
+"klarna-fixed":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0c27cca13164b1a8ac6_logo-klarna.png"};
 
 const TYPE = {instant:"Instant access", fixed:"Fixed term", mmf:"Money market fund"};
 const PROT = {dgs:"Deposit guarantee", investor:"Investor compensation", none:"No protection"};
