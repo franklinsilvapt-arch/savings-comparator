@@ -200,7 +200,7 @@ function init(){
 
   const amt = host.querySelector("#eupf-amount");
   amt.addEventListener("input", e => {
-    const raw = e.target.value.replace(/[^\\d]/g, "");
+    const raw = e.target.value.replace(/[^\d]/g, "");
     state.amount = Math.min(Number(raw || 0), 10000000);
     const pos = e.target.selectionStart, before = e.target.value.length;
     e.target.value = state.amount ? state.amount.toLocaleString("en-GB") : "";
