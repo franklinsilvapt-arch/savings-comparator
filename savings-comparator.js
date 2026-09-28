@@ -62,7 +62,7 @@ IT:"Italy",LV:"Latvia",LI:"Liechtenstein",LT:"Lithuania",LU:"Luxembourg",MT:"Mal
 NO:"Norway",PL:"Poland",PT:"Portugal",RO:"Romania",SK:"Slovakia",SI:"Slovenia",ES:"Spain",SE:"Sweden"};
 
 const LOGO = {
-"trade-republic":"https://traderepublic.com/favicon.ico",
+"trade-republic":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abacb1254941d0915568be9_logo-trade-republic.png",
 "trading212-eu":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa075fc792ee729382296_logo-trading212.png",
 "trading212-cy":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa075fc792ee729382296_logo-trading212.png",
 "scalable-instant":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa07aa3abd369895dfd60_logo-scalable-capital.png",
@@ -70,15 +70,15 @@ const LOGO = {
 "bunq-savings":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0881caa3a3d390c4291_logo-bunq.png",
 "bunq-term":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0881caa3a3d390c4291_logo-bunq.png",
 "revolut-savings":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa08d2b1c712b5c1882c6_logo-revolut.png",
-"n26-savings":"https://n26.com/_build/logo-256x256.png",
+"n26-savings":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abacb0367b849937c128e72_logo-n26.png",
 "lightyear-vaults":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa09373d0a98ce68dec40_logo-lightyear.png",
 "wise-interest":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa095d4237aefb4df878f_logo-wise.png",
 "ibkr-cash":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0b0d64c0b19d90acc6f_logo-interactive-brokers.png",
-"medirect-fixed":"https://www.medirect.com.mt/wp-content/uploads/cropped-Me-Logo-Black2-192x192.png",
+"medirect-fixed":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abacb0fb82b220bd4d2be89_logo-medirect.png",
 "bluor-fixed":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0b4671568efde374863_logo-bluor-bank.png",
-"raisin":"https://www.raisin.com/favicon.ico",
+"raisin":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abacb1d5c30d1de89b2ed60_logo-raisin.png",
 "bux-cash":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0b8128777da2039054b_logo-bux.png",
-"openbank-es":"https://www.openbank.es/favicon.ico",
+"openbank-es":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abacb2706972d08697df423_logo-openbank.png",
 "bigbank-de":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0bc7b694573d575667b_logo-bigbank.png",
 "klarna-fixed":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0c27cca13164b1a8ac6_logo-klarna.png"};
 
