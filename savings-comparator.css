@@ -137,6 +137,7 @@ font-size:12px;color:var(--text-3)}
 #eupf-sc .sc-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
 #eupf-sc .sc-detail{padding:16px}
 #eupf-sc .sc-grid2{grid-template-columns:1fr;gap:18px}
-#eupf-sc .sc-bar-end{margin-left:0;width:100%;justify-content:space-between}
+#eupf-sc .sc-bar-end{margin-left:0;width:100%;justify-content:space-between;flex-wrap:wrap;row-gap:8px}
+#eupf-sc .sc-sort{max-width:100%}
 }
 @media (prefers-reduced-motion:reduce){#eupf-sc *{transition:none!important;animation:none!important}}
