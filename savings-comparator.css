@@ -74,8 +74,17 @@ background-repeat:no-repeat;background-position:right 11px center}
 /* ---- cards ---- */
 #eupf-sc .sc-cards{display:flex;flex-direction:column;gap:10px}
 #eupf-sc .sc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-#eupf-sc .sc-row{display:grid;grid-template-columns:24px minmax(0,220px) minmax(0,1fr) 168px;gap:20px;align-items:center;padding:16px 20px}
+#eupf-sc .sc-row{display:grid;grid-template-columns:24px minmax(0,252px) minmax(0,1fr) 168px;gap:20px;align-items:center;padding:16px 20px}
 #eupf-sc .sc-rank{font-size:14px;color:var(--text-3);text-align:center;font-variant-numeric:tabular-nums}
+#eupf-sc .sc-who{display:flex;align-items:center;gap:12px;min-width:0}
+#eupf-sc .sc-whotext{min-width:0}
+#eupf-sc .sc-logo{position:relative;flex-shrink:0;width:40px;height:40px;border-radius:9px;
+border:1px solid var(--border);background:var(--surface-2);overflow:hidden}
+#eupf-sc .sc-ini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+font-size:13px;font-weight:600;color:var(--text-3)}
+#eupf-sc .sc-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px;
+opacity:0;transition:opacity .15s}
+#eupf-sc .sc-logo img.is-on{opacity:1;background:var(--surface)}
 #eupf-sc .sc-who .sc-name{font-size:15px;font-weight:600;line-height:1.3}
 #eupf-sc .sc-who .sc-prod{font-size:13px;color:var(--text-3);line-height:1.35}
 #eupf-sc .sc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
@@ -87,11 +96,10 @@ background:var(--surface-2);color:var(--text-2);border:1px solid var(--border)}
 #eupf-sc .sc-kpi .sc-v{font-size:18px;font-weight:600;line-height:1.3;white-space:nowrap;font-variant-numeric:tabular-nums}
 #eupf-sc .sc-kpi .sc-v.sc-sm{font-size:15px;font-weight:500}
 #eupf-sc .sc-kpi .sc-s{font-size:11px;color:var(--text-3);line-height:16px;white-space:nowrap}
-#eupf-sc .sc-prot{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;line-height:18px;
-padding:2px 9px;border-radius:var(--r-full);border:1px solid}
-#eupf-sc .sc-prot.sc-dgs{background:var(--ok-bg);color:var(--ok);border-color:var(--ok-br)}
-#eupf-sc .sc-prot.sc-investor{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-br)}
-#eupf-sc .sc-prot.sc-none{background:var(--risk-bg);color:var(--risk);border-color:var(--risk-br)}
+#eupf-sc .sc-prot{display:inline-flex;align-items:center;justify-content:center;gap:5px;
+font-size:11.5px;font-weight:400;line-height:16px;color:var(--text-3)}
+#eupf-sc .sc-prot .sc-dot{width:7px;height:7px}
+#eupf-sc .sc-prot.sc-none{color:var(--risk)}
 #eupf-sc .sc-cta{display:flex;flex-direction:column;gap:6px;text-align:center}
 #eupf-sc .sc-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;width:100%;
 padding:10px 16px;border:0;border-radius:var(--r);background:var(--accent);color:var(--btn-fg);
