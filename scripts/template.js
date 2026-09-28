@@ -64,7 +64,36 @@ NO:"Norway",PL:"Poland",PT:"Portugal",RO:"Romania",SK:"Slovakia",SI:"Slovenia",E
 const TYPE = {instant:"Instant access", fixed:"Fixed term", mmf:"Money market fund"};
 const PROT = {dgs:"Deposit guarantee", investor:"Investor compensation", none:"No protection"};
 
-const state = {country:"PT", amount:10000, filters:new Set(), sort:"rate", open:null};
+const TZ = {"Europe/Lisbon":"PT","Atlantic/Madeira":"PT","Atlantic/Azores":"PT",
+"Europe/Madrid":"ES","Atlantic/Canary":"ES","Europe/Berlin":"DE","Europe/Busingen":"DE",
+"Europe/Vienna":"AT","Europe/Paris":"FR","Europe/Rome":"IT","Europe/Amsterdam":"NL",
+"Europe/Brussels":"BE","Europe/Dublin":"IE","Europe/Helsinki":"FI","Europe/Stockholm":"SE",
+"Europe/Oslo":"NO","Europe/Copenhagen":"DK","Europe/Warsaw":"PL","Europe/Prague":"CZ",
+"Europe/Budapest":"HU","Europe/Bucharest":"RO","Europe/Sofia":"BG","Europe/Athens":"GR",
+"Europe/Zagreb":"HR","Europe/Ljubljana":"SI","Europe/Bratislava":"SK","Europe/Tallinn":"EE",
+"Europe/Riga":"LV","Europe/Vilnius":"LT","Europe/Luxembourg":"LU","Europe/Malta":"MT",
+"Europe/Nicosia":"CY","Asia/Nicosia":"CY","Atlantic/Reykjavik":"IS","Europe/Vaduz":"LI"};
+
+function guessCountry(){
+  try {
+    const saved = localStorage.getItem("eupf-sc-country");
+    if (saved && CN[saved]) return saved;
+  } catch (e) {}
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (TZ[tz]) return TZ[tz];
+  } catch (e) {}
+  try {
+    const langs = [navigator.language].concat(navigator.languages || []);
+    for (const l of langs) {
+      const m = /-([A-Z]{2})$/.exec(l || "");
+      if (m && CN[m[1]]) return m[1];
+    }
+  } catch (e) {}
+  return "DE";
+}
+
+const state = {country:guessCountry(), amount:10000, filters:new Set(), sort:"rate", open:null};
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const eur = n => "€" + Math.round(n).toLocaleString("en-GB");
@@ -196,7 +225,9 @@ function init(){
     .map(([c,n]) => '<option value="' + c + '"' + (c === state.country ? " selected" : "") + ">" + n + "</option>")
     .join("");
 
-  sel.addEventListener("change", e => { state.country = e.target.value; state.open = null; render(); });
+  sel.addEventListener("change", e => { state.country = e.target.value; state.open = null;
+    try { localStorage.setItem("eupf-sc-country", state.country); } catch (err) {}
+    render(); });
 
   const amt = host.querySelector("#eupf-amount");
   amt.addEventListener("input", e => {
