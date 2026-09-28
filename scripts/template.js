@@ -2,8 +2,8 @@
    Monta-se em #eupf-sc. Se esse elemento nao existir na pagina, e criado a seguir ao primeiro h1.
    Os dados vem de data/accounts.json e sao injetados por scripts/build.py. Nao editar a mao. */
 (function(){
-  if (document.getElementById("eupf-sc") && document.getElementById("eupf-sc").dataset.built) return;
   var host = document.getElementById("eupf-sc");
+  if (host && host.dataset.built) return;
   if (!host) {
     host = document.createElement("div");
     host.id = "eupf-sc";
@@ -155,7 +155,7 @@ function card(a, i){
     + '<div class="sc-s">' + maxLabel + "</div></div>"
     + "</div>"
     + '<div class="sc-cta"><a class="sc-btn" href="' + esc(a.url) + '" target="_blank" rel="noopener nofollow sponsored">Visit ' + esc(a.provider) + "</a>"
-    + '<span class="sc-prot' + a.protection + '">' + PROT[a.protection]
+    + '<span class="sc-prot sc-' + a.protection + '">' + PROT[a.protection]
     + (a.protection === "none" ? "" : " " + eur(a.protection_amount)) + "</span></div>"
     + "</div>"
     + detail
