@@ -12,30 +12,30 @@
     else document.body.appendChild(host);
   }
   host.dataset.built = "1";
-  host.innerHTML = `<div class="wrap">
-  <p class="verified" id="eupf-verified"></p>
+  host.innerHTML = `<div class="sc-wrap">
+  <p class="sc-verified" id="eupf-verified"></p>
 
-  <div class="controls">
-    <div class="field">
+  <div class="sc-controls">
+    <div class="sc-field">
       <label for="eupf-country">I live in</label>
-      <select class="inp" id="eupf-country"></select>
+      <select class="sc-inp" id="eupf-country"></select>
     </div>
-    <div class="field">
+    <div class="sc-field">
       <label for="eupf-amount">I want to save</label>
-      <div class="amt">
-        <span class="cur">€</span>
-        <input class="inp" id="eupf-amount" type="text" inputmode="numeric" value="10,000">
+      <div class="sc-amt">
+        <span class="sc-cur">€</span>
+        <input class="sc-inp" id="eupf-amount" type="text" inputmode="numeric" value="10,000">
       </div>
     </div>
   </div>
 
-  <div class="bar" id="eupf-bar">
-    <button class="chip" type="button" data-f="dgs" aria-pressed="false">Deposit guarantee only</button>
-    <button class="chip" type="button" data-f="fixed" aria-pressed="false">Fixed term</button>
-    <button class="chip" type="button" data-f="instant" aria-pressed="false">Instant access</button>
-    <div class="bar-end">
-      <span class="count" id="eupf-count"></span>
-      <select class="sort" id="eupf-sort" aria-label="Sort by">
+  <div class="sc-bar" id="eupf-bar">
+    <button class="sc-chip" type="button" data-f="dgs" aria-pressed="false">Deposit guarantee only</button>
+    <button class="sc-chip" type="button" data-f="fixed" aria-pressed="false">Fixed term</button>
+    <button class="sc-chip" type="button" data-f="instant" aria-pressed="false">Instant access</button>
+    <div class="sc-bar-end">
+      <span class="sc-count" id="eupf-count"></span>
+      <select class="sc-sort" id="eupf-sort" aria-label="Sort by">
         <option value="rate">Highest rate</option>
         <option value="interest">Most interest on your amount</option>
         <option value="min">Lowest minimum</option>
@@ -45,13 +45,13 @@
 
   <div id="eupf-results"></div>
 
-  <div class="legend">
-    <span><i class="dot dgs"></i> Deposit guarantee, up to €100,000</span>
-    <span><i class="dot investor"></i> Investor compensation, not a deposit guarantee</span>
-    <span><i class="dot none"></i> No protection, capital at risk</span>
+  <div class="sc-legend">
+    <span><i class="sc-dot sc-dgs"></i> Deposit guarantee, up to €100,000</span>
+    <span><i class="sc-dot sc-investor"></i> Investor compensation, not a deposit guarantee</span>
+    <span><i class="sc-dot sc-none"></i> No protection, capital at risk</span>
   </div>
 
-  <p class="foot" id="eupf-foot"></p>
+  <p class="sc-foot" id="eupf-foot"></p>
 </div>`;
 
 const DATA = __DATA__;
@@ -103,65 +103,65 @@ function card(a, i){
   if (open){
     let termsTable = "";
     if (termKeys.length > 1){
-      termsTable = '<table class="terms"><thead><tr><th>Term</th><th class="n">Rate</th>'
-        + '<th class="n">Interest on ' + eur(state.amount) + '</th></tr></thead><tbody>'
+      termsTable = '<table class="sc-terms"><thead><tr><th>Term</th><th class="sc-n">Rate</th>'
+        + '<th class="sc-n">Interest on ' + eur(state.amount) + '</th></tr></thead><tbody>'
         + termKeys.map(m => {
             const r = a.terms[m];
             const cap = a.max == null ? state.amount : Math.min(state.amount, a.max);
-            return "<tr><td>" + months(m) + '</td><td class="n">' + pct(r)
-              + '</td><td class="n">' + eur2(cap * r/100 * m/12) + "</td></tr>";
+            return "<tr><td>" + months(m) + '</td><td class="sc-n">' + pct(r)
+              + '</td><td class="sc-n">' + eur2(cap * r/100 * m/12) + "</td></tr>";
           }).join("")
         + "</tbody></table>";
     }
-    const kv = (k,v) => '<div class="kv"><span>' + k + "</span><span>" + v + "</span></div>";
+    const kv = (k,v) => '<div class="sc-kv"><span>' + k + "</span><span>" + v + "</span></div>";
     const protLine = a.protection === "dgs"
       ? esc(a.protection_scheme) + " scheme, up to " + eur(a.protection_amount)
       : a.protection === "investor"
         ? esc(a.protection_scheme) + ", up to " + eur(a.protection_amount) + " — not a deposit guarantee"
         : "None. Capital at risk";
-    detail = '<div class="detail"><div class="grid2"><div>'
-      + (termsTable ? '<p class="h">Rates by term</p>' + termsTable : '<p class="h">Rate</p>'
+    detail = '<div class="sc-detail"><div class="sc-grid2"><div>'
+      + (termsTable ? '<p class="sc-h">Rates by term</p>' + termsTable : '<p class="sc-h">Rate</p>'
           + kv("Current rate", pct(a.rate)) + (a.rate_note ? kv("Detail", esc(a.rate_note)) : ""))
-      + '<p class="h" style="margin-top:18px">Where it is offered</p>'
+      + '<p class="sc-h" style="margin-top:18px">Where it is offered</p>'
       + kv("Countries", a.countries.length + " of " + DATA.meta.eea.length + " EEA countries")
       + kv("How we know", esc(a.countries_source))
-      + '</div><div><p class="h">Conditions</p>'
+      + '</div><div><p class="sc-h">Conditions</p>'
       + kv("Type", TYPE[a.type])
       + kv("Protection", protLine)
       + kv("Minimum", a.min ? eur(a.min) + (a.min_note ? " — " + esc(a.min_note) : "") : "No minimum")
       + kv("Maximum", a.max ? eur(a.max) + (a.max_note ? " — " + esc(a.max_note) : "") : "No maximum")
       + kv("Interest paid", esc(a.paid))
-      + (a.notes && a.notes.length ? '<ul class="notes"><li>' + a.notes.map(esc).join("</li><li>") + "</li></ul>" : "")
-      + '<a class="src" href="' + esc(a.source_url) + '" target="_blank" rel="noopener nofollow">Where we checked this rate ↗</a>'
+      + (a.notes && a.notes.length ? '<ul class="sc-notes"><li>' + a.notes.map(esc).join("</li><li>") + "</li></ul>" : "")
+      + '<a class="sc-src" href="' + esc(a.source_url) + '" target="_blank" rel="noopener nofollow">Where we checked this rate ↗</a>'
       + "</div></div></div>";
   }
 
   const minLabel = a.min ? eur(a.min) : "No minimum";
   const maxLabel = a.max ? "max " + eur(a.max) : "&nbsp;";
 
-  return '<div class="card' + (open ? " open" : "") + '">'
-    + '<div class="row"><div class="rank">' + (i+1) + "</div>"
-    + '<div class="who"><div class="name">' + esc(a.provider) + "</div>"
-    + '<div class="prod">' + esc(a.product) + "</div>"
-    + '<div class="tags"><span class="tag">' + TYPE[a.type] + "</span>"
-    + (a.kind === "marketplace" ? '<span class="tag">Marketplace</span>' : "") + "</div></div>"
-    + '<div class="kpis">'
-    + '<div class="kpi"><div class="k">Rate</div><div class="v">' + pct(a.rate) + "</div>"
-    + '<div class="s">' + (a.type === "fixed" ? "fixed" : "variable") + "</div></div>"
-    + '<div class="kpi"><div class="k">Term</div><div class="v sm">' + termLabel + '</div><div class="s">&nbsp;</div></div>'
-    + '<div class="kpi"><div class="k">Interest, 1st year</div><div class="v">' + eur2(interest(a)) + "</div>"
-    + '<div class="s">gross</div></div>'
-    + '<div class="kpi"><div class="k">Minimum</div><div class="v sm">' + minLabel + "</div>"
-    + '<div class="s">' + maxLabel + "</div></div>"
+  return '<div class="sc-card' + (open ? " sc-open" : "") + '">'
+    + '<div class="sc-row"><div class="sc-rank">' + (i+1) + "</div>"
+    + '<div class="sc-who"><div class="sc-name">' + esc(a.provider) + "</div>"
+    + '<div class="sc-prod">' + esc(a.product) + "</div>"
+    + '<div class="sc-tags"><span class="sc-tag">' + TYPE[a.type] + "</span>"
+    + (a.kind === "marketplace" ? '<span class="sc-tag">Marketplace</span>' : "") + "</div></div>"
+    + '<div class="sc-kpis">'
+    + '<div class="sc-kpi"><div class="sc-k">Rate</div><div class="sc-v">' + pct(a.rate) + "</div>"
+    + '<div class="sc-s">' + (a.type === "fixed" ? "fixed" : "variable") + "</div></div>"
+    + '<div class="sc-kpi"><div class="sc-k">Term</div><div class="sc-v sc-sm">' + termLabel + '</div><div class="sc-s">&nbsp;</div></div>'
+    + '<div class="sc-kpi"><div class="sc-k">Interest, 1st year</div><div class="sc-v">' + eur2(interest(a)) + "</div>"
+    + '<div class="sc-s">gross</div></div>'
+    + '<div class="sc-kpi"><div class="sc-k">Minimum</div><div class="sc-v sc-sm">' + minLabel + "</div>"
+    + '<div class="sc-s">' + maxLabel + "</div></div>"
     + "</div>"
-    + '<div class="cta"><a class="btn" href="' + esc(a.url) + '" target="_blank" rel="noopener nofollow sponsored">Visit ' + esc(a.provider) + "</a>"
-    + '<span class="prot ' + a.protection + '">' + PROT[a.protection]
+    + '<div class="sc-cta"><a class="sc-btn" href="' + esc(a.url) + '" target="_blank" rel="noopener nofollow sponsored">Visit ' + esc(a.provider) + "</a>"
+    + '<span class="sc-prot' + a.protection + '">' + PROT[a.protection]
     + (a.protection === "none" ? "" : " " + eur(a.protection_amount)) + "</span></div>"
     + "</div>"
     + detail
-    + '<button class="toggle" type="button" data-id="' + a.id + '">'
+    + '<button class="sc-toggle" type="button" data-id="' + a.id + '">'
     + (open ? "Less detail" : (termKeys.length > 1 ? "See rates for other terms (" + (termKeys.length-1) + ")" : "See full details"))
-    + '<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
+    + '<svg class="sc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
     + "</button></div>";
 }
 
@@ -170,8 +170,8 @@ function render(){
   host.querySelector("#eupf-count").textContent =
     list.length + (list.length === 1 ? " result" : " results");
   host.querySelector("#eupf-results").innerHTML = list.length
-    ? '<div class="cards">' + list.map(card).join("") + "</div>"
-    : '<div class="empty">Nothing on our list is open to residents of ' + esc(CN[state.country])
+    ? '<div class="sc-cards">' + list.map(card).join("") + "</div>"
+    : '<div class="sc-empty">Nothing on our list is open to residents of ' + esc(CN[state.country])
       + ". Try clearing a filter, or check the providers' own sites: availability changes often.</div>";
 
   const d = new Date(DATA.meta.verified + "T00:00:00Z");
