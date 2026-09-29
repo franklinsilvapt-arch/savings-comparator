@@ -20,6 +20,9 @@ for a in data["accounts"]:
 tpl = (ROOT / "scripts/template.js").read_text(encoding="utf-8")
 blob = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
 out = tpl.replace("__DATA__", blob)
+# o push via API do GitHub converte espacos inquebraveis em espacos normais,
+# por isso normalizamos aqui para o ficheiro gerado ser sempre igual ao remoto
+out = out.replace(" ", " ")
 (ROOT / "savings-comparator.js").write_text(out, encoding="utf-8")
 
 countries = {}
