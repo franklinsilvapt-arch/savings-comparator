@@ -46,7 +46,7 @@
   <div id="eupf-results"></div>
 
   <div class="sc-legend">
-    <span><i class="sc-dot sc-dgs"></i> Deposit guarantee, up to €100,000</span>
+    <span><i class="sc-dot sc-dgs"></i> National deposit guarantee scheme, limits and conditions vary</span>
     <span><i class="sc-dot sc-investor"></i> Investor compensation, not a deposit guarantee</span>
     <span><i class="sc-dot sc-none"></i> No protection, capital at risk</span>
   </div>
@@ -82,8 +82,28 @@ const LOGO = {
 "bigbank-de":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0bc7b694573d575667b_logo-bigbank.png",
 "klarna-fixed":"https://cdn.prod.website-files.com/67b3586be7527f75ff1f014c/6abaa0c27cca13164b1a8ac6_logo-klarna.png"};
 
+const AFF = {
+"trade-republic":"https://www.eupersonalfinance.eu/visit/trade-republic",
+"trading212-eu":"https://www.eupersonalfinance.eu/visit/trading212",
+"trading212-cy":"https://www.eupersonalfinance.eu/visit/trading212",
+"scalable-instant":"https://partner.scalable-capital.de/go.cgi?pid=312&wmid=349&cpid=7&prid=32&subid=&target=Broker-Online",
+"scalable-fixed":"https://partner.scalable-capital.de/go.cgi?pid=312&wmid=349&cpid=7&prid=32&subid=&target=Broker-Online",
+"revolut-savings":"https://revolut.ngih.net/mOAZg7",
+"n26-savings":"https://n26-eu.c2nwa3.net/jRBRGb",
+"lightyear-vaults":"https://www.eupersonalfinance.eu/visit/lightyear",
+"wise-interest":"https://www.eupersonalfinance.eu/visit/wise",
+"ibkr-cash":"https://www.interactivebrokers.ie/mkt/?src=iitww1&url=%2Fen%2Fwhyib%2Foverview.php"};
+
+const OFFER = {
+"trading212-eu":{t:"Free fractional share worth up to €100",c:"IITW",a:"/articles/trading-212-promo-code"},
+"trading212-cy":{t:"Free fractional share worth up to €100",c:"IITW",a:"/articles/trading-212-promo-code"},
+"revolut-savings":{t:"€10 to €30 in welcome rewards",a:"/articles/revolut-welcome-promo-bonus"},
+"n26-savings":{t:"Up to €35 welcome bonus",c:"nunodanm36988c",a:"/articles/n26-promo-code"},
+"lightyear-vaults":{t:"Free fractional share worth up to €100",c:"INVESTINGINTHEWEB",a:"/articles/lightyear-promo-code"}};
+
 const TYPE = {instant:"Instant access", fixed:"Fixed term", mmf:"Money market fund"};
 const PROT = {dgs:"Deposit guarantee", investor:"Investor compensation", none:"No protection"};
+const PROTSHORT = {dgs:"Deposit guarantee scheme", investor:"Investor compensation, not a deposit", none:"No protection, capital at risk"};
 
 const TZ = {"Europe/Lisbon":"PT","Atlantic/Madeira":"PT","Atlantic/Azores":"PT",
 "Europe/Madrid":"ES","Atlantic/Canary":"ES","Europe/Berlin":"DE","Europe/Busingen":"DE",
@@ -167,7 +187,7 @@ function card(a, i){
     }
     const kv = (k,v) => '<div class="sc-kv"><span>' + k + "</span><span>" + v + "</span></div>";
     const protLine = a.protection === "dgs"
-      ? esc(a.protection_scheme) + " scheme, up to " + eur(a.protection_amount)
+      ? esc(a.protection_scheme) + " scheme. Statutory limit " + eur(a.protection_amount) + " per person, per bank"
       : a.protection === "investor"
         ? esc(a.protection_scheme) + ", up to " + eur(a.protection_amount) + " — not a deposit guarantee"
         : "None. Capital at risk";
@@ -210,10 +230,16 @@ function card(a, i){
     + '<div class="sc-kpi"><div class="sc-k">Minimum</div><div class="sc-v sc-sm">' + minLabel + "</div>"
     + '<div class="sc-s">' + maxLabel + "</div></div>"
     + "</div>"
-    + '<div class="sc-cta"><a class="sc-btn" href="' + esc(a.url) + '" target="_blank" rel="noopener nofollow sponsored">Visit ' + esc(a.provider) + "</a>"
-    + '<span class="sc-prot sc-' + a.protection + '"><i class="sc-dot sc-' + a.protection + '"></i>' + PROT[a.protection]
-    + (a.protection === "none" ? "" : " " + eur(a.protection_amount)) + "</span></div>"
+    + '<div class="sc-cta"><a class="sc-btn" href="' + esc(AFF[a.id] || a.url) + '" target="_blank" rel="noopener nofollow sponsored">Visit ' + esc(a.provider) + "</a>"
+    + '<span class="sc-prot sc-' + a.protection + '"><i class="sc-dot sc-' + a.protection + '"></i>' + PROTSHORT[a.protection]
+    + "</span></div>"
     + "</div>"
+    + (OFFER[a.id]
+        ? '<div class="sc-offer"><span class="sc-offer-b">Sign-up offer</span> '
+          + esc(OFFER[a.id].t) + "."
+          + (OFFER[a.id].c ? ' Use code <b>' + esc(OFFER[a.id].c) + "</b>." : "")
+          + ' <a href="' + esc(OFFER[a.id].a) + '">How it works</a></div>'
+        : "")
     + detail
     + '<button class="sc-toggle" type="button" data-id="' + a.id + '">'
     + (open ? "Less detail" : (termKeys.length > 1 ? "See rates for other terms (" + (termKeys.length-1) + ")" : "See full details"))
