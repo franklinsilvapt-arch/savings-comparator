@@ -179,7 +179,7 @@
    "rate_note": "Hoogste rente op het Duitse platform, bij 120 maanden. Verschilt per markt en per partnerbank",
    "paid": "Hangt af van de partnerbank",
    "countries_source": "officiële landenkiezer, alleen EU-markten",
-   "protection_scheme": "het nationale stelsel van de partnerbank",
+   "protection_scheme": "de partnerbank",
    "notes": [
     "Eén aanmelding geeft toegang tot termijndeposito's bij veel banken in Europa, elk gedekt door het eigen nationale stelsel tot 100.000€.",
     "Alleen open voor fiscaal inwoners van de markten waar Raisin een platform heeft. Portugal, Italië en België horen daar niet bij."

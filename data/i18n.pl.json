@@ -179,7 +179,7 @@
    "rate_note": "Najwyższa stawka na platformie niemieckiej, przy 120 miesiącach. Różni się w zależności od rynku i banku partnerskiego",
    "paid": "Zależy od banku partnerskiego",
    "countries_source": "oficjalny wybór kraju, tylko rynki UE",
-   "protection_scheme": "krajowy system banku partnerskiego",
+   "protection_scheme": "kraju banku partnerskiego",
    "notes": [
     "Jedna rejestracja daje dostęp do lokat w wielu bankach w Europie, każda objęta własnym systemem krajowym do 100 000€.",
     "Dostępne tylko dla rezydentów podatkowych rynków, na których Raisin prowadzi platformę. Portugalia, Włochy i Belgia nie są wśród nich."
