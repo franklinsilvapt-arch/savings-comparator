@@ -1,0 +1,232 @@
+{
+ "lang": "pl",
+ "translated_from": "2026-09-28",
+ "note": "Tłumaczenie data/accounts.json. Źródłem jest wersja angielska: najpierw aktualizuj angielski, potem to tłumaczenie.",
+ "offers": {
+  "trading212-eu": {
+   "t": "Darmowy ułamkowy udział o wartości do €100"
+  },
+  "trading212-cy": {
+   "t": "Darmowy ułamkowy udział o wartości do €100"
+  },
+  "revolut-savings": {
+   "t": "Od €10 do €30 w nagrodach powitalnych"
+  },
+  "n26-savings": {
+   "t": "Do €35 bonusu powitalnego"
+  },
+  "lightyear-vaults": {
+   "t": "Darmowy ułamkowy udział o wartości do €100"
+  }
+ },
+ "accounts": {
+  "trade-republic": {
+   "product": "Odsetki od środków",
+   "rate_note": "3,00% dla nowych klientów, 2,50% standardowo",
+   "max_note": "Na niemieckich, francuskich i włoskich numerach IBAN nie ma limitu. W pozostałych krajach odsetki nalicza się do 50 000€",
+   "paid": "Naliczane codziennie, wypłacane co miesiąc",
+   "countries_source": "oficjalna lista",
+   "protection_scheme": "Niemcy",
+   "notes": [
+    "Środki leżą na rachunku zbiorczym w bankach partnerskich i są objęte systemem gwarantowania depozytów tego banku, do 100 000€.",
+    "W niektórych krajach część salda trafia do funduszu rynku pieniężnego zamiast na depozyt bankowy."
+   ]
+  },
+  "trading212-eu": {
+   "product": "Odsetki od środków (Trading 212 EU GmbH)",
+   "rate_note": "4,20% promocyjnie dla kont otwartych od 16 września do 2 listopada 2026, przez 4 miesiące. Potem 2,80% standardowo",
+   "paid": "Naliczane i wypłacane codziennie",
+   "countries_source": "oficjalna lista według podmiotu prawnego",
+   "protection_scheme": "Niemcy",
+   "notes": [
+    "Tylko dla klientów Trading 212 EU GmbH, nadzorowanego przez BaFin. Klienci podmiotu cypryjskiego mają inną, słabszą ochronę: zobacz osobną pozycję.",
+    "Jeśli włączysz odsetki, część środków trafia do funduszy rynku pieniężnego, które nie są objęte gwarancją depozytów."
+   ]
+  },
+  "trading212-cy": {
+   "product": "Odsetki od środków (Trading 212 Markets Ltd)",
+   "rate_note": "AER, podąża za stopą depozytową EBC",
+   "paid": "Naliczane i wypłacane codziennie",
+   "countries_source": "oficjalna lista według podmiotu prawnego",
+   "protection_scheme": "cypryjski ICF",
+   "notes": [
+    "To rekompensata dla inwestorów do 20 000€, a nie gwarancja depozytów. To nie jest ochrona FSCS w wysokości 120 000 GBP, która dotyczy wyłącznie klientów brytyjskich.",
+    "Cash ISA to produkt wyłącznie brytyjski i nie istnieje w UE."
+   ]
+  },
+  "scalable-instant": {
+   "product": "Odsetki od środków",
+   "rate_note": "Zmienne, weryfikowane co miesiąc, bez limitu salda",
+   "paid": "Księgowane co miesiąc",
+   "countries_source": "oficjalna lista",
+   "protection_scheme": "Niemcy",
+   "notes": [
+    "Z PRIME+ środki są rozłożone nawet na pięć banków, więc ochrona może sięgnąć 5 x 100 000€.",
+    "Bez PRIME+ część salda może leżeć w funduszach rynku pieniężnego zamiast na depozytach, a ta część nie ma gwarancji depozytów."
+   ]
+  },
+  "scalable-fixed": {
+   "product": "Konto terminowe",
+   "rate_note": "Oprocentowanie stałe przez cały okres",
+   "paid": "Na koniec okresu",
+   "countries_source": "oficjalna strona, tylko Niemcy",
+   "protection_scheme": "Niemcy",
+   "notes": [
+    "Wymaga istniejącego konta Broker lub Overnight. Do pięciu kont terminowych na użytkownika.",
+    "Scalable Capital nie publikuje informacji o dostępności poza Niemcami."
+   ]
+  },
+  "bunq-savings": {
+   "product": "Easy Savings",
+   "rate_note": "Stawka podstawowa 1,51%, bonusowa 3,01% powyżej Twojego progu. Obie zmienne",
+   "max_note": "Powyżej 100 000€ odsetki nie są naliczane",
+   "paid": "Kapitalizacja co tydzień",
+   "countries_source": "reguła: bunq przyjmuje wnioski z krajów EOG, bez listy poszczególnych krajów",
+   "protection_scheme": "Holandia",
+   "notes": [
+    "200 000€ ochrony na koncie wspólnym."
+   ]
+  },
+  "bunq-term": {
+   "product": "Term Deposits",
+   "rate_note": "Oprocentowanie gwarantowane przez cały okres",
+   "paid": "Na koniec okresu",
+   "countries_source": "reguła: EOG, bez listy poszczególnych krajów",
+   "protection_scheme": "Holandia",
+   "notes": [
+    "Wcześniejsze zerwanie kosztuje 1% za każdy pozostały rok."
+   ]
+  },
+  "revolut-savings": {
+   "product": "Instant Access Savings",
+   "rate_note": "Od 1,00% do 2,50% w zależności od planu. Zmienne",
+   "paid": "Wypłacane codziennie",
+   "countries_source": "oficjalna lista obsługiwanych krajów",
+   "protection_scheme": "Litwa",
+   "notes": [
+    "Przechowywane w Revolut Bank UAB i objęte litewskim systemem gwarantowania depozytów.",
+    "Oprocentowanie i warunki różnią się w zależności od kraju i planu: sprawdź swój rynek przed otwarciem.",
+    "Flexible Accounts w Revolut to inny produkt: fundusz rynku pieniężnego bez gwarancji depozytów."
+   ]
+  },
+  "n26-savings": {
+   "product": "Instant Savings",
+   "rate_note": "0,30% Standard i Smart, 0,50% Go, 1,50% Metal. Podąża za stopą EBC",
+   "paid": "Księgowane co miesiąc",
+   "countries_source": "oficjalna lista Instant Savings",
+   "protection_scheme": "Niemcy",
+   "notes": [
+    "N26 trzyma środki we własnym bilansie jako bank z licencją, bez przekazywania do funduszy ani podmiotów trzecich.",
+    "Flexible Cash Fund w N26 to inny produkt: fundusz rynku pieniężnego bez gwarancji depozytów."
+   ]
+  },
+  "lightyear-vaults": {
+   "product": "Savings Vaults",
+   "rate_note": "APY, podąża za stopą overnight EBC. Zmienne",
+   "paid": "Naliczane codziennie",
+   "countries_source": "oficjalna lista, bez Belgii, gdzie fundusze nie są oferowane",
+   "protection_scheme": "Estonia, ochrona inwestorów",
+   "notes": [
+    "To fundusz rynku pieniężnego BlackRock, a nie depozyt. Ryzykujesz utratę kapitału i nie ma gwarancji depozytów."
+   ]
+  },
+  "wise-interest": {
+   "product": "Interest",
+   "rate_note": "Po odliczeniu rocznego kosztu 0,26%. Zmienne",
+   "paid": "Naliczane codziennie",
+   "countries_source": "oficjalna lista, bez Belgii i Liechtensteinu, gdzie Interest nie jest oferowany",
+   "protection_scheme": "Estonia, ochrona inwestorów",
+   "notes": [
+    "To fundusz rynku pieniężnego, a nie depozyt. Ryzykujesz utratę kapitału i nie ma gwarancji depozytów.",
+    "Zarządzający funduszem różni się w zależności od kraju: BlackRock w większości, J.P. Morgan w kilku rynkach Europy środkowej i wschodniej."
+   ]
+  },
+  "ibkr-cash": {
+   "product": "Odsetki od środków (IBKR Pro)",
+   "rate_note": "Stopa referencyjna minus 0,5%. Zmienne",
+   "min_note": "Brak odsetek od pierwszych 10 000€",
+   "paid": "Naliczane codziennie, wypłacane co miesiąc",
+   "countries_source": "oficjalna lista dostępnych krajów",
+   "protection_scheme": "Irlandia, rekompensata dla inwestorów",
+   "notes": [
+    "Wydzielone środki klienta, a nie depozyt na Twoje nazwisko, więc nie ma gwarancji depozytów.",
+    "Konta o wartości netto poniżej 100 000 USD dostają proporcjonalnie niższe oprocentowanie."
+   ]
+  },
+  "medirect-fixed": {
+   "product": "Lokata terminowa",
+   "rate_note": "Oprocentowanie stałe przez cały okres",
+   "paid": "Na koniec okresu",
+   "countries_source": "reguła: \"Be a resident of an EEA country, Switzerland, or the UK\"",
+   "protection_scheme": "Malta",
+   "notes": [
+    "Jeden z tylko dwóch banków, które na piśmie deklarują przyjmowanie mieszkańców z całego EOG.",
+    "Bez wcześniejszej wypłaty."
+   ]
+  },
+  "bluor-fixed": {
+   "product": "Lokata terminowa",
+   "rate_note": "Oprocentowanie stałe przez cały okres",
+   "paid": "Na koniec okresu",
+   "countries_source": "reguła: \"service available to EU residents\"",
+   "protection_scheme": "Łotwa",
+   "notes": [
+    "Lokatę można założyć zdalnie, bez otwierania rachunku bieżącego."
+   ]
+  },
+  "raisin": {
+   "product": "Platforma lokat",
+   "rate_note": "Najwyższa stawka na platformie niemieckiej, przy 120 miesiącach. Różni się w zależności od rynku i banku partnerskiego",
+   "paid": "Zależy od banku partnerskiego",
+   "countries_source": "oficjalny wybór kraju, tylko rynki UE",
+   "protection_scheme": "krajowy system banku partnerskiego",
+   "notes": [
+    "Jedna rejestracja daje dostęp do lokat w wielu bankach w Europie, każda objęta własnym systemem krajowym do 100 000€.",
+    "Dostępne tylko dla rezydentów podatkowych rynków, na których Raisin prowadzi platformę. Portugalia, Włochy i Belgia nie są wśród nich."
+   ]
+  },
+  "bux-cash": {
+   "product": "Odsetki od środków",
+   "rate_note": "1,75% w BUX Plus, do 2,00% w BUX Prime. Zmienne",
+   "paid": "Wypłacane co miesiąc",
+   "countries_source": "oficjalna lista",
+   "protection_scheme": "Holandia",
+   "notes": [
+    "Środki są przechowywane w ABN AMRO Clearing Bank i objęte systemem holenderskim."
+   ]
+  },
+  "openbank-es": {
+   "product": "Depósito Open 6 meses",
+   "rate_note": "2,75% przy wpływie wynagrodzenia 900€ miesięcznie, 1,25% bez niego",
+   "paid": "Na koniec okresu",
+   "countries_source": "strona hiszpańska. Openbank nie publikuje listy dla rezydentów innych krajów",
+   "protection_scheme": "Hiszpania",
+   "notes": [
+    "Wcześniejsze zerwanie rozliczane jest po 0,20%."
+   ]
+  },
+  "bigbank-de": {
+   "product": "Festgeld",
+   "rate_note": "Oprocentowanie stałe przez cały okres",
+   "paid": "Na koniec okresu",
+   "countries_source": "rynek niemiecki wymaga stałego miejsca zamieszkania w Niemczech. Bigbank prowadzi osobne rynki w EE, LV, LT, FI, SE, BG, AT i NL",
+   "protection_scheme": "Estonia",
+   "notes": [
+    "Bigbank działa na dziewięciu rynkach i każdy wymaga miejscowej rezydencji, więc oprocentowanie zależy od tego, gdzie mieszkasz."
+   ]
+  },
+  "klarna-fixed": {
+   "product": "Konto oszczędnościowe na stały okres",
+   "rate_note": "Oprocentowanie stałe przez cały okres. Ta sama tabela jest publikowana w Portugalii, Niemczech i Austrii",
+   "paid": "Na koniec okresu. Co roku przy okresach od 12 miesięcy",
+   "countries_source": "strona lokat potwierdzona na portugalskiej, niemieckiej i austriackiej stronie Klarny. Klarna nie publikuje listy rynków dla tego produktu",
+   "protection_scheme": "Szwecja",
+   "notes": [
+    "Bank szwedzki. Depozyty są objęte szwedzkim systemem gwarancji, wyrażonym w koronach, co odpowiada mniej więcej 100 000€.",
+    "Klarna nie pobiera podatku u źródła, więc odsetki rozliczasz samodzielnie.",
+    "Bez minimum i bez maksimum. Wcześniejsza wypłata tylko w ciągu 14 dni od otwarcia. Nie odnawia się automatycznie.",
+    "Klarna twierdzi, że oferuje oszczędzanie na większej liczbie rynków europejskich, ale jej nie publikuje, więc to narzędzie pokazuje tylko trzy, które udało się potwierdzić."
+   ]
+  }
+ }
+}

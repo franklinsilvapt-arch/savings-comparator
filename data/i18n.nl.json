@@ -1,0 +1,232 @@
+{
+ "lang": "nl",
+ "translated_from": "2026-09-28",
+ "note": "Vertaling van data/accounts.json. Het Engels is de bron: werk eerst het Engels bij en daarna deze vertaling.",
+ "offers": {
+  "trading212-eu": {
+   "t": "Gratis fractioneel aandeel ter waarde van maximaal €100"
+  },
+  "trading212-cy": {
+   "t": "Gratis fractioneel aandeel ter waarde van maximaal €100"
+  },
+  "revolut-savings": {
+   "t": "€10 tot €30 aan welkomstbeloningen"
+  },
+  "n26-savings": {
+   "t": "Tot €35 welkomstbonus"
+  },
+  "lightyear-vaults": {
+   "t": "Gratis fractioneel aandeel ter waarde van maximaal €100"
+  }
+ },
+ "accounts": {
+  "trade-republic": {
+   "product": "Rente op je saldo",
+   "rate_note": "3,00% voor nieuwe klanten, 2,50% standaard",
+   "max_note": "Op Duitse, Franse en Italiaanse IBAN's is er geen plafond. Elders telt rente tot 50.000€",
+   "paid": "Dagelijks opgebouwd, maandelijks uitbetaald",
+   "countries_source": "officiële lijst",
+   "protection_scheme": "Duitsland",
+   "notes": [
+    "Het geld staat op een verzamelrekening bij partnerbanken en valt onder het depositogarantiestelsel van die bank, tot 100.000€.",
+    "In sommige landen wordt een deel van het saldo in een geldmarktfonds geplaatst in plaats van op een bankdeposito."
+   ]
+  },
+  "trading212-eu": {
+   "product": "Rente op je saldo (Trading 212 EU GmbH)",
+   "rate_note": "4,20% actietarief voor rekeningen geopend tussen 16 september en 2 november 2026, gedurende 4 maanden. Daarna 2,80% standaard",
+   "paid": "Dagelijks opgebouwd en uitbetaald",
+   "countries_source": "officiële lijst per juridische entiteit",
+   "protection_scheme": "Duitsland",
+   "notes": [
+    "Alleen voor klanten van Trading 212 EU GmbH, onder toezicht van BaFin. Klanten van de Cypriotische entiteit krijgen een andere, zwakkere bescherming: zie de aparte regel.",
+    "Als je rente aanzet, gaat een deel van je geld naar geldmarktfondsen, die niet onder de depositogarantie vallen."
+   ]
+  },
+  "trading212-cy": {
+   "product": "Rente op je saldo (Trading 212 Markets Ltd)",
+   "rate_note": "AER, volgt de depositorente van de ECB",
+   "paid": "Dagelijks opgebouwd en uitbetaald",
+   "countries_source": "officiële lijst per juridische entiteit",
+   "protection_scheme": "Cypriotisch ICF",
+   "notes": [
+    "Dit is beleggerscompensatie tot 20.000€, geen depositogarantie. Het is niet de FSCS-dekking van 120.000 GBP, die alleen voor Britse klanten geldt.",
+    "De Cash ISA bestaat alleen in het Verenigd Koninkrijk en niet in de EU."
+   ]
+  },
+  "scalable-instant": {
+   "product": "Rente op je saldo",
+   "rate_note": "Variabel, maandelijks herzien, geen plafond op het saldo",
+   "paid": "Maandelijks bijgeschreven",
+   "countries_source": "officiële lijst",
+   "protection_scheme": "Duitsland",
+   "notes": [
+    "Met PRIME+ wordt het geld over maximaal vijf banken verdeeld, waardoor de dekking kan oplopen tot 5 x 100.000€.",
+    "Zonder PRIME+ kan een deel van het saldo in geldmarktfondsen staan in plaats van op bankdeposito's, en dat deel heeft geen depositogarantie."
+   ]
+  },
+  "scalable-fixed": {
+   "product": "Rekening met vaste looptijd",
+   "rate_note": "Rente vastgezet voor de hele looptijd",
+   "paid": "Op de einddatum",
+   "countries_source": "officiële pagina, alleen Duitsland",
+   "protection_scheme": "Duitsland",
+   "notes": [
+    "Vereist een bestaande Broker- of Overnight-rekening. Maximaal vijf rekeningen met vaste looptijd per gebruiker.",
+    "Scalable Capital publiceert niet of dit buiten Duitsland beschikbaar is."
+   ]
+  },
+  "bunq-savings": {
+   "product": "Easy Savings",
+   "rate_note": "Basisrente 1,51%, bonusrente 3,01% boven je persoonlijke drempel. Beide variabel",
+   "max_note": "Boven 100.000€ wordt geen rente uitgekeerd",
+   "paid": "Wekelijks samengesteld",
+   "countries_source": "regel: bunq accepteert aanvragen uit EER-landen, geen lijst per land gepubliceerd",
+   "protection_scheme": "Nederland",
+   "notes": [
+    "200.000€ dekking op een en-of-rekening."
+   ]
+  },
+  "bunq-term": {
+   "product": "Term Deposits",
+   "rate_note": "Rente gegarandeerd voor de hele looptijd",
+   "paid": "Op de einddatum",
+   "countries_source": "regel: EER, geen lijst per land gepubliceerd",
+   "protection_scheme": "Nederland",
+   "notes": [
+    "Eerder stoppen kost 1% voor elk jaar dat nog te gaan is."
+   ]
+  },
+  "revolut-savings": {
+   "product": "Instant Access Savings",
+   "rate_note": "1,00% tot 2,50%, afhankelijk van je abonnement. Variabel",
+   "paid": "Dagelijks uitbetaald",
+   "countries_source": "officiële lijst van ondersteunde landen",
+   "protection_scheme": "Litouwen",
+   "notes": [
+    "Aangehouden bij Revolut Bank UAB en gedekt door het Litouwse depositogarantiestelsel.",
+    "Rente en voorwaarden verschillen per land en per abonnement: kijk naar je eigen markt voordat je opent.",
+    "De Flexible Accounts van Revolut zijn een ander product: een geldmarktfonds zonder depositogarantie."
+   ]
+  },
+  "n26-savings": {
+   "product": "Instant Savings",
+   "rate_note": "0,30% Standard en Smart, 0,50% Go, 1,50% Metal. Volgt de ECB-rente",
+   "paid": "Maandelijks bijgeschreven",
+   "countries_source": "officiële Instant Savings-lijst",
+   "protection_scheme": "Duitsland",
+   "notes": [
+    "N26 houdt het geld als vergunninghoudende bank op de eigen balans, zonder doorsluizen naar fondsen of derden.",
+    "Het Flexible Cash Fund van N26 is een ander product: een geldmarktfonds zonder depositogarantie."
+   ]
+  },
+  "lightyear-vaults": {
+   "product": "Savings Vaults",
+   "rate_note": "APY, volgt de daggeldrente van de ECB. Variabel",
+   "paid": "Dagelijks opgebouwd",
+   "countries_source": "officiële lijst, zonder België waar de fondsen niet worden aangeboden",
+   "protection_scheme": "Estland, beleggersbescherming",
+   "notes": [
+    "Dit is een geldmarktfonds van BlackRock, geen deposito. Je loopt risico op verlies en er is geen depositogarantie."
+   ]
+  },
+  "wise-interest": {
+   "product": "Interest",
+   "rate_note": "Na aftrek van de jaarlijkse kosten van 0,26%. Variabel",
+   "paid": "Dagelijks opgebouwd",
+   "countries_source": "officiële lijst, zonder België en Liechtenstein waar Interest niet wordt aangeboden",
+   "protection_scheme": "Estland, beleggersbescherming",
+   "notes": [
+    "Dit is een geldmarktfonds, geen deposito. Je loopt risico op verlies en er is geen depositogarantie.",
+    "De fondsbeheerder verschilt per land: BlackRock in de meeste, J.P. Morgan in verschillende Midden- en Oost-Europese markten."
+   ]
+  },
+  "ibkr-cash": {
+   "product": "Rente op je saldo (IBKR Pro)",
+   "rate_note": "Benchmark min 0,5%. Variabel",
+   "min_note": "Geen rente over de eerste 10.000€",
+   "paid": "Dagelijks opgebouwd, maandelijks uitbetaald",
+   "countries_source": "officiële lijst van beschikbare landen",
+   "protection_scheme": "Ierland, beleggerscompensatie",
+   "notes": [
+    "Gescheiden bewaard klantengeld, geen deposito op jouw naam, dus er is geen depositogarantie.",
+    "Rekeningen onder 100.000 USD aan nettovermogen krijgen een evenredig lagere rente."
+   ]
+  },
+  "medirect-fixed": {
+   "product": "Deposito met vaste looptijd",
+   "rate_note": "Rente vast voor de looptijd",
+   "paid": "Op de einddatum",
+   "countries_source": "regel: \"Be a resident of an EEA country, Switzerland, or the UK\"",
+   "protection_scheme": "Malta",
+   "notes": [
+    "Een van de slechts twee banken die schriftelijk zeggen inwoners uit de hele EER te accepteren.",
+    "Tussentijds opnemen is niet mogelijk."
+   ]
+  },
+  "bluor-fixed": {
+   "product": "Termijndeposito",
+   "rate_note": "Rente vast voor de looptijd",
+   "paid": "Op de einddatum",
+   "countries_source": "regel: \"service available to EU residents\"",
+   "protection_scheme": "Letland",
+   "notes": [
+    "Je kunt het deposito op afstand plaatsen zonder een betaalrekening te openen."
+   ]
+  },
+  "raisin": {
+   "product": "Depositomarktplaats",
+   "rate_note": "Hoogste rente op het Duitse platform, bij 120 maanden. Verschilt per markt en per partnerbank",
+   "paid": "Hangt af van de partnerbank",
+   "countries_source": "officiële landenkiezer, alleen EU-markten",
+   "protection_scheme": "het nationale stelsel van de partnerbank",
+   "notes": [
+    "Eén aanmelding geeft toegang tot termijndeposito's bij veel banken in Europa, elk gedekt door het eigen nationale stelsel tot 100.000€.",
+    "Alleen open voor fiscaal inwoners van de markten waar Raisin een platform heeft. Portugal, Italië en België horen daar niet bij."
+   ]
+  },
+  "bux-cash": {
+   "product": "Rente op je saldo",
+   "rate_note": "1,75% op BUX Plus, tot 2,00% op BUX Prime. Variabel",
+   "paid": "Maandelijks uitbetaald",
+   "countries_source": "officiële lijst",
+   "protection_scheme": "Nederland",
+   "notes": [
+    "Het geld staat bij ABN AMRO Clearing Bank en valt onder het Nederlandse stelsel."
+   ]
+  },
+  "openbank-es": {
+   "product": "Depósito Open 6 meses",
+   "rate_note": "2,75% met een maandelijkse salarisstorting van 900€, 1,25% zonder",
+   "paid": "Op de einddatum",
+   "countries_source": "Spaanse site. Openbank publiceert geen lijst voor inwoners van andere landen",
+   "protection_scheme": "Spanje",
+   "notes": [
+    "Vervroegd opzeggen wordt vergoed tegen 0,20%."
+   ]
+  },
+  "bigbank-de": {
+   "product": "Festgeld",
+   "rate_note": "Rente vast voor de looptijd",
+   "paid": "Op de einddatum",
+   "countries_source": "de Duitse markt vereist vaste woonplaats in Duitsland. Bigbank heeft aparte markten in EE, LV, LT, FI, SE, BG, AT en NL",
+   "protection_scheme": "Estland",
+   "notes": [
+    "Bigbank werkt in negen markten en elke markt vereist lokale woonplaats, dus de rente die je krijgt hangt af van waar je woont."
+   ]
+  },
+  "klarna-fixed": {
+   "product": "Spaarrekening met vaste looptijd",
+   "rate_note": "Rente vastgezet voor de hele looptijd. Dezelfde tabel staat op de Portugese, Duitse en Oostenrijkse site",
+   "paid": "Op de einddatum. Jaarlijks bij looptijden van 12 maanden of langer",
+   "countries_source": "pagina met vaste spaarrente bevestigd op de Portugese, Duitse en Oostenrijkse site van Klarna. Klarna publiceert geen lijst van markten voor dit product",
+   "protection_scheme": "Zweden",
+   "notes": [
+    "Zweedse bank. Deposito's vallen onder het Zweedse garantiestelsel, uitgedrukt in kronen, wat ongeveer 100.000€ waard is.",
+    "Klarna houdt geen belasting in aan de bron, dus je geeft de rente zelf op.",
+    "Geen minimum en geen maximum. Vervroegd opnemen kan alleen binnen 14 dagen na opening. Wordt niet automatisch verlengd.",
+    "Klarna zegt in meer Europese markten te sparen aan te bieden maar publiceert de lijst niet, dus deze tool toont alleen de drie waar we de pagina konden bevestigen."
+   ]
+  }
+ }
+}
