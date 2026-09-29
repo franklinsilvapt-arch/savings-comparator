@@ -116,6 +116,12 @@ const TZ = {"Europe/Lisbon":"PT","Atlantic/Madeira":"PT","Atlantic/Azores":"PT",
 "Europe/Nicosia":"CY","Asia/Nicosia":"CY","Atlantic/Reykjavik":"IS","Europe/Vaduz":"LI"};
 
 function guessCountry(){
+  /* A country page can pin the list with data-country on the mount div. */
+  try {
+    const el = document.getElementById("eupf-sc");
+    const fixed = el && (el.getAttribute("data-country") || "").toUpperCase();
+    if (fixed && CN[fixed]) return fixed;
+  } catch (e) {}
   try {
     const saved = localStorage.getItem("eupf-sc-country");
     if (saved && CN[saved]) return saved;
