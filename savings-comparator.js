@@ -324,7 +324,7 @@ function card(a, i){
     + '<div class="sc-row"><div class="sc-rank">' + (i+1) + "</div>"
     + '<div class="sc-who">'
     + '<span class="sc-logo"><span class="sc-ini">' + esc(ini(a.provider)) + "</span>"
-    + (LOGO[a.id] ? '<img src="' + esc(LOGO[a.id]) + '" alt="" loading="lazy" decoding="async" onload="this.classList.add(\\'is-on\\')" onerror="this.remove()">' : "")
+    + (LOGO[a.id] ? '<img src="' + esc(LOGO[a.id]) + '" alt="" loading="lazy" decoding="async" onload="this.classList.add(\'is-on\')" onerror="this.remove()">' : "")
     + "</span>"
     + '<div class="sc-whotext"><div class="sc-name">' + esc(a.provider) + "</div>"
     + '<div class="sc-prod">' + esc(a.product) + "</div>"
