@@ -116,7 +116,8 @@
       "source_url": "https://helpcentre.trading212.com/hc/en-us/articles/12933782261917-What-are-the-supported-countries",
       "notes": [
         "Only for clients of Trading 212 EU GmbH, which is supervised by BaFin. Clients of the Cypriot entity get a different, weaker protection: see the separate entry.",
-        "If you switch interest on, part of your cash goes into qualifying money market funds, which are not covered by the deposit guarantee."
+        "If you switch interest on, part of your cash goes into qualifying money market funds, which are not covered by the deposit guarantee.",
+        "Promotional terms confirmed on 2026-10-02 in Trading 212's own Invest Promo Rate Terms: campaign period 16 September to 2 November 2026, ECB deposit facility rate plus 1.70 percentage points, for four months. With the ECB at 2.50% that is 4.20%."
       ]
     },
     {
@@ -829,26 +830,24 @@
         "36": 3.19,
         "48": 3.24
       },
-      "rate_note": "Rate locked for the whole term. The same table is published in Portugal, Germany and Austria",
+      "rate_note": "Rate locked for the whole term. This is the Portuguese table",
       "min": 0,
       "max": null,
       "protection": "dgs",
       "protection_scheme": "Sweden",
       "protection_amount": 100000,
       "countries": [
-        "PT",
-        "DE",
-        "AT"
+        "PT"
       ],
-      "countries_source": "fixed-savings page confirmed on Klarna's Portuguese, German and Austrian sites; Klarna publishes no list of markets for this product",
+      "countries_source": "Portuguese savings page. Klarna also runs this product in Germany with a different and shorter table, so the German and Austrian markets are not covered by this entry",
       "paid": "At maturity; yearly for terms of 12 months or more",
-      "url": "https://www.klarna.com/",
-      "source_url": "https://www.klarna.com/de/klarna-festgeld/",
+      "url": "https://www.klarna.com/pt/conta-poupanca/",
+      "source_url": "https://www.klarna.com/pt/conta-poupanca/",
       "notes": [
         "Swedish bank. Deposits are covered by Sweden's guarantee scheme, stated in kronor, which is worth roughly 100,000€.",
         "Klarna does not withhold tax at source, so you declare the interest yourself.",
         "No minimum and no maximum. Early withdrawal only within 14 days of opening. Does not roll over.",
-        "Klarna says it runs savings in more European markets but does not publish the list, so this tool shows only the three where we could confirm the page."
+        "The German page publishes five terms at different rates (6 months 1.65%, 12 months 2.76%, 24 and 36 months 2.67%, 48 months 2.82%), so it is a separate market and is not represented here."
       ]
     }
   ]
