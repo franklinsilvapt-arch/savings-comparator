@@ -1,0 +1,12 @@
+{
+  "year": 2026,
+  "checked": "2026-10-07",
+  "limits": { "ike": 28260, "ikze": 11304, "ikzeSelfEmployed": 16956 },
+  "taxes": { "belka": 0.19, "ikzeWithdrawal": 0.10 },
+  "sources": {
+    "ike": "https://eli.gov.pl/api/acts/MP/2025/1202/text/I/M20251202.pdf",
+    "ikze": "https://api.sejm.gov.pl/eli/acts/MP/2025/1156/text.pdf",
+    "act": "https://eli.gov.pl/api/acts/DU/2026/91/text/T/D20260091L.pdf",
+    "relief": "https://www.podatki.gov.pl/ulgi/ulga-na-ikze-pit"
+  }
+}

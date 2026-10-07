@@ -54,3 +54,7 @@ No Webflow convém colocar esse div no sítio certo, pelo Designer.
 ## pl-bonds
 
 Kalkulator obligacji skarbowych (Polish treasury bonds calculator) for eupersonalfinance.eu (EN page and PL locale). `pl-bonds/data.json` holds the monthly emission terms from obligacjeskarbowe.pl and must be updated when each new emission starts (around the 21st to 25th of the previous month): series names, first-period rates, margins, fees, NBP reference rate and latest GUS CPI.
+
+## pl-ike
+
+Kalkulator IKE i IKZE (IKE/IKZE vs regular account) for eupersonalfinance.eu (EN page and PL locale). `pl-ike/data.json` holds the yearly contribution limits (obwieszczenia MRPiPS, published around November for the next year) and tax rates.
