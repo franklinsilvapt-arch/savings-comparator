@@ -185,6 +185,7 @@
     var wrap = $('lfc-dp');
     if (!(n >= 1)) { if (wrap) wrap.classList.add('is-hidden'); return; }
     if (wrap) wrap.classList.remove('is-hidden');
+    document.querySelectorAll('.all-results_wrapper').forEach(function (el) { el.style.display = 'flex'; });
     var r = simulate(code, n, hold, a, ike ? 0 : 0.19);
 
     setText('obl-final', fmtMoney(r.final));
