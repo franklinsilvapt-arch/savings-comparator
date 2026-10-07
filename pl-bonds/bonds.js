@@ -353,6 +353,12 @@
   fetch(BASE + 'data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
     D = d;
     setText('obl-offer', T.offer(d));
+    var nb = String(d.nbp.rate), sp = d.nbp.since.split('-'), cp = String(d.cpi.latest);
+    if (LANG === 'pl') { nb = nb.replace('.', ','); cp = cp.replace('.', ','); }
+    var mPL = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'], mEN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var since = LANG === 'pl' ? (+sp[2]) + ' ' + mPL[+sp[1] - 1] + ' ' + sp[0] : (+sp[2]) + ' ' + mEN[+sp[1] - 1] + ' ' + sp[0];
+    document.querySelectorAll('.obl-nbp-now').forEach(function (e) { e.textContent = LANG === 'pl' ? 'Obecnie wynosi ' + nb + '% (od ' + since + ').' : 'It is currently ' + nb + '% (since ' + since + ').'; });
+    document.querySelectorAll('.obl-cpi-now').forEach(function (e) { e.textContent = LANG === 'pl' ? ' Ostatni odczyt GUS: ' + cp + '% (' + d.cpi.month.pl + ').' : ' Latest GUS reading: ' + cp + '% (' + d.cpi.month.en + ').'; });
     var nbpIn = document.querySelector('input[data-type="obl-nbp"]');
     if (nbpIn && !nbpIn.value) nbpIn.value = LANG === 'pl' ? String(d.nbp.rate).replace('.', ',') : String(d.nbp.rate);
     lastType = selected();
