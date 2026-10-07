@@ -267,6 +267,65 @@
   dedupe();
   document.querySelectorAll('.dropdown-list-caulculadora').forEach(function (nav) { new MutationObserver(dedupe).observe(nav, { childList: true }); });
 
+  /* ── Share results (copy URL with inputs) ── */
+  function getIn(t) { var e = document.querySelector('[data-type="' + t + '"]'); return e ? e.value : ''; }
+  function setSelect(v) {
+    var s = document.querySelector('select[data-type="obl-typ"]'); if (!s || !s.querySelector('option[value="' + v + '"]')) return;
+    s.value = v;
+    var w = s.closest('[fs-selectcustom-element="dropdown"]'), txt = s.querySelector('option[value="' + v + '"]').textContent;
+    if (w) {
+      var tg = w.querySelector('.dropdown-toggle > div'); if (tg) tg.textContent = txt;
+      w.querySelectorAll('.dropdown-calculadora').forEach(function (l) { var on = l.textContent.trim() === txt; l.classList.toggle('w--current', on); l.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    }
+  }
+  function shareUrl() {
+    var p = new URLSearchParams();
+    p.set('typ', selected()); p.set('kwota', getIn('obl-kwota')); p.set('okres', getIn('obl-okres'));
+    p.set('inflacja', getIn('obl-inflacja')); p.set('nbp', getIn('obl-nbp'));
+    var ik = $('obl-ike'); if (ik && ik.checked) p.set('ike', '1');
+    return location.origin + location.pathname + '?' + p.toString();
+  }
+  function applyUrl() {
+    var q = new URLSearchParams(location.search); if (!q.has('typ')) return;
+    setSelect(q.get('typ')); lastType = selected(); syncFields();
+    if (q.has('kwota')) setVal('obl-kwota', q.get('kwota'));
+    if (q.has('okres')) setVal('obl-okres', q.get('okres'));
+    if (q.has('inflacja')) setVal('obl-inflacja', q.get('inflacja'));
+    if (q.has('nbp')) setVal('obl-nbp', q.get('nbp'));
+    if (q.get('ike') === '1') { var ik = $('obl-ike'), vis = $('obl-ike-visual'); if (ik) ik.checked = true; if (vis) vis.classList.add('w--redirected-checked'); }
+    setTimeout(run, 200);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[share-url]'); if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    var si = b.querySelector('[share-icon]'), ci = b.querySelector('[copied-icon]'), ct = b.querySelector('[copied-text]');
+    var done = LANG === 'pl' ? 'Link skopiowany' : 'Link copied', idle = LANG === 'pl' ? 'Udostępnij wynik' : 'Share results';
+    navigator.clipboard.writeText(shareUrl()).then(function () {
+      if (si) si.style.display = 'none'; if (ci) ci.style.display = 'block'; if (ct) ct.textContent = done;
+      setTimeout(function () { if (si) si.style.display = 'block'; if (ci) ci.style.display = 'none'; if (ct) ct.textContent = idle; }, 1500);
+    });
+  }, true);
+
+  /* ── Download donut as PNG ── */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[download-graph-image-button]'); if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    var cv = $('lfc-dp-donut'); if (!cv) return;
+    var a = document.createElement('a'); a.href = cv.toDataURL('image/png', 1.0);
+    a.download = LANG === 'pl' ? 'kalkulator-obligacji-skarbowych.png' : 'polish-treasury-bonds-chart.png'; a.click();
+  }, true);
+
+  /* Chart card labels (the chart embed is shared with the deposit calculator layout) */
+  (function () {
+    var L2 = LANG === 'pl' ? ['Podział kwoty końcowej', 'Kwota końcowa', 'Zainwestowany kapitał', 'Zysk netto'] : ['End amount breakdown', 'End amount', 'Invested capital', 'Net profit'];
+    var q = function (s) { return document.querySelector('#lfc-dp-chart ' + s); };
+    if (q('.lfc-dp-chart-title')) q('.lfc-dp-chart-title').textContent = L2[0];
+    if (q('.lfc-dp-donut-label')) q('.lfc-dp-donut-label').textContent = L2[1];
+    var lt = document.querySelectorAll('#lfc-dp-chart .lfc-dp-legend-text');
+    if (lt[0]) lt[0].textContent = L2[2];
+    if (lt[1]) lt[1].textContent = L2[3];
+  })();
+
   /* ── Data ── */
   fetch(BASE + 'data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
     D = d;
@@ -275,6 +334,7 @@
     if (nbpIn && !nbpIn.value) nbpIn.value = LANG === 'pl' ? String(d.nbp.rate).replace('.', ',') : String(d.nbp.rate);
     lastType = selected();
     syncFields();
+    applyUrl();
   }).catch(function () { setText('obl-offer', LANG === 'pl' ? 'Nie udało się wczytać danych. Odśwież stronę.' : 'Could not load the data. Please refresh the page.'); });
 
   window.__oblSimulate = function (c, n, h, a, t) { return simulate(c, n, h, a, t); };
