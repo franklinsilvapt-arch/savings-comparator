@@ -336,7 +336,7 @@
     else { setVal('obl-kwota', '10,000'); }
   })();
 
-  (function () { var st = document.createElement('style'); st.textContent = '#lfc-dp .obl-scroll{max-height:none;overflow:visible}'; document.head.appendChild(st); })();
+  (function () { var st = document.createElement('style'); st.textContent = 'body #lfc-dp .obl-scroll{max-height:none;overflow:visible}'; document.head.appendChild(st); })();
 
   /* Chart card labels (the chart embed is shared with the deposit calculator layout) */
   (function () {
