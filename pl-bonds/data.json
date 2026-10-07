@@ -1,0 +1,18 @@
+{
+  "emission": "2026-10",
+  "emissionLabel": { "pl": "październik 2026", "en": "October 2026" },
+  "source": "https://www.obligacjeskarbowe.pl/",
+  "checked": "2026-10-07",
+  "nbp": { "rate": 3.75, "since": "2026-03-05" },
+  "cpi": { "latest": 3.4, "month": { "pl": "sierpień 2026", "en": "August 2026" }, "flash": 4.0, "flashMonth": { "pl": "wrzesień 2026", "en": "September 2026" } },
+  "bonds": {
+    "OTS": { "series": "OTS0127", "months": 3,   "first": 2.00, "margin": null, "idx": "fixed", "pay": "end",     "fee": 0,    "cap": "all"   },
+    "ROR": { "series": "ROR1027", "months": 12,  "first": 4.00, "margin": 0.00, "idx": "nbp",   "pay": "monthly", "fee": 0.50, "cap": "first" },
+    "DOR": { "series": "DOR1028", "months": 24,  "first": 4.15, "margin": 0.15, "idx": "nbp",   "pay": "monthly", "fee": 0.70, "cap": "first" },
+    "TOS": { "series": "TOS1029", "months": 36,  "first": 4.40, "margin": null, "idx": "fixed", "pay": "cap",     "fee": 1.00, "cap": "all"   },
+    "COI": { "series": "COI1030", "months": 48,  "first": 4.75, "margin": 1.50, "idx": "cpi",   "pay": "yearly",  "fee": 2.00, "cap": "first" },
+    "EDO": { "series": "EDO1036", "months": 120, "first": 5.35, "margin": 2.00, "idx": "cpi",   "pay": "cap",     "fee": 3.00, "cap": "all"   },
+    "ROS": { "series": "ROS1032", "months": 72,  "first": 5.00, "margin": 2.00, "idx": "cpi",   "pay": "cap",     "fee": 2.00, "cap": "all"   },
+    "ROD": { "series": "ROD1038", "months": 144, "first": 5.60, "margin": 2.50, "idx": "cpi",   "pay": "cap",     "fee": 3.00, "cap": "all"   }
+  }
+}
