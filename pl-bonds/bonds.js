@@ -19,6 +19,7 @@
         s += ' Na koniec dostajesz około <strong>' + o.fin + '</strong>, czyli <strong>' + o.net + '</strong> zysku netto';
         s += o.cpiUsed ? ' przy założeniu inflacji <strong>' + o.cpi + '</strong> rocznie.' : '.';
         if (o.early && o.fee) s += ' Opłata za przedterminowy wykup wynosi <strong>' + o.fee + '</strong>.';
+        if (o.ikeNo) s += ' Obligacji ' + o.code + ' nie można trzymać na IKE (IKE-Obligacje obejmuje tylko ROR, DOR, TOS, COI i EDO), więc kalkulator liczy podatek Belki.';
         return s;
       }
     },
@@ -34,6 +35,7 @@
         s += ' At the end you get about <strong>' + o.fin + '</strong>, which is <strong>' + o.net + '</strong> of net profit';
         s += o.cpiUsed ? ', assuming <strong>' + o.cpi + '</strong> annual inflation.' : '.';
         if (o.early && o.fee) s += ' The early redemption fee is <strong>' + o.fee + '</strong>.';
+        if (o.ikeNo) s += ' ' + o.code + ' bonds cannot be held in an IKE (IKE-Obligacje only covers ROR, DOR, TOS, COI and EDO), so the calculator applies the Belka tax.';
         return s;
       }
     }
@@ -191,20 +193,21 @@
       resW.style.display = 'flex';
       if (wasHidden || resW.getBoundingClientRect().top > window.innerHeight * 0.6) setTimeout(function () { resW.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
     }
-    var r = simulate(code, n, hold, a, ike ? 0 : 0.19);
+    var ikeOk = ike && b.ike !== false;
+    var r = simulate(code, n, hold, a, ikeOk ? 0 : 0.19);
 
     setText('obl-final', fmtMoney(r.final));
     setText('obl-n', String(n) + ' × 100' + (LANG === 'pl' ? ' zł' : ' PLN'));
     setText('obl-gross', fmtMoney(r.gross));
     setText('obl-fee', r.fee > 0 ? '-' + fmtMoney(r.fee) : fmtMoney(0));
-    setText('obl-tax', r.tax > 0 ? '-' + fmtMoney(r.tax) : fmtMoney(0) + (ike ? T.ike : ''));
+    setText('obl-tax', r.tax > 0 ? '-' + fmtMoney(r.tax) : fmtMoney(0) + (ikeOk ? T.ike : ''));
     setText('obl-net', fmtMoney(r.net));
     setText('obl-annual', fmtPct(r.annual));
     setText('obl-real', fmtMoney(r.real));
     var netEl = $('obl-net'); if (netEl) netEl.classList.toggle('is-negative', r.net < 0);
 
     var sum = $('lfc-dp-summary');
-    if (sum) sum.innerHTML = T.summary({ n: n, code: code, name: T.names[code], inv: fmtMoney(r.invested), early: r.early, hold: T.years(r.hold), fin: fmtMoney(r.final), net: fmtMoney(r.net), cpiUsed: b.idx === 'cpi', cpi: fmtPct(cpi), fee: r.fee > 0 ? fmtMoney(r.fee) : '' });
+    if (sum) sum.innerHTML = T.summary({ n: n, code: code, name: T.names[code], inv: fmtMoney(r.invested), early: r.early, hold: T.years(r.hold), fin: fmtMoney(r.final), net: fmtMoney(r.net), cpiUsed: b.idx === 'cpi', cpi: fmtPct(cpi), fee: r.fee > 0 ? fmtMoney(r.fee) : '', ikeNo: ike && !ikeOk });
 
     /* Period table */
     var tb = $('obl-years');
@@ -222,7 +225,7 @@
     /* All bonds held to maturity */
     var cb = $('obl-compare');
     if (cb) {
-      var rows = Object.keys(D.bonds).map(function (c) { return { c: c, r: simulate(c, n, D.bonds[c].months, a, ike ? 0 : 0.19) }; });
+      var rows = Object.keys(D.bonds).map(function (c) { return { c: c, r: simulate(c, n, D.bonds[c].months, a, (ike && D.bonds[c].ike !== false) ? 0 : 0.19) }; });
       rows.sort(function (x, y) { return y.r.annual - x.r.annual; });
       cb.innerHTML = rows.map(function (o) {
         var fam = (o.c === 'ROS' || o.c === 'ROD') ? ' <span class="obl-tag">' + T.family + '</span>' : '';
