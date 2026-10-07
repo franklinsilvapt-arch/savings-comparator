@@ -44,6 +44,7 @@
                           : 'PLN ' + parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.' + parts[1];
     return (neg ? '-' : '') + s;
   }
+  function fmtWhole(v) { return fmtMoney(Math.round(v)).replace(/[.,]00(?=\u00a0zł|$)/, ''); }
   function fmt0(v) { return fmtMoney(v).replace(/[.,]00(?=\u00a0zł|$)/, ''); }
   function fmtPct(v) { var s = v.toFixed(2); return (LANG === 'pl' ? s.replace('.', ',') : s) + '%'; }
   function parseNum(type) {
@@ -91,7 +92,7 @@
       var tg = w.querySelector('.dropdown-toggle > div'); if (tg) tg.textContent = T.pit[s.value];
     }
     if (LANG === 'pl') { setVal('ike-wplata', '6 000'); setVal('ike-zwrot', '5'); } else { setVal('ike-wplata', '6,000'); }
-    var st = document.createElement('style'); st.textContent = '#lfc-dp .obl-scroll{max-height:none;overflow:visible}'; document.head.appendChild(st);
+    var st = document.createElement('style'); st.textContent = '#lfc-dp .obl-scroll{max-height:none;overflow-x:auto}@media (max-width:479px){#lfc-dp .obl-table{font-size:12px}#lfc-dp .obl-table td,#lfc-dp .obl-table th{padding-left:6px}}'; document.head.appendChild(st);
   })();
 
   var chart = null;
@@ -117,7 +118,8 @@
     Object.keys(rows).forEach(function (k) {
       keys.forEach(function (v, i) {
         var val = res[v][k];
-        var txt = (k === 'tax' && val > 0) ? '-' + fmtMoney(val) : (k === 'refund' && v !== 'ikze') ? '-' : fmtMoney(val);
+        var f = window.innerWidth < 600 ? fmtWhole : fmtMoney;
+        var txt = (k === 'tax' && val > 0) ? '-' + f(val) : (k === 'refund' && v !== 'ikze') ? '-' : f(val);
         setText(rows[k] + '-' + i, txt);
       });
     });
