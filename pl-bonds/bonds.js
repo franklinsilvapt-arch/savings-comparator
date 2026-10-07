@@ -315,6 +315,21 @@
     a.download = LANG === 'pl' ? 'kalkulator-obligacji-skarbowych.png' : 'polish-treasury-bonds-chart.png'; a.click();
   }, true);
 
+  /* Localize the shared (bilingual) form: dropdown texts and number formats */
+  (function () {
+    var s = document.querySelector('select[data-type="obl-typ"]'); if (!s) return;
+    var opts = s.querySelectorAll('option');
+    opts.forEach(function (o) { if (T.names[o.value]) o.textContent = T.names[o.value]; });
+    var w = s.closest('[fs-selectcustom-element="dropdown"]');
+    if (w) {
+      var links = w.querySelectorAll('a.dropdown-calculadora');
+      links.forEach(function (l, i) { if (opts[i]) l.textContent = opts[i].textContent; });
+      var tg = w.querySelector('.dropdown-toggle > div'); if (tg && T.names[s.value]) tg.textContent = T.names[s.value];
+    }
+    if (LANG === 'pl') { setVal('obl-kwota', '10 000'); setVal('obl-inflacja', '2,5'); }
+    else { setVal('obl-kwota', '10,000'); }
+  })();
+
   /* Chart card labels (the chart embed is shared with the deposit calculator layout) */
   (function () {
     var L2 = LANG === 'pl' ? ['Podział kwoty końcowej', 'Kwota końcowa', 'Zainwestowany kapitał', 'Zysk netto'] : ['End amount breakdown', 'End amount', 'Invested capital', 'Net profit'];
