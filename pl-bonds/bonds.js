@@ -185,7 +185,12 @@
     var wrap = $('lfc-dp');
     if (!(n >= 1)) { if (wrap) wrap.classList.add('is-hidden'); return; }
     if (wrap) wrap.classList.remove('is-hidden');
-    document.querySelectorAll('.all-results_wrapper').forEach(function (el) { el.style.display = 'flex'; });
+    var resW = document.querySelector('.all-results_wrapper');
+    if (resW) {
+      var wasHidden = getComputedStyle(resW).display === 'none';
+      resW.style.display = 'flex';
+      if (wasHidden || resW.getBoundingClientRect().top > window.innerHeight * 0.6) setTimeout(function () { resW.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+    }
     var r = simulate(code, n, hold, a, ike ? 0 : 0.19);
 
     setText('obl-final', fmtMoney(r.final));
@@ -330,6 +335,8 @@
     if (LANG === 'pl') { setVal('obl-kwota', '10 000'); setVal('obl-inflacja', '2,5'); }
     else { setVal('obl-kwota', '10,000'); }
   })();
+
+  (function () { var st = document.createElement('style'); st.textContent = '#lfc-dp .obl-scroll{max-height:none;overflow:visible}'; document.head.appendChild(st); })();
 
   /* Chart card labels (the chart embed is shared with the deposit calculator layout) */
   (function () {
