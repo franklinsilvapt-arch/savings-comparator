@@ -5,11 +5,14 @@ Fortnightly check for the 16th. Base: `data/accounts.json`, verified 2026-10-02,
 **Nothing was changed.** Not `data/accounts.json`, not `scripts/template.js`, not Webflow.
 This file is the report only.
 
+Four entries the automated pass could not read were resolved from screenshots Franklin took in
+his own browser on 2026-10-16: N26, Wise, Klarna and Trading 212. They are marked below. One of
+them, N26, turns out to have **dropped two countries**, which does change a page count.
+
 ## Reference rate
 
 ECB deposit facility rate: **2.50%, unchanged since 16 September 2026** (ECB key interest rates
-table, read 2026-10-16). Everything below is a provider's own decision, not an ECB move. Four
-providers repriced upwards in the two weeks since the last check.
+table, read 2026-10-16). Everything below is a provider's own decision, not an ECB move.
 
 ## Changed
 
@@ -42,6 +45,41 @@ providers repriced upwards in the two weeks since the last check.
   24 months 2.80%, 36 months 2.90%, **60 months 3.00%**. Since every other entry in the file
   carries the provider's best rate, this one is understating BluOr by 50 basis points. Minimum
   €500 confirmed (bluorbank.lv/en/deposit, 2026-10-16)
+- **N26, countries**, confirmed by screenshot, and this is the one that moves a count.
+  The savings page footnote now reads: "This offer is available at no extra cost in the N26 app
+  in **Estonia, Finland, Greece, Ireland, Latvia, Lithuania, Luxembourg, the Netherlands,
+  Portugal, Slovakia, and Slovenia**." That is **11 countries**. We store **13**: the same 11
+  plus **Austria and Belgium**. Those two have to come out
+  (n26.com/en-eu/savings-account, 2026-10-16)
+
+## Confirmed unchanged
+
+- **N26, the plan rates**, confirmed by screenshot. The footnote states: "from 11/06/2025
+  onwards, **0.30% p.a. for Standard and Smart, 0.50% p.a. for N26 Go, and 1.50% p.a. for
+  Metal** (before taxes)." That matches our stored 1.50% headline and the rate note exactly.
+  The automated pass had read a different page, a support FAQ whose percentages are labelled
+  "for demonstration reasons only", and wrongly concluded the rates were unpublished. They are
+  published, just on the product page. Protection also confirmed: "protected up to €100,000 by
+  the German Deposit Guarantee Scheme". Separately, the page mentions a **flexible cash fund at
+  2.57% net, managed by Fidelity International** — that is a different product and does not
+  belong in this entry (n26.com/en-eu/savings-account, 2026-10-16)
+- **Wise, Interest**, confirmed by screenshot: **EUR 2.25%**, shown on wise.com/gb/interest
+  alongside GBP 3.29% and USD 3.61%. Our stored 2.25% is right. The "net of the 0.26% yearly
+  cost" wording in the note is still not something the page states as a single figure, but the
+  headline rate itself is now confirmed (wise.com/gb/interest, 2026-10-16)
+- **Klarna, fixed-term savings**, confirmed by screenshot: the Portuguese table gives 3 months
+  1.84%, 6 months 2.15%, 9 months 2.46%, 12 months 2.95%, 18 months 3.11%, 24 months 3.15%,
+  36 months 3.19% and **48 months 3.24%**. Our stored 3.24% is the 48-month rate and is
+  unchanged. Note for the deposits comparator, which uses the same table: two of the four rates
+  on its 3/6/12/24 grid did move (klarna.com/pt/conta-poupanca/, 2026-10-16)
+- Scalable Capital instant 2.60% with no cap, bunq Term Deposits (3 months 1.76%, 6 months
+  1.86%, 12 months 2.11%, 24 months 1.91%, €1,000 to €100,000), Raisin 4.25% at 120 months on
+  the German platform.
+
+On Raisin, one caveat: the German platform's own figures are internally inconsistent, with the
+term table showing up to 3.50% at 12 and 24 months while the named bank offers below it show
+3.45% and "up to 3.12%", and the page dates its rates to both September and October 2026. The
+4.25% headline at 120 months is solid; the shorter terms are not worth quoting from that page.
 
 ### Detail missing from the stored record, not an error
 
@@ -57,22 +95,9 @@ providers repriced upwards in the two weeks since the last check.
   Two things worth noting: the rate sheet **states no minimum deposit anywhere**, so the stored
   `min: 100` is unsourced, and the sheet is **dated 12 February 2026**, so it may itself be
   stale (medirect.com.mt rate sheet PDF, 2026-10-16)
-- **BUX**: Prime 2.00% and the €100,000 cap confirmed. The **1.75% Plus rate is not published**
-  on either bux.com/interest-on-cash or bux.com/prime, which only say "up to 2.00%" and "Your
-  interest rate depends on your account type". The figure may still be right, it is just not
-  sourceable from those two pages today. The fees page does publish it, along with what happens
-  above €100,000: Plus drops to 0% and Prime to 1.65% (bux.com/fees/, 2026-10-16)
-
-### Confirmed unchanged
-
-Scalable Capital instant 2.60% with no cap, bunq Term Deposits (3 months 1.76%, 6 months 1.86%,
-12 months 2.11%, 24 months 1.91%, €1,000 to €100,000), Raisin 4.25% at 120 months on the German
-platform.
-
-On Raisin, one caveat: the German platform's own figures are internally inconsistent, with the
-term table showing up to 3.50% at 12 and 24 months while the named bank offers below it show
-3.45% and "up to 3.12%", and the page dates its rates to both September and October 2026. The
-4.25% headline at 120 months is solid; the shorter terms are not worth quoting from that page.
+- **BUX**: Prime 2.00% and the €100,000 cap confirmed. The 1.75% Plus rate is not on
+  bux.com/interest-on-cash or bux.com/prime, but the fees page does publish it, along with what
+  happens above €100,000: Plus drops to 0% and Prime to 1.65% (bux.com/fees/, 2026-10-16)
 
 ## Affiliate links and sign-up offers
 
@@ -86,9 +111,9 @@ The `AFF` and `OFFER` maps were read from `scripts/template.js`, not from the ge
 - **Lightyear, code INVESTINGINTHEWEB**: matches (/articles/lightyear-promo-code, 2026-10-16)
 - **N26, code nunodanm36988c**: matches. The article says "pocket up to €35 signup bonus after
   your first card purchase" (/articles/n26-promo-code, 2026-10-16)
-- **Revolut**: the value "€10 to €30 in welcome rewards" matches the article's "claim €10-€30
-  in rewards". But the article's own "Promo code" field has a copy button and **renders no code
-  at all**, and the button is labelled "Copiar", in Portuguese, on an English page
+- **Revolut**: the value "€10 to €30 in welcome rewards" matches the article. But the article's
+  own "Promo code" field has a copy button and **renders no code at all**, and the button is
+  labelled "Copiar", in Portuguese, on an English page
   (/articles/revolut-welcome-promo-bonus, 2026-10-16)
 
 No offer in the `OFFER` map carries an end date, so there is nothing expiring on this side.
@@ -100,25 +125,24 @@ No offer in the `OFFER` map carries an end date, so there is nothing expiring on
   tracking. One thing to check: the redirect carries `ad_name=pedrofintech_`, which is not an
   eupersonalfinance tag. Worth confirming the attribution is the intended one
 
-Could not be read, all with ROBOTS_DISALLOWED after three attempts each:
+Not readable by the fetcher, all ROBOTS_DISALLOWED after three attempts:
 `/visit/trading212`, `/visit/lightyear`, `/visit/wise`, `revolut.ngih.net/mOAZg7`,
-`n26-eu.c2nwa3.net/jRBRGb` and `partner.scalable-capital.de/go.cgi?...`. The
-eupersonalfinance.eu `robots.txt` has no Disallow rules and other `/visit/` paths on the same
-host answered normally in the same batch, so the block comes from the destination hosts. None
-of these is a 404; they are simply unreadable this way and need a click.
+`n26-eu.c2nwa3.net/jRBRGb` and `partner.scalable-capital.de/go.cgi?...`. On the brokers side
+Franklin confirmed that a link flagged the same way (Freedom24) was in fact working and the
+error was a bot block, so the likeliest reading is that these are all fine too. None of them
+is a 404.
 
 ## Country availability
 
-**No published list changed.** Every stored `countries` array still matches what the provider
-publishes today, where it publishes one at all. Checked in detail:
+One list changed, the rest did not.
 
+- **N26: 13 countries to 11.** Austria and Belgium are no longer in the published list. Details
+  in "Changed" above
 - **Trading 212 EU GmbH**: official list is DE, AT, DK, FI, FR, IS, IE, LI, LU, NL, NO, PT, ES,
   SE plus Switzerland. Stored: the same 14 EEA countries. Switzerland is outside the EEA and
   correctly left out
 - **Trading 212 Markets Ltd**: BG, HR, CZ, EE, GR, HU, IT, LV, LT, MT, PL, CY, RO, SK, SI.
   Matches the stored 15 exactly
-- **N26**: AT, NL, IE, PT, SI, GR, BE, FI, SK, LU, EE, LV, LT. Matches the stored 13 exactly.
-  The page adds two conditions worth noting, a German IBAN and a Standard or Premium membership
 - **Wise**: the EEA subset of the official list matches the stored 28, with Belgium and
   Liechtenstein correctly absent
 - **BluOr Bank**: "residents of Latvia, the EU, the EEA, the United Kingdom, and Switzerland",
@@ -136,9 +160,17 @@ could not be re-confirmed this round.
 
 ## Country pages and counts
 
-**The counts do not change.** No availability moved, so the number of accounts open to residents
-of each country stays as it is, and the SEO descriptions of the Savings Countries items remain
-correct.
+**Two counts change, both because of N26.**
+
+- **Austria**: loses N26 Instant Savings. The count in the Savings Countries SEO description
+  goes **down by one**
+- **Belgium**: loses N26 Instant Savings. The count goes **down by one**
+
+I am deliberately not writing the resulting numbers here. The count comes from how the build
+filters `accounts.json` against each country, and I did not run the build, so quoting a figure
+would be guessing. Running `scripts/build.py` after the data edit gives the exact numbers.
+
+Every other country keeps the same count.
 
 ## Static country summaries
 
@@ -153,6 +185,8 @@ summary changes for everyone anyway.
 
 Where the top three are most likely to actually reorder, rather than just shift a number:
 
+- **Austria and Belgium**: N26 comes out of the list entirely, so both the count and, if N26
+  was in the top three, the ranking change
 - **Spain**: Openbank moves from 2.75% to 3.25% with the income condition, which may push it
   into the top three
 - **The 24 Lightyear countries**: a small move down, 2.47% to 2.45%, which can drop Lightyear
@@ -175,51 +209,46 @@ corrected.
   Variabel" in NL
 - `accounts.openbank-es.rate_note`, today "2,75% met een maandelijkse salarisstorting van 900€,
   1,25% zonder" in NL. Both numbers change
-- `accounts.trade-republic.rate_note`, today "3,00% voor nieuwe klanten, 2,50% standaard" in NL,
-  only if the Trade Republic new-client rate turns out to have changed, which is unconfirmed
+- `accounts.n26-savings.countries_source`, today "officiële Instant Savings-lijst" in NL. The
+  wording still holds, but the list behind it shrank, so it is worth a look when the data edit
+  happens. The `rate_note` itself ("0,30% Standard en Smart, 0,50% Go, 1,50% Metal") is
+  **confirmed correct** and needs no change
 - `accounts.bluor-fixed.rate_note` and `accounts.medirect-fixed.rate_note` carry no figures, so
   they only need touching if you decide to spell out the term ladders
 
 `accounts.ibkr-cash.rate_note` is "Benchmark min 0,5%" and `min_note` is "Geen rente over de
 eerste 10.000€". Both are still accurate even after the rate change, because neither carries
-the number. No translation work needed there.
+the number. `accounts.wise-interest.rate_note` and `accounts.klarna-fixed.rate_note` are also
+unaffected, since both entries were confirmed unchanged.
 
 The `translated_from` field of both files says "2026-09-28" and needs updating too.
 
 ## Could not confirm
 
-- **Trading 212, both entities**: the 4.20% promotional rate, the 2 November 2026 deadline, the
-  2.80% standard rate and the 2.50% Markets Ltd rate. **Trading 212 publishes no numeric rate
-  in fetchable HTML anywhere.** The terms pages are JavaScript shells, trading212.com/terms/invest
-  returning 4,445 characters of header, nav and footer with no body. The interest page says
-  outright "In the app, tap on 'Earn Interest on cash', and you will find the current interest
-  rates", and the help centre sends existing clients to the app. The help article on the EUR
-  promotional rate describes the structure but states **no rate, no duration and no deadline**.
-  Targeted searches for 2.80%, 1 November 2026 and 2 November 2026 across both domains returned
-  nothing. This matters because **the 2 November deadline is about two weeks away** and the
-  comparator is advertising it. It needs checking inside the app, or against the "Invest Promo
-  Rate Terms" PDF that the help article references but does not expose
-- **Klarna PT, fixed-term savings, 3.24%**: klarna.com returned ROBOTS_DISALLOWED on both
-  attempts. Same block as in the deposits check. Third round running without a reading
-- **N26, all plan rates**: the FAQ now says its percentages are "used for demonstration reasons
-  only and may not be the actual rate", and the examples it gives (1.3% and 1.7%) are not the
-  stored figures. No plan-specific rate is published anywhere on the page. The stored 1.50%
-  Metal, 0.50% Go and 0.30% Standard/Smart are unsourceable today
-- **Wise, 2.25% net and the 0.26% yearly cost**: the eligibility article carries no figures. The
-  fees article publishes only the components, a Wise fee of 0.13% or 0.16% and a fund manager
-  fee of 0.10% or 0.16% depending on the fund. No net or gross yield is published and I did not
-  add the components together
-- **Trade Republic, the €50,000 cap and the 3.00% new-client rate**: the stored source article
-  publishes no figure at all, only "the annual interest rate". The product page says
-  "2.5 % interest on your unlimited cash", with no cap and no new-client condition, and the rate
-  appears only in the page title and metadata, not in the body. The Italian page does show 3%
-  for new customers up to €50,000, and the Portuguese page contradicts itself between 2.5% and
-  3%. The stored shape may well be right, but neither fetched page supports it as written
-- **MeDirect minimum of €100**: not stated on the rate sheet
-- **BUX Plus 1.75%**: not on the two pages the file points at, though the fees page has it
+- **Trading 212, the promotional window and the step-down.** The rate itself is now
+  **confirmed**: the Portuguese page publishes **4.2% in EUR**, "paid daily, no minimums or
+  limits", described as "a variable promotional rate for 4 months from activation, for new
+  Invest clients only". Two stored claims are **not supported by that page**: the
+  **2 November 2026 deadline** (the page frames the 4 months as running from each client's own
+  activation, with no campaign end date) and the **2.80% standard rate from 1 November 2026**
+  (not mentioned anywhere). Our `rate` of 4.2 is right; the `rate_note` around it is not.
+  The Markets Ltd entity's 2.50% also remains unconfirmed: Trading 212 still publishes no
+  entity-by-entity rates in fetchable HTML (trading212.com/pt/interest-on-cash, 2026-10-16)
+- **Trade Republic, the €50,000 cap and the 3.00% new-client rate**: Franklin confirmed the
+  shape, **3% for new clients and 2.50% for existing ones**, which is what the entry stores.
+  What is still unconfirmed from a page is the **€50,000 cap** and the `max_note` about German,
+  French and Italian IBANs being uncapped. The Italian page supports a €50,000 cap for new
+  customers, the German page says "unlimited cash" at 2.5%, and the Portuguese page contradicts
+  itself. The entry is probably right; the per-country detail is what I could not pin down
+- **MeDirect minimum of €100**: not stated on the rate sheet, which is also dated 12 February 2026
 - **Lightyear country list**: the FAQ answer did not render
+- **Wise, the 0.26% yearly cost** as a single published figure: the fees article publishes only
+  the components, a Wise fee of 0.13% or 0.16% and a fund manager fee of 0.10% or 0.16%
+  depending on the fund. The 2.25% headline is confirmed; the cost wording is not
 
 ## Next step
 
 Review this report. Only after your ok does `data/accounts.json` get edited, including
-`meta.verified`, do the country summaries get regenerated and do the translations get updated.
+`meta.verified` and the N26 country list, do the country summaries get regenerated and do the
+translations get updated. The N26 change is the one that needs `scripts/build.py` re-run to get
+the new Austria and Belgium counts.
