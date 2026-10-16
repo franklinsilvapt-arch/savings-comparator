@@ -1,0 +1,59 @@
+# Copiar para .github/workflows/gerar-js.yml
+#
+# O savings-comparator.js é gerado a partir de data/accounts.json e de
+# scripts/template.js. Sem este workflow, o JS tem de ser gravado à mão a cada
+# alteração dos dados: se alguém se esquecer, o site continua a servir as taxas
+# antigas sem dar sinal nenhum.
+#
+# O scripts/build.py já valida cada conta (país dentro do EEE, proteção, tipo e
+# fonte com http), por isso dados inválidos falham aqui e não chegam ao site.
+#
+# O "resultados por país" que o build imprime fica no resumo da corrida: é a
+# contagem que as descrições SEO das páginas por país têm de refletir.
+
+name: Gerar savings-comparator.js
+
+on:
+  push:
+    paths:
+      - "data/accounts.json"
+      - "scripts/template.js"
+      - "scripts/build.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Construir
+        run: |
+          python3 scripts/build.py | tee /tmp/build.txt
+
+      - name: Contagens por país no resumo
+        run: |
+          echo "### Build do savings comparator" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat /tmp/build.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "As contagens acima são as que as descrições SEO das páginas por país devem ter." >> $GITHUB_STEP_SUMMARY
+
+      - name: Gravar
+        run: |
+          git config user.name "lf-bot"
+          git config user.email "bot@literaciafinanceira.pt"
+          git add savings-comparator.js
+          if git diff --cached --quiet; then
+            echo "Sem alterações a gravar."
+          else
+            git commit -m "Gerar savings-comparator.js a partir do JSON"
+            git push
+          fi
