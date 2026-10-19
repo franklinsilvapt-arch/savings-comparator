@@ -1,5 +1,5 @@
 /* Cena złota dziś + kalkulator wartości złota - eupersonalfinance.eu, tylko PL.
-   Na żywo: gold-api.com (XAU/USD) x średni kurs USD z NBP. Historia: NBP, ceny złota (próba 1000). */
+   Układ: cena na górze, wykres, kalkulator pod spodem. Na żywo: gold-api.com (XAU/USD) x średni kurs USD z NBP. Historia: NBP, ceny złota (próba 1000). */
 (function () {
   'use strict';
   var OZ = 31.1034768, NB = ' ';
@@ -30,7 +30,7 @@
   function dlugo(s) { var p = s.split('-'); return parseInt(p[2], 10) + ' ' + MIES[+p[1] - 1] + ' ' + p[0]; }
   function $(id) { return document.getElementById(id); }
   function setText(id, v) { var e = $(id); if (e) e.textContent = v; }
-  function row(id, v, cls) { var r = $(id); if (!r) return; var e = r.querySelector('.lfc-dp-row-val'); if (e) { e.textContent = v; e.classList.remove('is-up', 'is-down'); if (cls) e.classList.add(cls); } }
+  function row(id, v, cls) { var r = $(id); if (!r) return; var e = r.querySelector('.lfc-dp-row-val'); if (e) { e.textContent = v; e.classList.remove('zl-up', 'zl-down'); if (cls) e.classList.add(cls); } }
   function parseWaga() {
     var el = document.querySelector('[data-type="zl-waga"]'); if (!el) return NaN;
     var raw = String(el.value).replace(/[\s ]/g, ''); if (!raw) return NaN;
@@ -63,52 +63,53 @@
     });
   }
 
-  /* ── Wynik kalkulatora ── */
+  /* ── Wynik kalkulatora (pod formularzem) ── */
   function run(scroll) {
     if (!D.g) return;
     var w = parseWaga(); if (!(w > 0)) { setText('zl-info', 'Wpisz wagę większą od zera.'); return; }
-    var p = proba(), czyste = w * p.f, wart = czyste * D.g;
-    var resW = document.querySelector('.all-results_wrapper');
-    if (resW) resW.style.display = 'flex';
-    if (scroll) scrollToResults();
+    var p = proba(), czyste = w * p.f, wart = czyste * D.g, box = $('zl-calc-res');
+    if (box) box.style.display = '';
+    setText('zl-info', '');
     setText('zl-hl', money(wart));
-    row('zl-r-waga', num(w, w % 1 ? 2 : 0) + NB + 'g, próba ' + p.l + ' (' + p.k + ')');
-    row('zl-r-czyste', num(czyste, 2) + NB + 'g');
-    row('zl-r-gp', money(p.f * D.g));
-    var sum = $('lfc-dp-summary');
-    if (sum) sum.innerHTML = 'Twoje złoto (' + num(w, w % 1 ? 2 : 0) + NB + 'g próby ' + p.l + ') zawiera <strong>' + num(czyste, 2) + NB + 'g czystego złota</strong>, czyli kruszec wart <strong>' + money(wart) + '</strong> po dzisiejszej cenie. W skupie dostaniesz mniej, bo skup dolicza swoją marżę. Porównaj 2 lub 3 oferty.';
+    setText('zl-r-czyste', num(czyste, 2) + NB + 'g');
+    setText('zl-r-gp', money(p.f * D.g));
+    setText('zl-calc-note', num(w, w % 1 ? 2 : 0) + NB + 'g złota próby ' + p.l + ' (' + p.k + ') to kruszec wart ' + money(wart) + ' po dzisiejszej cenie. W skupie dostaniesz mniej, bo skup dolicza swoją marżę. Porównaj 2 lub 3 oferty.');
+    if (scroll && box) scrollTo(box);
   }
 
-  function scrollToResults() {
-    var t = document.querySelector('[results-anchor]') || document.querySelector('.all-results_wrapper'); if (!t) return;
+  function scrollTo(t) {
     var n = document.querySelector('.nav_fixed'), h = 80;
     if (n) h = Math.max(n.offsetHeight, n.firstElementChild ? n.firstElementChild.offsetHeight : 0) || 80;
     requestAnimationFrame(function () { requestAnimationFrame(function () {
-      window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - h - 24), behavior: 'smooth' });
+      var r = t.getBoundingClientRect();
+      if (r.top >= h && r.bottom <= window.innerHeight) return;
+      window.scrollTo({ top: Math.max(0, r.top + window.pageYOffset - h - 24), behavior: 'smooth' });
     }); });
   }
 
   /* ── Ceny dziś i tabele ── */
   function renderPrices() {
     var g = D.g, h = D.hist, last = h.length ? h[h.length - 1] : null;
-    row('zl-r-1g', money(g)); row('zl-r-oz', money(g * OZ)); row('zl-r-kg', money(g * 1000, 0));
+    setText('zl-k-g', money(g)); setText('zl-k-585', money(g * 0.585));
+    row('zl-r-oz', money(g * OZ)); row('zl-r-kg', money(g * 1000, 0));
+    var ks = $('zl-k-g-s');
     if (last) {
       row('zl-r-nbp', money(last.v) + ' (' + kr(last.d) + ')');
-      if (h.length > 1) { var pr = h[h.length - 2], c = last.v / pr.v - 1; row('zl-r-dzien', pct(c), c >= 0 ? 'is-up' : 'is-down'); }
+      if (ks && h.length > 1) { var c = last.v / h[h.length - 2].v - 1; ks.innerHTML = '<span class="' + (c >= 0 ? 'zl-up' : 'zl-down') + '">' + pct(c) + '</span> od poprzedniego notowania NBP'; }
       var yr = String(new Date().getFullYear()), y0 = null;
       for (var i = 0; i < h.length; i++) { if (h[i].d.slice(0, 4) === yr) break; y0 = h[i]; }
-      if (y0) { var cy = last.v / y0.v - 1; row('zl-r-rok', pct(cy), cy >= 0 ? 'is-up' : 'is-down'); }
+      if (y0) { var cy = last.v / y0.v - 1; row('zl-r-rok', pct(cy), cy >= 0 ? 'zl-up' : 'zl-down'); }
       var r365 = null, lim = iso(new Date(Date.now() - 365 * 86400000));
       for (var j = 0; j < h.length; j++) { if (h[j].d >= lim) { r365 = h[j]; break; } }
-      if (r365) { var c1 = last.v / r365.v - 1; row('zl-r-12m', pct(c1), c1 >= 0 ? 'is-up' : 'is-down'); }
-    }
+      if (r365) { var c1 = last.v / r365.v - 1; row('zl-r-12m', pct(c1), c1 >= 0 ? 'zl-up' : 'zl-down'); }
+    } else if (ks) ks.textContent = 'Notowanie na żywo';
     var tp = $('zl-proby'); if (tp) tp.innerHTML = PROBY.map(function (p) { return '<tr><td>' + p.l + '</td><td>' + p.k + '</td><td>' + money(g * p.f) + '</td></tr>'; }).join('');
     var tw = $('zl-produkty'); if (tw) tw.innerHTML = PRODUKTY.map(function (p) { return '<tr><td>' + p[0] + '</td><td>' + money(g * 0.9999 * p[1], p[1] >= 100 ? 0 : 2) + '</td></tr>'; }).join('');
-    var now = D.at || new Date();
-    setText('zl-upd', D.live
-      ? 'Notowanie na żywo z ' + dlugo(iso(now)) + ', ' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2) + '. Cena spot XAU/USD przeliczona po średnim kursie dolara NBP (' + num(D.usd, 4) + NB + 'zł).'
-      : 'Notowanie na żywo jest chwilowo niedostępne. Pokazujemy cenę złota NBP z ' + dlugo(last.d) + '.');
-    setText('zl-info', 'Cena 1 g czystego złota: ' + money(g) + (D.live ? ' (na żywo).' : ' (NBP).'));
+    var now = D.at || new Date(), dot = document.querySelector('#lfc-dp .zl-dot');
+    if (dot) dot.classList.toggle('is-live', D.live);
+    setText('zl-upd-t', D.live
+      ? 'Na żywo, ' + dlugo(iso(now)) + ', ' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2) + '. Cena spot XAU/USD przeliczona po średnim kursie dolara NBP (' + num(D.usd, 4) + NB + 'zł).'
+      : 'Cena złota NBP z ' + dlugo(last.d) + '. Notowanie na żywo jest chwilowo niedostępne.');
   }
 
   /* ── Wykres historyczny w karcie wykresu ── */
@@ -121,7 +122,7 @@
     var wrap = c.querySelector('.lfc-dp-chart-wrap');
     var html = '<div class="zl-zakres" role="group" aria-label="Zakres wykresu">' +
       [['30', '1 mies.'], ['91', '3 mies.'], ['365', '1 rok'], ['1826', '5 lat']].map(function (z) { return '<button type="button" class="zl-btn' + (z[0] === '365' ? ' is-active' : '') + '" data-dni="' + z[0] + '">' + z[1] + '</button>'; }).join('') +
-      '</div><div class="zl-line"><canvas id="lfc-dp-donut"></canvas></div><p class="zl-src">Źródło: Narodowy Bank Polski, ceny złota obliczane z fixingu LBMA (próba 1000).</p>';
+      '</div><div class="zl-line"><canvas id="lfc-dp-donut"></canvas></div><p class="zl-sub">Ostatnie notowania NBP</p><div class="zl-scroll"><table class="zl-table"><thead><tr><th>Data</th><th>Cena za 1 g</th><th>Zmiana</th></tr></thead><tbody id="zl-hist"></tbody></table></div><p class="zl-src">Źródło: Narodowy Bank Polski, ceny złota obliczane z fixingu LBMA (próba 1000).</p>';
     if (wrap) wrap.outerHTML = '<div class="zl-chart-wrap">' + html + '</div>';
     var wm = c.querySelector('.align-center'); if (wm && wm.querySelector('.table-watermark')) wm.style.display = 'none';
   }
@@ -129,6 +130,12 @@
     var from = iso(new Date(Date.now() - days * 86400000));
     var s = D.hist.filter(function (x) { return x.d >= from; });
     setText('lfc-dp-chart-subtitle', s.length ? 'NBP, od ' + kr(s[0].d) + ' do ' + kr(s[s.length - 1].d) : 'NBP');
+    var th = $('zl-hist');
+    if (th && D.hist.length > 1) {
+      var hh = D.hist.slice(-11).reverse(), out = '';
+      for (var k = 0; k < hh.length - 1; k++) { var c = hh[k].v / hh[k + 1].v - 1; out += '<tr><td>' + kr(hh[k].d) + '</td><td>' + money(hh[k].v) + '</td><td class="' + (c >= 0 ? 'zl-up' : 'zl-down') + '">' + pct(c) + '</td></tr>'; }
+      th.innerHTML = out;
+    }
     if (s.length < 2) return;
     loadChart().then(function () {
       var cv = $('lfc-dp-donut'); if (!cv) return;
@@ -201,7 +208,7 @@
     dedupe();
     document.querySelectorAll('.dropdown-list-caulculadora').forEach(function (nav) { new MutationObserver(dedupe).observe(nav, { childList: true }); });
     applyUrl(); setupChartCard();
-    setText('zl-info', 'Pobieramy aktualną cenę złota...');
+    var resW = document.querySelector('.all-results_wrapper'); if (resW) resW.style.display = 'flex';
     Promise.all([
       fetchJson('https://api.gold-api.com/price/XAU'),
       fetchJson('https://api.nbp.pl/api/exchangerates/rates/a/usd/?format=json'),
@@ -213,7 +220,7 @@
       var last = D.hist.length ? D.hist[D.hist.length - 1] : null;
       if (spot && usd) { D.g = spot * usd / OZ; D.live = true; D.usd = usd; D.at = new Date(); }
       else if (last) { D.g = last.v; D.live = false; }
-      else { setText('zl-info', 'Nie udało się pobrać notowań złota. Odśwież stronę za chwilę.'); return; }
+      else { setText('zl-upd-t', 'Nie udało się pobrać notowań złota. Odśwież stronę za chwilę.'); return; }
       renderPrices(); run(false); renderChart();
     });
   }
