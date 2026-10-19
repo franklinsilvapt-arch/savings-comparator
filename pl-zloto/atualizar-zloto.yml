@@ -1,0 +1,79 @@
+# Copiar para .github/workflows/atualizar-zloto.yml
+# (o bot não tem permissão para escrever em .github/workflows)
+#
+# Atualiza todos os dias úteis pl-zloto/zloto-dane.json, a reserva da página
+# eupersonalfinance.eu/pl/cena-zlota. A página vai buscar os preços ao vivo em
+# cada visita. Se essas fontes falharem, usa este ficheiro (via jsDelivr), para
+# que os preços e o gráfico apareçam sempre.
+#
+# Corre às 11:30 UTC (depois da publicação do preço do ouro do NBP, por volta
+# do meio-dia em Varsóvia) e também sempre que este ficheiro é alterado.
+
+name: Atualizar dados do ouro (PLN)
+
+on:
+  schedule:
+    - cron: '30 11 * * 1-5'
+  push:
+    paths:
+      - ".github/workflows/atualizar-zloto.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Buscar cotacao, cambio e precos NBP e escrever zloto-dane.json
+        shell: python
+        run: |
+          import json, urllib.request, datetime
+
+          def get(url):
+              req = urllib.request.Request(url, headers={"User-Agent": "savings-comparator-action", "Accept": "application/json"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.load(r)
+
+          nbp = get("https://api.nbp.pl/api/cenyzlota/last/260/?format=json")
+          serie = [{"d": q["data"], "v": round(float(q["cena"]), 2)} for q in nbp if 50 < float(q["cena"]) < 5000]
+          assert len(serie) > 100, "serie NBP curta demais"
+
+          usd_pln = float(get("https://api.nbp.pl/api/exchangerates/rates/a/usd/?format=json")["rates"][0]["mid"])
+          assert 1 < usd_pln < 10, "cambio fora do plausivel"
+
+          agora = datetime.datetime.now(datetime.timezone.utc)
+          try:
+              xau = float(get("https://api.gold-api.com/price/XAU")["price"])
+              assert 500 < xau < 50000
+              pln_g = round(xau * usd_pln / 31.1034768, 2)
+              data = agora.strftime("%Y-%m-%d")
+              fonte = "api.gold-api.com (XAU/USD) x kurs średni USD NBP"
+          except Exception:
+              xau = None
+              pln_g = serie[-1]["v"]
+              data = serie[-1]["d"]
+              fonte = "Cena złota NBP"
+
+          dados = {
+              "plnG": pln_g,
+              "xauUsd": round(xau, 2) if xau else None,
+              "usdPln": round(usd_pln, 4),
+              "data": data,
+              "atualizadoEm": agora.strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "fonte": fonte,
+              "nbp": serie
+          }
+          with open("pl-zloto/zloto-dane.json", "w") as f:
+              f.write(json.dumps(dados, ensure_ascii=False, indent=1) + "\n")
+          print(f"plnG={pln_g} data={data} nbp={len(serie)} ultimo={serie[-1]}")
+
+      - name: Commit e push se houver alteracoes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pl-zloto/zloto-dane.json
+          git diff --cached --quiet || (git commit -m "Atualizar preco do ouro em PLN ($(date -u +%F))" && git push)
