@@ -69,16 +69,23 @@
     var w = parseWaga(); if (!(w > 0)) { setText('zl-info', 'Wpisz wagę większą od zera.'); return; }
     var p = proba(), czyste = w * p.f, wart = czyste * D.g;
     var resW = document.querySelector('.all-results_wrapper');
-    if (resW) {
-      resW.style.display = 'flex';
-      if (scroll && resW.getBoundingClientRect().top > window.innerHeight * 0.6) setTimeout(function () { resW.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
-    }
+    if (resW) resW.style.display = 'flex';
+    if (scroll) scrollToResults();
     setText('zl-hl', money(wart));
     row('zl-r-waga', num(w, w % 1 ? 2 : 0) + NB + 'g, próba ' + p.l + ' (' + p.k + ')');
     row('zl-r-czyste', num(czyste, 2) + NB + 'g');
     row('zl-r-gp', money(p.f * D.g));
     var sum = $('lfc-dp-summary');
     if (sum) sum.innerHTML = 'Twoje złoto (' + num(w, w % 1 ? 2 : 0) + NB + 'g próby ' + p.l + ') zawiera <strong>' + num(czyste, 2) + NB + 'g czystego złota</strong>, czyli kruszec wart <strong>' + money(wart) + '</strong> po dzisiejszej cenie. W skupie dostaniesz mniej, bo skup dolicza swoją marżę. Porównaj 2 lub 3 oferty.';
+  }
+
+  function scrollToResults() {
+    var t = document.querySelector('[results-anchor]') || document.querySelector('.all-results_wrapper'); if (!t) return;
+    var n = document.querySelector('.nav_fixed'), h = 80;
+    if (n) h = Math.max(n.offsetHeight, n.firstElementChild ? n.firstElementChild.offsetHeight : 0) || 80;
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - h - 24), behavior: 'smooth' });
+    }); });
   }
 
   /* ── Ceny dziś i tabele ── */
@@ -142,8 +149,6 @@
 
   /* ── Zdarzenia ── */
   document.addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('#calcular');
-    if (b) { e.preventDefault(); run(true); return; }
     var z = e.target.closest && e.target.closest('.zl-btn');
     if (z) {
       e.preventDefault(); days = parseInt(z.getAttribute('data-dni'), 10) || 365;
@@ -152,6 +157,10 @@
       else renderChart();
     }
   });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('#calcular');
+    if (b) { e.preventDefault(); e.stopPropagation(); run(true); }
+  }, true);
   document.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target && e.target.matches && e.target.matches('[data-type="zl-waga"]')) { e.preventDefault(); run(true); } });
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[share-url]'); if (!b) return;
