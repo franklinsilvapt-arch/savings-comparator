@@ -160,7 +160,7 @@
 
   function row(id, v, show) { var r = $(id); if (!r) return; r.style.display = show ? '' : 'none'; var val = r.querySelector('.lfc-dp-row-val'); if (val) val.textContent = v; }
 
-  function run() {
+  function run(scroll) {
     var kw = parseKwota();
     if (!(kw > 0)) { setText('wyn-info', 'Wpisz kwotę większą od zera.'); return; }
     var o = options(), kier = selVal('wyn-kierunek', 'brutto');
@@ -168,11 +168,8 @@
     var res = PLW.rok(Object.assign({}, o, { brutto: brutto })), m = res.miesiace, x = m[0], R = PLW.R;
 
     var resW = document.querySelector('.all-results_wrapper');
-    if (resW) {
-      var wasHidden = getComputedStyle(resW).display === 'none';
-      resW.style.display = 'flex';
-      if (wasHidden || resW.getBoundingClientRect().top > window.innerHeight * 0.6) setTimeout(function () { resW.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
-    }
+    if (resW) resW.style.display = 'flex';
+    if (scroll) scrollToResults();
 
     /* Wiersz główny */
     if (kier === 'netto') { setText('wyn-hl-label', 'Potrzebne brutto (miesięcznie)'); setText('wyn-hl', fmtMoney(brutto)); }
@@ -251,17 +248,28 @@
     });
   }
 
+  function scrollToResults() {
+    var t = document.querySelector('[results-anchor]') || document.querySelector('.all-results_wrapper'); if (!t) return;
+    var n = document.querySelector('.nav_fixed'), h = 80;
+    if (n) h = Math.max(n.offsetHeight, n.firstElementChild ? n.firstElementChild.offsetHeight : 0) || 80;
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      window.scrollTo({ top: Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - h - 24), behavior: 'smooth' });
+    }); });
+  }
+
   function info() { var R = PLW.R; return 'Zasady na ' + R.rok + ' rok: płaca minimalna ' + fmt0(R.minWage) + ', próg podatkowy ' + fmt0(R.prog) + ', limit składek ' + fmt0(R.limit30) + '. Sprawdzono 19.10.2026.'; }
 
   /* ── Zdarzenia ── */
   document.addEventListener('click', function (e) {
     var btn = e.target.closest && e.target.closest('#calcular');
-    if (btn) { e.preventDefault(); run(); return; }
+    if (btn) { e.preventDefault(); e.stopPropagation(); run(true); }
+  }, true);
+  document.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('.wyn-check')) setTimeout(syncChecks, 0);
     if (e.target.closest && e.target.closest('.dropdown-calculadora')) setTimeout(syncOptions, 50);
   });
   document.addEventListener('change', function (e) { if (e.target && e.target.matches && e.target.matches('select[data-type]')) syncOptions(); if (e.target && e.target.type === 'checkbox') syncChecks(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target && e.target.matches && e.target.matches('[data-type="wyn-kwota"]')) { e.preventDefault(); run(); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target && e.target.matches && e.target.matches('[data-type="wyn-kwota"]')) { e.preventDefault(); run(true); } });
 
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[share-url]'); if (!b) return;
@@ -303,7 +311,7 @@
     if (q.has('umowa')) setSelect('wyn-umowa', q.get('umowa'));
     Object.keys(FLAGS).forEach(function (k) { var c = $(FLAGS[k]); if (c && q.has(k)) c.checked = q.get(k) === '1'; });
     syncOptions(); syncChecks();
-    setTimeout(run, 200);
+    setTimeout(function () { run(false); }, 200);
   }
 
   function init() {
