@@ -4,7 +4,7 @@
     "source_article": "https://www.eupersonalfinance.eu/articles/best-savings-accounts-europe",
     "note": "Source of truth. Every rate confirmed on the provider's own site on the date in `verified`. Third-party comparison sites are used to find candidates only, never as the source of a rate.",
     "cadence": "fortnightly: 1st and 16th",
-    "inclusion_rule": "EUR interest on cash for retail clients in the EEA. Each entry states its protection type: `dgs` (national deposit guarantee scheme), `investor` (investor compensation, not a deposit guarantee) or `none` (capital at risk). Countries are only listed where the provider itself publishes them.",
+    "inclusion_rule": "EUR interest on cash for retail clients in the EEA. Each entry states its protection type: `dgs` (national deposit guarantee scheme), `investor` (investor compensation, not a deposit guarantee) or `none` (capital at risk). Countries are only listed where the provider itself publishes them. Where a provider publishes different terms in one country, `by_country` overrides the entry for residents of that country (for example Trade Republic in Poland pays interest on złoty, not euros).",
     "eea": [
       "AT",
       "BE",
@@ -70,7 +70,8 @@
         "LV",
         "LT",
         "SI",
-        "SK"
+        "SK",
+        "PL"
       ],
       "countries_source": "official list",
       "paid": "Daily accrual, paid monthly",
@@ -79,7 +80,16 @@
       "notes": [
         "Cash sits in an omnibus account at partner banks and is covered by that bank's deposit guarantee scheme up to 100,000€.",
         "In some countries part of the balance is placed in a money market fund rather than a bank deposit."
-      ]
+      ],
+      "by_country": {
+        "PL": {
+          "rate": 6.0,
+          "rate_note": "6% on cash in złoty (PLN), up to 200,000 PLN. Checked on 21 October 2026. Variable",
+          "max": 45700,
+          "max_note": "200,000 PLN, about 45,700€ at the ECB reference rate of mid October 2026",
+          "source_url": "https://traderepublic.com/en-pl/interest"
+        }
+      }
     },
     {
       "id": "trading212-eu",
@@ -88,7 +98,7 @@
       "product": "Interest on cash (Trading 212 EU GmbH)",
       "type": "instant",
       "rate": 4.2,
-      "rate_note": "4.20% promotional for accounts opened 16 Sep to 2 Nov 2026, for 4 months; 2.80% standard afterwards",
+      "rate_note": "4.20% promotional for accounts opened 16 Sep to 2 Nov 2026, for 4 months. Standard rate 3.50%, falling to 2.80% on 1 November 2026",
       "min": 0,
       "max": null,
       "protection": "dgs",
@@ -117,7 +127,7 @@
       "notes": [
         "Only for clients of Trading 212 EU GmbH, which is supervised by BaFin. Clients of the Cypriot entity get a different, weaker protection: see the separate entry.",
         "If you switch interest on, part of your cash goes into qualifying money market funds, which are not covered by the deposit guarantee.",
-        "Promotional terms confirmed on 2026-10-02 in Trading 212's own Invest Promo Rate Terms: campaign period 16 September to 2 November 2026, ECB deposit facility rate plus 1.70 percentage points, for four months. With the ECB at 2.50% that is 4.20%."
+        "Promotional terms confirmed on 2026-10-21 in Trading 212's own Invest Promo Rate Terms: campaign period 16 September to 2 November 2026, ECB deposit facility rate plus 1.70 percentage points, for four months. With the ECB at 2.50% that is 4.20%. The standard EUR rate on Trading 212's terms page is 3.50%, changing to 2.80% from 1 November 2026."
       ]
     },
     {
@@ -384,7 +394,19 @@
         "Held at Revolut Bank UAB and covered by the Lithuanian deposit guarantee scheme.",
         "The rate and the terms differ by country and by plan: check your own market before opening.",
         "Revolut's Flexible Accounts are a different product: a money market fund with no deposit guarantee."
-      ]
+      ],
+      "by_country": {
+        "NL": {
+          "rate": 2.5,
+          "rate_note": "Up to 2.50% depending on your plan. Once a boosted rate ends, Standard, Plus and Premium get 2% on the first 2,500€. Variable",
+          "source_url": "https://www.revolut.com/en-NL/instant-access-savings/"
+        },
+        "PL": {
+          "rate": 2.25,
+          "rate_note": "Up to 2.25% on euros and up to 3.25% on złoty (PLN), depending on your plan. Variable",
+          "source_url": "https://www.revolut.com/pl-PL/savings/"
+        }
+      }
     },
     {
       "id": "n26-savings",
@@ -427,8 +449,8 @@
       "kind": "broker",
       "product": "Savings Vaults",
       "type": "mmf",
-      "rate": 2.47,
-      "rate_note": "APY, tracks the ECB overnight rate. Variable",
+      "rate": 2.46,
+      "rate_note": "APY, tracks the ECB overnight rate, as of 21 October 2026. Variable",
       "min": 1,
       "max": null,
       "protection": "investor",
@@ -526,8 +548,8 @@
       "kind": "broker",
       "product": "Interest on cash (IBKR Pro)",
       "type": "instant",
-      "rate": 1.985,
-      "rate_note": "Benchmark minus 0.5%, as of 18 September 2026. Variable",
+      "rate": 1.968,
+      "rate_note": "Benchmark minus 0.5%, as of 20 October 2026. Variable",
       "min": 10000,
       "min_note": "No interest on the first 10,000€",
       "max": null,
@@ -572,7 +594,12 @@
       "notes": [
         "Segregated client money, not a deposit in your name, so there is no deposit guarantee.",
         "Accounts below 100,000 USD of net asset value get a proportionally reduced rate."
-      ]
+      ],
+      "by_country": {
+        "PL": {
+          "rate_note": "Benchmark minus 0.5%, as of 20 October 2026. Variable. On złoty balances IBKR pays nothing on the first 400,000 PLN and 1.795% above that"
+        }
+      }
     },
     {
       "id": "medirect-fixed",

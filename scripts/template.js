@@ -151,7 +151,7 @@ srcLink:"Waar we deze rente hebben gecontroleerd ↗",currentRate:"Huidige rente
 schemePre:"Stelsel van ",schemeMid:". Wettelijke limiet ",perPerson:" per persoon, per bank",investorUpTo:", tot ",notDeposit:", geen depositogarantie",protNoneLine:"Geen. Risico op verlies",
 less:"Minder details",seeTerms1:"Bekijk rentes voor andere looptijden (",seeTerms2:")",seeFull:"Bekijk alle details",
 empty1:"Niets op onze lijst staat open voor inwoners van ",empty2:". Wis een filter, of kijk op de sites van de aanbieders zelf: het aanbod verandert vaak.",
-footLinks:'<a href="/articles/best-savings-accounts-europe">Lees de volledige analyse van deze rekeningen</a>, of reken de rente op een enkele inleg uit met de <a href="/term-deposit-calculator">depositocalculator</a>.',
+footLinks:'<a href="/nl/articles/beste-spaarrekening">Lees de volledige analyse van deze rekeningen</a>, of reken de rente op een enkele inleg uit met de <a href="/nl/term-deposit-calculator">depositocalculator</a>.',
 foot:"De getoonde rente is bruto, vóór belasting, over het eerste jaar op het bedrag dat je invult, tot de limiet van elke aanbieder. "
 + "Hoe rente wordt belast verschilt per land, dus kijk naar je eigen regels. "
 + "Rentes op direct opneembare rekeningen zijn variabel en kunnen op elk moment veranderen. Actietarieven lopen een beperkte periode. "
@@ -173,7 +173,7 @@ srcLink:"Gdzie sprawdziliśmy to oprocentowanie ↗",currentRate:"Aktualne oproc
 schemePre:"System gwarancji: ",schemeMid:". Ustawowy limit ",perPerson:" na osobę, na bank",investorUpTo:", do ",notDeposit:", to nie jest gwarancja depozytów",protNoneLine:"Brak. Ryzyko utraty kapitału",
 less:"Mniej szczegółów",seeTerms1:"Zobacz oprocentowanie dla innych okresów (",seeTerms2:")",seeFull:"Zobacz pełne szczegóły",
 empty1:"Nic z naszej listy nie jest dostępne dla mieszkańców kraju: ",empty2:". Wyczyść filtr lub sprawdź strony samych dostawców: dostępność często się zmienia.",
-footLinks:'<a href="/articles/best-savings-accounts-europe">Przeczytaj pełną analizę tych kont</a> lub oblicz odsetki od pojedynczej wpłaty w <a href="/term-deposit-calculator">kalkulatorze lokat</a>.',
+footLinks:'<a href="/articles/best-savings-accounts-europe">Przeczytaj pełną analizę tych kont</a> lub oblicz odsetki od pojedynczej wpłaty w <a href="/pl/term-deposit-calculator">kalkulatorze lokat</a>.',
 foot:"Pokazane oprocentowanie jest brutto, przed opodatkowaniem, za pierwszy rok od wpisanej kwoty, do limitu każdego dostawcy. "
 + "Opodatkowanie odsetek różni się w zależności od kraju, więc sprawdź własne przepisy. "
 + "Oprocentowanie kont z dostępem natychmiastowym jest zmienne i może się zmienić w każdej chwili. Stawki promocyjne obowiązują przez ograniczony czas. "
@@ -259,8 +259,15 @@ function interest(a){
 }
 function eligible(a){ return a.countries.includes(state.country); }
 
+/* Some providers publish different terms per country (e.g. Revolut in NL and PL,
+   Trade Republic in PL). by_country holds those overrides, keyed by country code. */
+function local(a){
+  const o = a.by_country && a.by_country[state.country];
+  return o ? Object.assign({}, a, o) : a;
+}
+
 function visible(){
-  let list = DATA.accounts.filter(eligible);
+  let list = DATA.accounts.filter(eligible).map(local);
   const f = state.filters;
   if (f.has("dgs")) list = list.filter(a => a.protection === "dgs");
   if (f.has("fixed")) list = list.filter(a => a.type === "fixed");
@@ -425,9 +432,17 @@ function applyI18n(tr){
     if (!t) return;
     F.forEach(k => { if (typeof t[k] === "string") a[k] = t[k]; });
     if (Array.isArray(t.notes)) a.notes = t.notes;
+    if (t.by_country && a.by_country) Object.keys(t.by_country).forEach(c => {
+      const src = t.by_country[c], dst = a.by_country[c];
+      if (!dst) return;
+      F.forEach(k => { if (typeof src[k] === "string") dst[k] = src[k]; });
+      if (Array.isArray(src.notes)) dst.notes = src.notes;
+    });
   });
   if (tr.offers) Object.keys(tr.offers).forEach(id => {
-    if (OFFER[id] && typeof tr.offers[id].t === "string") OFFER[id].t = tr.offers[id].t;
+    if (!OFFER[id]) return;
+    if (typeof tr.offers[id].t === "string") OFFER[id].t = tr.offers[id].t;
+    if (typeof tr.offers[id].a === "string") OFFER[id].a = tr.offers[id].a;
   });
 }
 

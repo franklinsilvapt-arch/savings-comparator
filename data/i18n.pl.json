@@ -1,19 +1,22 @@
 {
  "lang": "pl",
- "translated_from": "2026-09-28",
+ "translated_from": "2026-10-21",
  "note": "Tłumaczenie data/accounts.json. Źródłem jest wersja angielska: najpierw aktualizuj angielski, potem to tłumaczenie.",
  "offers": {
   "trading212-eu": {
-   "t": "Darmowy ułamkowy udział o wartości do €100"
+   "t": "Darmowy ułamkowy udział o wartości do €100",
+   "a": "/pl/articles/trading-212-promo-code"
   },
   "trading212-cy": {
-   "t": "Darmowy ułamkowy udział o wartości do €100"
+   "t": "Darmowy ułamkowy udział o wartości do €100",
+   "a": "/pl/articles/trading-212-promo-code"
   },
   "revolut-savings": {
    "t": "Od €10 do €30 w nagrodach powitalnych"
   },
   "n26-savings": {
-   "t": "Do €35 bonusu powitalnego"
+   "t": "Do €35 bonusu powitalnego",
+   "a": "/pl/articles/n26-promo-code"
   },
   "lightyear-vaults": {
    "t": "Darmowy ułamkowy udział o wartości do €100"
@@ -30,17 +33,24 @@
    "notes": [
     "Środki leżą na rachunku zbiorczym w bankach partnerskich i są objęte systemem gwarantowania depozytów tego banku, do 100 000€.",
     "W niektórych krajach część salda trafia do funduszu rynku pieniężnego zamiast na depozyt bankowy."
-   ]
+   ],
+   "by_country": {
+    "PL": {
+     "rate_note": "6% od środków w złotych (PLN), do 200 000 zł. Sprawdzono 21 października 2026. Zmienne",
+     "max_note": "200 000 zł, czyli około 45 700€ po kursie referencyjnym EBC z połowy października 2026"
+    }
+   }
   },
   "trading212-eu": {
    "product": "Odsetki od środków (Trading 212 EU GmbH)",
-   "rate_note": "4,20% promocyjnie dla kont otwartych od 16 września do 2 listopada 2026, przez 4 miesiące. Potem 2,80% standardowo",
+   "rate_note": "4,20% promocyjnie dla kont otwartych od 16 września do 2 listopada 2026, przez 4 miesiące. Stawka standardowa 3,50%, od 1 listopada 2026 spada do 2,80%",
    "paid": "Naliczane i wypłacane codziennie",
    "countries_source": "oficjalna lista według podmiotu prawnego",
    "protection_scheme": "Niemcy",
    "notes": [
     "Tylko dla klientów Trading 212 EU GmbH, nadzorowanego przez BaFin. Klienci podmiotu cypryjskiego mają inną, słabszą ochronę: zobacz osobną pozycję.",
-    "Jeśli włączysz odsetki, część środków trafia do funduszy rynku pieniężnego, które nie są objęte gwarancją depozytów."
+    "Jeśli włączysz odsetki, część środków trafia do funduszy rynku pieniężnego, które nie są objęte gwarancją depozytów.",
+    "Warunki promocji potwierdzone 21 października 2026 w regulaminie Invest Promo Rate Terms Trading 212: kampania od 16 września do 2 listopada 2026, stopa depozytowa EBC plus 1,70 punktu procentowego, przez cztery miesiące. Przy stopie EBC 2,50% daje to 4,20%. Standardowa stawka w euro na stronie opłat Trading 212 to 3,50%, a od 1 listopada 2026 wynosi 2,80%. Promocja dotyczy tylko Trading 212 EU GmbH, a nie klientów z Polski."
    ]
   },
   "trading212-cy": {
@@ -78,7 +88,7 @@
   },
   "bunq-savings": {
    "product": "Easy Savings",
-   "rate_note": "Stawka podstawowa 1,51%, bonusowa 3,01% powyżej Twojego progu. Obie zmienne",
+   "rate_note": "Stawka początkowa 1,61% od pierwszych 10 000€ i 1,51% powyżej tej kwoty. Stawka bonusowa 3,11% powyżej Twojego osobistego progu. Podwyższona 15 października 2026. Wszystkie zmienne",
    "max_note": "Powyżej 100 000€ odsetki nie są naliczane",
    "paid": "Kapitalizacja co tydzień",
    "countries_source": "reguła: bunq przyjmuje wnioski z krajów EOG, bez listy poszczególnych krajów",
@@ -88,7 +98,7 @@
    ]
   },
   "bunq-term": {
-   "product": "Term Deposits",
+   "product": "Lokata terminowa",
    "rate_note": "Oprocentowanie gwarantowane przez cały okres",
    "paid": "Na koniec okresu",
    "countries_source": "reguła: EOG, bez listy poszczególnych krajów",
@@ -99,7 +109,7 @@
   },
   "revolut-savings": {
    "product": "Instant Access Savings",
-   "rate_note": "Od 1,00% do 2,50% w zależności od planu. Zmienne",
+   "rate_note": "Od 1,50% do 2,75% w zależności od planu, 2,75% w Ultra. Plany Standard i Plus dostają 1,50% od pierwszych 5000€. Zmienne",
    "paid": "Wypłacane codziennie",
    "countries_source": "oficjalna lista obsługiwanych krajów",
    "protection_scheme": "Litwa",
@@ -107,7 +117,15 @@
     "Przechowywane w Revolut Bank UAB i objęte litewskim systemem gwarantowania depozytów.",
     "Oprocentowanie i warunki różnią się w zależności od kraju i planu: sprawdź swój rynek przed otwarciem.",
     "Flexible Accounts w Revolut to inny produkt: fundusz rynku pieniężnego bez gwarancji depozytów."
-   ]
+   ],
+   "by_country": {
+    "NL": {
+     "rate_note": "Do 2,50% w zależności od planu. Po zakończeniu stawki promocyjnej plany Standard, Plus i Premium dostają 2% od pierwszych 2500€. Zmienne"
+    },
+    "PL": {
+     "rate_note": "Do 2,25% w euro i do 3,25% w złotych (PLN), w zależności od planu. Zmienne"
+    }
+   }
   },
   "n26-savings": {
    "product": "Instant Savings",
@@ -122,7 +140,7 @@
   },
   "lightyear-vaults": {
    "product": "Savings Vaults",
-   "rate_note": "APY, podąża za stopą overnight EBC. Zmienne",
+   "rate_note": "APY, podąża za stopą overnight EBC, stan na 21 października 2026. Zmienne",
    "paid": "Naliczane codziennie",
    "countries_source": "oficjalna lista, bez Belgii, gdzie fundusze nie są oferowane",
    "protection_scheme": "Estonia, ochrona inwestorów",
@@ -143,7 +161,7 @@
   },
   "ibkr-cash": {
    "product": "Odsetki od środków (IBKR Pro)",
-   "rate_note": "Stopa referencyjna minus 0,5%. Zmienne",
+   "rate_note": "Stopa referencyjna minus 0,5%, stan na 20 października 2026. Zmienne",
    "min_note": "Brak odsetek od pierwszych 10 000€",
    "paid": "Naliczane codziennie, wypłacane co miesiąc",
    "countries_source": "oficjalna lista dostępnych krajów",
@@ -151,7 +169,12 @@
    "notes": [
     "Wydzielone środki klienta, a nie depozyt na Twoje nazwisko, więc nie ma gwarancji depozytów.",
     "Konta o wartości netto poniżej 100 000 USD dostają proporcjonalnie niższe oprocentowanie."
-   ]
+   ],
+   "by_country": {
+    "PL": {
+     "rate_note": "Stopa referencyjna minus 0,5%, stan na 20 października 2026. Zmienne. Od środków w złotych IBKR nie płaci nic do 400 000 zł, a powyżej tej kwoty 1,795%"
+    }
+   }
   },
   "medirect-fixed": {
    "product": "Lokata terminowa",
@@ -187,17 +210,18 @@
   },
   "bux-cash": {
    "product": "Odsetki od środków",
-   "rate_note": "1,75% w BUX Plus, do 2,00% w BUX Prime. Zmienne",
+   "rate_note": "2,00% w BUX Prime i 1,75% w BUX Plus. Podstawowy BUX nie płaci odsetek",
    "paid": "Wypłacane co miesiąc",
    "countries_source": "oficjalna lista",
    "protection_scheme": "Holandia",
    "notes": [
     "Środki są przechowywane w ABN AMRO Clearing Bank i objęte systemem holenderskim."
-   ]
+   ],
+   "max_note": "Powyżej 100 000€ BUX Prime płaci 1,65%, a BUX Plus 0%"
   },
   "openbank-es": {
    "product": "Depósito Open 6 meses",
-   "rate_note": "2,75% przy wpływie wynagrodzenia 900€ miesięcznie, 1,25% bez niego",
+   "rate_note": "3,25% w skali roku (TAE) przy wpływach co najmniej 900€ miesięcznie utrzymywanych przez cztery miesiące. Bez tego 2,75% TAE",
    "paid": "Na koniec okresu",
    "countries_source": "strona hiszpańska. Openbank nie publikuje listy dla rezydentów innych krajów",
    "protection_scheme": "Hiszpania",
@@ -217,15 +241,15 @@
   },
   "klarna-fixed": {
    "product": "Konto oszczędnościowe na stały okres",
-   "rate_note": "Oprocentowanie stałe przez cały okres. Ta sama tabela jest publikowana w Portugalii, Niemczech i Austrii",
+   "rate_note": "Oprocentowanie stałe przez cały okres. To tabela portugalska",
    "paid": "Na koniec okresu. Co roku przy okresach od 12 miesięcy",
-   "countries_source": "strona lokat potwierdzona na portugalskiej, niemieckiej i austriackiej stronie Klarny. Klarna nie publikuje listy rynków dla tego produktu",
+   "countries_source": "portugalska strona oszczędności. Klarna prowadzi ten produkt także w Niemczech, z inną i krótszą tabelą, więc rynki niemiecki i austriacki nie są objęte tą pozycją",
    "protection_scheme": "Szwecja",
    "notes": [
     "Bank szwedzki. Depozyty są objęte szwedzkim systemem gwarancji, wyrażonym w koronach, co odpowiada mniej więcej 100 000€.",
     "Klarna nie pobiera podatku u źródła, więc odsetki rozliczasz samodzielnie.",
     "Bez minimum i bez maksimum. Wcześniejsza wypłata tylko w ciągu 14 dni od otwarcia. Nie odnawia się automatycznie.",
-    "Klarna twierdzi, że oferuje oszczędzanie na większej liczbie rynków europejskich, ale jej nie publikuje, więc to narzędzie pokazuje tylko trzy, które udało się potwierdzić."
+    "Niemiecka strona publikuje pięć okresów z innym oprocentowaniem (6 miesięcy 1,65%, 12 miesięcy 2,76%, 24 i 36 miesięcy 2,67%, 48 miesięcy 2,82%), więc to osobny rynek i nie jest tu pokazany."
    ]
   }
  }

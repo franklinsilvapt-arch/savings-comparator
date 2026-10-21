@@ -16,6 +16,9 @@ for a in data["accounts"]:
     bad = [c for c in a["countries"] if c not in eea]
     assert not bad, f'{a["id"]}: países fora do EEE {bad}'
     assert a.get("source_url", "").startswith("http"), f'{a["id"]}: sem fonte'
+    for c, o in (a.get("by_country") or {}).items():
+        assert c in a["countries"], f'{a["id"]}: by_country {c} fora de countries'
+        if "rate" in o: assert isinstance(o["rate"], (int, float)), f'{a["id"]}: by_country {c} rate'
 
 tpl = (ROOT / "scripts/template.js").read_text(encoding="utf-8")
 blob = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
