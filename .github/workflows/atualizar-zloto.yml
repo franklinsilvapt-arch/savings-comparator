@@ -76,3 +76,16 @@ jobs:
           with open("pl-zloto/zloto-dane.json", "w") as f:
               f.write(json.dumps(dados, ensure_ascii=False, indent=1) + "\n")
           print(f"plnG={pln_g} data={data} nbp={len(serie)}")
+
+      - name: Commit e push se houver alteracoes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pl-zloto/zloto-dane.json
+          if git diff --cached --quiet; then
+            echo "Sem alteracoes"
+          else
+            git commit -m "Atualizar preco do ouro em PLN ($(date -u +%F))"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
