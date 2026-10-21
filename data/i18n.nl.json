@@ -63,7 +63,12 @@
    "notes": [
     "Dit is beleggerscompensatie tot 20.000€, geen depositogarantie. Het is niet de FSCS-dekking van 120.000 GBP, die alleen voor Britse klanten geldt.",
     "De Cash ISA bestaat alleen in het Verenigd Koninkrijk en niet in de EU."
-   ]
+   ],
+   "by_country": {
+    "PL": {
+     "rate_note": "2,25% over geld in zloty (PLN), volgens de rentepagina van Trading 212 op 21 oktober 2026. Op euro is de rente 2,50%, in lijn met de depositorente van de ECB. Variabel"
+    }
+   }
   },
   "scalable-instant": {
    "product": "Rente op je saldo",

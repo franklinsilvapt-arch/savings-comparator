@@ -62,7 +62,12 @@
    "notes": [
     "To rekompensata dla inwestorów do 20 000€, a nie gwarancja depozytów. To nie jest ochrona FSCS w wysokości 120 000 GBP, która dotyczy wyłącznie klientów brytyjskich.",
     "Cash ISA to produkt wyłącznie brytyjski i nie istnieje w UE."
-   ]
+   ],
+   "by_country": {
+    "PL": {
+     "rate_note": "2,25% od środków w złotych (PLN), według strony z oprocentowaniem Trading 212 z 21 października 2026. Od euro stawka wynosi 2,50%, zgodnie ze stopą depozytową EBC. Zmienne"
+    }
+   }
   },
   "scalable-instant": {
    "product": "Odsetki od środków",

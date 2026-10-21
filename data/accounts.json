@@ -167,7 +167,13 @@
       "notes": [
         "This is investor compensation of up to 20,000€, not a deposit guarantee. It is not the 120,000 GBP FSCS cover, which applies only to UK clients.",
         "The Cash ISA is a UK-only product and does not exist in the EU."
-      ]
+      ],
+      "by_country": {
+        "PL": {
+          "rate": 2.25,
+          "rate_note": "2.25% on cash in złoty (PLN), as shown on Trading 212's interest page on 21 October 2026. On euros the rate is 2.50%, in line with the ECB deposit rate. Variable"
+        }
+      }
     },
     {
       "id": "scalable-instant",
