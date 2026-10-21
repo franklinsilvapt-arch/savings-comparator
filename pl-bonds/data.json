@@ -11,13 +11,8 @@
     "since": "2026-03-05"
   },
   "cpi": {
-    "latest": 3.4,
+    "latest": 4.1,
     "month": {
-      "pl": "sierpień 2026",
-      "en": "August 2026"
-    },
-    "flash": 4.0,
-    "flashMonth": {
       "pl": "wrzesień 2026",
       "en": "September 2026"
     }
