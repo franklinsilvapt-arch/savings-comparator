@@ -4,40 +4,40 @@
  "note": "Tłumaczenie data/accounts.json. Źródłem jest wersja angielska: najpierw aktualizuj angielski, potem to tłumaczenie.",
  "offers": {
   "trading212-eu": {
-   "t": "Darmowy ułamkowy udział o wartości do €100",
+   "t": "Darmowy ułamkowy udział o wartości do 100 €",
    "a": "/pl/articles/trading-212-promo-code"
   },
   "trading212-cy": {
-   "t": "Darmowy ułamkowy udział o wartości do €100",
+   "t": "Darmowy ułamkowy udział o wartości do 100 €",
    "a": "/pl/articles/trading-212-promo-code"
   },
   "revolut-savings": {
-   "t": "Od €10 do €30 w nagrodach powitalnych"
+   "t": "Od 10 € do 30 € w nagrodach powitalnych"
   },
   "n26-savings": {
-   "t": "Do €35 bonusu powitalnego",
+   "t": "Do 35 € bonusu powitalnego",
    "a": "/pl/articles/n26-promo-code"
   },
   "lightyear-vaults": {
-   "t": "Darmowy ułamkowy udział o wartości do €100"
+   "t": "Darmowy ułamkowy udział o wartości do 100 €"
   }
  },
  "accounts": {
   "trade-republic": {
    "product": "Odsetki od środków",
    "rate_note": "3,00% dla nowych klientów, 2,50% standardowo",
-   "max_note": "Na niemieckich, francuskich i włoskich numerach IBAN nie ma limitu. W pozostałych krajach odsetki nalicza się do 50 000€",
+   "max_note": "Na niemieckich, francuskich i włoskich numerach IBAN nie ma limitu. W pozostałych krajach odsetki nalicza się do 50 000 €",
    "paid": "Naliczane codziennie, wypłacane co miesiąc",
    "countries_source": "oficjalna lista",
    "protection_scheme": "Niemcy",
    "notes": [
-    "Środki leżą na rachunku zbiorczym w bankach partnerskich i są objęte systemem gwarantowania depozytów tego banku, do 100 000€.",
+    "Środki leżą na rachunku zbiorczym w bankach partnerskich i są objęte systemem gwarantowania depozytów tego banku, do 100 000 €.",
     "W niektórych krajach część salda trafia do funduszu rynku pieniężnego zamiast na depozyt bankowy."
    ],
    "by_country": {
     "PL": {
      "rate_note": "6% od środków w złotych (PLN), do 200 000 zł. Sprawdzono 21 października 2026. Zmienne",
-     "max_note": "200 000 zł, czyli około 45 700€ po kursie referencyjnym EBC z połowy października 2026"
+     "max_note": "200 000 zł, czyli około 45 700 € po kursie referencyjnym EBC z połowy października 2026"
     }
    }
   },
@@ -60,7 +60,7 @@
    "countries_source": "oficjalna lista według podmiotu prawnego",
    "protection_scheme": "cypryjski ICF",
    "notes": [
-    "To rekompensata dla inwestorów do 20 000€, a nie gwarancja depozytów. To nie jest ochrona FSCS w wysokości 120 000 GBP, która dotyczy wyłącznie klientów brytyjskich.",
+    "To rekompensata dla inwestorów do 20 000 €, a nie gwarancja depozytów. To nie jest ochrona FSCS w wysokości 120 000 GBP, która dotyczy wyłącznie klientów brytyjskich.",
     "Cash ISA to produkt wyłącznie brytyjski i nie istnieje w UE."
    ],
    "by_country": {
@@ -76,7 +76,7 @@
    "countries_source": "oficjalna lista",
    "protection_scheme": "Niemcy",
    "notes": [
-    "Z PRIME+ środki są rozłożone nawet na pięć banków, więc ochrona może sięgnąć 5 x 100 000€.",
+    "Z PRIME+ środki są rozłożone nawet na pięć banków, więc ochrona może sięgnąć 5 x 100 000 €.",
     "Bez PRIME+ część salda może leżeć w funduszach rynku pieniężnego zamiast na depozytach, a ta część nie ma gwarancji depozytów."
    ]
   },
@@ -93,13 +93,13 @@
   },
   "bunq-savings": {
    "product": "Easy Savings",
-   "rate_note": "Stawka początkowa 1,61% od pierwszych 10 000€ i 1,51% powyżej tej kwoty. Stawka bonusowa 3,11% powyżej Twojego osobistego progu. Podwyższona 15 października 2026. Wszystkie zmienne",
-   "max_note": "Powyżej 100 000€ odsetki nie są naliczane",
+   "rate_note": "Stawka początkowa 1,61% od pierwszych 10 000 € i 1,51% powyżej tej kwoty. Stawka bonusowa 3,11% powyżej Twojego osobistego progu. Podwyższona 15 października 2026. Wszystkie zmienne",
+   "max_note": "Powyżej 100 000 € odsetki nie są naliczane",
    "paid": "Kapitalizacja co tydzień",
    "countries_source": "reguła: bunq przyjmuje wnioski z krajów EOG, bez listy poszczególnych krajów",
    "protection_scheme": "Holandia",
    "notes": [
-    "200 000€ ochrony na koncie wspólnym."
+    "200 000 € ochrony na koncie wspólnym."
    ]
   },
   "bunq-term": {
@@ -114,7 +114,7 @@
   },
   "revolut-savings": {
    "product": "Instant Access Savings",
-   "rate_note": "Od 1,50% do 2,75% w zależności od planu, 2,75% w Ultra. Plany Standard i Plus dostają 1,50% od pierwszych 5000€. Zmienne",
+   "rate_note": "Od 1,50% do 2,75% w zależności od planu, 2,75% w Ultra. Plany Standard i Plus dostają 1,50% od pierwszych 5000 €. Zmienne",
    "paid": "Wypłacane codziennie",
    "countries_source": "oficjalna lista obsługiwanych krajów",
    "protection_scheme": "Litwa",
@@ -125,7 +125,7 @@
    ],
    "by_country": {
     "NL": {
-     "rate_note": "Do 2,50% w zależności od planu. Po zakończeniu stawki promocyjnej plany Standard, Plus i Premium dostają 2% od pierwszych 2500€. Zmienne"
+     "rate_note": "Do 2,50% w zależności od planu. Po zakończeniu stawki promocyjnej plany Standard, Plus i Premium dostają 2% od pierwszych 2500 €. Zmienne"
     },
     "PL": {
      "rate_note": "Do 2,25% w euro i do 3,25% w złotych (PLN), w zależności od planu. Zmienne"
@@ -167,7 +167,7 @@
   "ibkr-cash": {
    "product": "Odsetki od środków (IBKR Pro)",
    "rate_note": "Stopa referencyjna minus 0,5%, stan na 20 października 2026. Zmienne",
-   "min_note": "Brak odsetek od pierwszych 10 000€",
+   "min_note": "Brak odsetek od pierwszych 10 000 €",
    "paid": "Naliczane codziennie, wypłacane co miesiąc",
    "countries_source": "oficjalna lista dostępnych krajów",
    "protection_scheme": "Irlandia, rekompensata dla inwestorów",
@@ -209,7 +209,7 @@
    "countries_source": "oficjalny wybór kraju, tylko rynki UE",
    "protection_scheme": "kraju banku partnerskiego",
    "notes": [
-    "Jedna rejestracja daje dostęp do lokat w wielu bankach w Europie, każda objęta własnym systemem krajowym do 100 000€.",
+    "Jedna rejestracja daje dostęp do lokat w wielu bankach w Europie, każda objęta własnym systemem krajowym do 100 000 €.",
     "Dostępne tylko dla rezydentów podatkowych rynków, na których Raisin prowadzi platformę. Portugalia, Włochy i Belgia nie są wśród nich."
    ]
   },
@@ -222,11 +222,11 @@
    "notes": [
     "Środki są przechowywane w ABN AMRO Clearing Bank i objęte systemem holenderskim."
    ],
-   "max_note": "Powyżej 100 000€ BUX Prime płaci 1,65%, a BUX Plus 0%"
+   "max_note": "Powyżej 100 000 € BUX Prime płaci 1,65%, a BUX Plus 0%"
   },
   "openbank-es": {
    "product": "Depósito Open 6 meses",
-   "rate_note": "3,25% w skali roku (TAE) przy wpływach co najmniej 900€ miesięcznie utrzymywanych przez cztery miesiące. Bez tego 2,75% TAE",
+   "rate_note": "3,25% w skali roku (TAE) przy wpływach co najmniej 900 € miesięcznie utrzymywanych przez cztery miesiące. Bez tego 2,75% TAE",
    "paid": "Na koniec okresu",
    "countries_source": "strona hiszpańska. Openbank nie publikuje listy dla rezydentów innych krajów",
    "protection_scheme": "Hiszpania",
@@ -251,7 +251,7 @@
    "countries_source": "portugalska strona oszczędności. Klarna prowadzi ten produkt także w Niemczech, z inną i krótszą tabelą, więc rynki niemiecki i austriacki nie są objęte tą pozycją",
    "protection_scheme": "Szwecja",
    "notes": [
-    "Bank szwedzki. Depozyty są objęte szwedzkim systemem gwarancji, wyrażonym w koronach, co odpowiada mniej więcej 100 000€.",
+    "Bank szwedzki. Depozyty są objęte szwedzkim systemem gwarancji, wyrażonym w koronach, co odpowiada mniej więcej 100 000 €.",
     "Klarna nie pobiera podatku u źródła, więc odsetki rozliczasz samodzielnie.",
     "Bez minimum i bez maksimum. Wcześniejsza wypłata tylko w ciągu 14 dni od otwarcia. Nie odnawia się automatycznie.",
     "Niemiecka strona publikuje pięć okresów z innym oprocentowaniem (6 miesięcy 1,65%, 12 miesięcy 2,76%, 24 i 36 miesięcy 2,67%, 48 miesięcy 2,82%), więc to osobny rynek i nie jest tu pokazany."

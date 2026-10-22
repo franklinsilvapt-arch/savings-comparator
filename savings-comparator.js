@@ -177,7 +177,7 @@ footLinks:'<a href="/articles/best-savings-accounts-europe">Przeczytaj pełną a
 foot:"Pokazane oprocentowanie jest brutto, przed opodatkowaniem, za pierwszy rok od wpisanej kwoty, do limitu każdego dostawcy. "
 + "Opodatkowanie odsetek różni się w zależności od kraju, więc sprawdź własne przepisy. "
 + "Oprocentowanie kont z dostępem natychmiastowym jest zmienne i może się zmienić w każdej chwili. Stawki promocyjne obowiązują przez ograniczony czas. "
-+ "Gwarancja depozytów chroni Twoje pieniądze w razie upadłości banku, do €100 000 na osobę i na bank. "
++ "Gwarancja depozytów chroni Twoje pieniądze w razie upadłości banku, do 100 000 € na osobę i na bank. "
 + "Rekompensata dla inwestorów to inna, słabsza ochrona, a fundusze rynku pieniężnego nie mają żadnej gwarancji: ryzykujesz utratę kapitału. "
 + "Zawsze potwierdź na stronie samego dostawcy, zanim otworzysz konto. "}
 };
@@ -237,8 +237,10 @@ const state = {country:guessCountry(), amount:10000, filters:new Set(), sort:"ra
 const ini = n => { const p = String(n).trim().split(/\s+/);
   return (p.length > 1 ? p[0][0] + p[1][0] : String(n).slice(0,2)).toUpperCase(); };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const eur = n => "€" + Math.round(n).toLocaleString(LOC);
-const eur2 = n => "€" + n.toLocaleString(LOC,{minimumFractionDigits:2,maximumFractionDigits:2});
+/* Polish writes the symbol after the number ("600,00 €"); EN and NL keep it before. */
+const cur = s => LANG === "pl" ? s + "\u00a0€" : "€" + s;
+const eur = n => cur(Math.round(n).toLocaleString(LOC));
+const eur2 = n => cur(n.toLocaleString(LOC,{minimumFractionDigits:2,maximumFractionDigits:2}));
 const pct = n => n.toLocaleString(LOC,{minimumFractionDigits:2,maximumFractionDigits:2}) + "%";
 const months = m => {
   const y = m / 12;
