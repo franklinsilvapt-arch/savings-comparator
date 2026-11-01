@@ -1,11 +1,11 @@
 {
-  "emission": "2026-10",
+  "emission": "2026-11",
   "emissionLabel": {
-    "pl": "październik 2026",
-    "en": "October 2026"
+    "pl": "listopad 2026",
+    "en": "November 2026"
   },
   "source": "https://www.obligacjeskarbowe.pl/",
-  "checked": "2026-10-07",
+  "checked": "2026-11-01",
   "nbp": {
     "rate": 3.75,
     "since": "2026-03-05"
@@ -19,7 +19,7 @@
   },
   "bonds": {
     "OTS": {
-      "series": "OTS0127",
+      "series": "OTS0227",
       "months": 3,
       "first": 2.0,
       "margin": null,
@@ -30,7 +30,7 @@
       "ike": false
     },
     "ROR": {
-      "series": "ROR1027",
+      "series": "ROR1127",
       "months": 12,
       "first": 4.0,
       "margin": 0.0,
@@ -41,7 +41,7 @@
       "ike": true
     },
     "DOR": {
-      "series": "DOR1028",
+      "series": "DOR1128",
       "months": 24,
       "first": 4.15,
       "margin": 0.15,
@@ -52,7 +52,7 @@
       "ike": true
     },
     "TOS": {
-      "series": "TOS1029",
+      "series": "TOS1129",
       "months": 36,
       "first": 4.4,
       "margin": null,
@@ -63,7 +63,7 @@
       "ike": true
     },
     "COI": {
-      "series": "COI1030",
+      "series": "COI1130",
       "months": 48,
       "first": 4.75,
       "margin": 1.5,
@@ -74,7 +74,7 @@
       "ike": true
     },
     "EDO": {
-      "series": "EDO1036",
+      "series": "EDO1136",
       "months": 120,
       "first": 5.35,
       "margin": 2.0,
@@ -85,7 +85,7 @@
       "ike": true
     },
     "ROS": {
-      "series": "ROS1032",
+      "series": "ROS1132",
       "months": 72,
       "first": 5.0,
       "margin": 2.0,
@@ -96,7 +96,7 @@
       "ike": false
     },
     "ROD": {
-      "series": "ROD1038",
+      "series": "ROD1138",
       "months": 144,
       "first": 5.6,
       "margin": 2.5,
