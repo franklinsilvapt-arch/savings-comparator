@@ -1,6 +1,6 @@
 {
   "meta": {
-    "verified": "2026-10-16",
+    "verified": "2026-11-01",
     "source_article": "https://www.eupersonalfinance.eu/articles/best-savings-accounts-europe",
     "note": "Source of truth. Every rate confirmed on the provider's own site on the date in `verified`. Third-party comparison sites are used to find candidates only, never as the source of a rate.",
     "cadence": "fortnightly: 1st and 16th",
@@ -353,10 +353,11 @@
       "kind": "bank",
       "product": "Instant Access Savings",
       "type": "instant",
-      "rate": 2.75,
-      "rate_note": "1.50% to 2.75% depending on your plan, 2.75% on Ultra. Standard and Plus unlock 1.50% on the first 5,000€. Variable",
+      "rate": 2.5,
+      "rate_note": "1% to 2.50% depending on your plan, 2.50% on Ultra. Variable",
       "min": 0,
-      "max": 5000000,
+      "max": 100000,
+      "max_note": "The maximum eligible deposit amount is 100,000€",
       "protection": "dgs",
       "protection_scheme": "Lithuania",
       "protection_amount": 100000,
@@ -403,8 +404,8 @@
       ],
       "by_country": {
         "NL": {
-          "rate": 2.5,
-          "rate_note": "Up to 2.50% depending on your plan. Once a boosted rate ends, Standard, Plus and Premium get 2% on the first 2,500€. Variable",
+          "rate": 3.5,
+          "rate_note": "2% to 3.50% depending on your plan. Standard pays 2%. Variable",
           "source_url": "https://www.revolut.com/en-NL/instant-access-savings/"
         },
         "PL": {
@@ -428,6 +429,8 @@
       "protection_scheme": "Germany",
       "protection_amount": 100000,
       "countries": [
+        "AT",
+        "BE",
         "NL",
         "IE",
         "PT",
@@ -542,7 +545,7 @@
       "countries_source": "official list, minus Belgium and Liechtenstein where Interest is not offered",
       "paid": "Accrued daily",
       "url": "https://wise.com/",
-      "source_url": "https://wise.com/help/articles/4yTOVZoBSKOYyXrbnYRk5K/who-can-use-interest-and-stocks",
+      "source_url": "https://wise.com/gb/interest/",
       "notes": [
         "This is a money market fund, not a deposit. Capital is at risk and there is no deposit guarantee.",
         "The fund manager differs by country: BlackRock in most, J.P. Morgan in several central and eastern European markets."
@@ -554,8 +557,8 @@
       "kind": "broker",
       "product": "Interest on cash (IBKR Pro)",
       "type": "instant",
-      "rate": 1.968,
-      "rate_note": "Benchmark minus 0.5%, as of 20 October 2026. Variable",
+      "rate": 2.049,
+      "rate_note": "Benchmark minus 0.5%, as of 1 November 2026. Variable",
       "min": 10000,
       "min_note": "No interest on the first 10,000€",
       "max": null,
@@ -603,7 +606,7 @@
       ],
       "by_country": {
         "PL": {
-          "rate_note": "Benchmark minus 0.5%, as of 20 October 2026. Variable. On złoty balances IBKR pays nothing on the first 400,000 PLN and 1.795% above that"
+          "rate_note": "Benchmark minus 0.5%, as of 1 November 2026. Variable. On złoty balances IBKR pays nothing on the first 400,000 PLN and 1.904% above that"
         }
       }
     },
@@ -820,11 +823,11 @@
       "kind": "bank",
       "product": "Festgeld",
       "type": "fixed",
-      "rate": 3.5,
+      "rate": 3.6,
       "terms": {
-        "3": 2.7,
-        "6": 3.0,
-        "12": 3.4,
+        "3": 3.0,
+        "6": 3.15,
+        "12": 3.6,
         "24": 3.5
       },
       "rate_note": "Rate fixed for the term",
