@@ -1,0 +1,63 @@
+# ============================================================================
+#  REPO:     savings-comparator        <-- SÓ ESTE REPO
+#  CAMINHO:  .github/workflows/aplicar-alteracoes.yml
+#
+#  Ficheiro NOVO. Não substitui nada. NÃO colar no depositos-comparator:
+#  este corre scripts/build.py e faz commit de data/accounts.json, que só
+#  existem no savings.
+# ============================================================================
+name: Apply changes to accounts
+
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Path to the apply script, e.g. verificacao/2026-11-01/apply.py"
+        required: true
+        type: string
+      dry_run:
+        description: "Only show what would change, write nothing"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: The script exists
+        run: |
+          if [ ! -f "${{ inputs.script }}" ]; then
+            echo "::error::No such file: ${{ inputs.script }}. Check the path."
+            exit 1
+          fi
+          echo "----- script -----"
+          cat "${{ inputs.script }}"
+
+      - name: Apply
+        run: python3 "${{ inputs.script }}" ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Rebuild the comparator
+        if: ${{ !inputs.dry_run }}
+        run: python3 scripts/build.py
+
+      - name: Commit
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name "lf-bot"
+          git config user.email "bot@literaciafinanceira.pt"
+          git add data/accounts.json savings-comparator.js
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+          else
+            git commit -m "Apply ${{ inputs.script }}"
+            git push
+          fi
