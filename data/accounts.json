@@ -98,9 +98,9 @@
       "product": "Interest on cash (Trading 212 EU GmbH)",
       "type": "instant",
       "rate": 4.2,
-      "rate_note": "4.20% promotional for accounts opened 16 Sep to 2 Nov 2026, for 4 months. Standard rate 3.50%, falling to 2.80% on 1 November 2026",
+      "rate_note": "4.20% promotional for accounts opened by 30 Nov 2026, for 4 months, on balances up to €100,000. Standard rate 3.50%, falling to 2.80% on 1 November 2026",
       "min": 0,
-      "max": null,
+      "max": 100000,
       "protection": "dgs",
       "protection_scheme": "Germany",
       "protection_amount": 100000,
@@ -127,7 +127,7 @@
       "notes": [
         "Only for clients of Trading 212 EU GmbH, which is supervised by BaFin. Clients of the Cypriot entity get a different, weaker protection: see the separate entry.",
         "If you switch interest on, part of your cash goes into qualifying money market funds, which are not covered by the deposit guarantee.",
-        "Promotional terms confirmed on 2026-10-21 in Trading 212's own Invest Promo Rate Terms: campaign period 16 September to 2 November 2026, ECB deposit facility rate plus 1.70 percentage points, for four months. With the ECB at 2.50% that is 4.20%. The standard EUR rate on Trading 212's terms page is 3.50%, changing to 2.80% from 1 November 2026."
+        "Promotional terms confirmed on 2026-11-03 in Trading 212's own Invest Promo Rate Terms: campaign period until 30 November 2026, ECB deposit facility rate plus 1.70 percentage points, for four months, on a maximum balance of €100,000. With the ECB at 2.50% that is 4.20%. The standard EUR rate on Trading 212's terms page is 3.50%, changing to 2.80% from 1 November 2026."
       ]
     },
     {
