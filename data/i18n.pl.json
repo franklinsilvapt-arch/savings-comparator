@@ -43,14 +43,14 @@
   },
   "trading212-eu": {
    "product": "Odsetki od środków (Trading 212 EU GmbH)",
-   "rate_note": "4,20% promocyjnie dla kont otwartych do 30 listopada 2026, przez 4 miesiące, do salda 100 000 EUR. Stawka standardowa 3,50%, od 1 listopada 2026 spada do 2,80%",
+   "rate_note": "4,20% promocyjnie dla kont otwartych do 30 listopada 2026, przez 4 miesiące, do salda 100 000 EUR. Stawka standardowa 2,50%",
    "paid": "Naliczane i wypłacane codziennie",
    "countries_source": "oficjalna lista według podmiotu prawnego",
    "protection_scheme": "Niemcy",
    "notes": [
     "Tylko dla klientów Trading 212 EU GmbH, nadzorowanego przez BaFin. Klienci podmiotu cypryjskiego mają inną, słabszą ochronę: zobacz osobną pozycję.",
     "Jeśli włączysz odsetki, część środków trafia do funduszy rynku pieniężnego, które nie są objęte gwarancją depozytów.",
-    "Warunki promocji potwierdzone 3 listopada 2026 w regulaminie Invest Promo Rate Terms Trading 212: kampania do 30 listopada 2026, stopa depozytowa EBC plus 1,70 punktu procentowego, przez cztery miesiące, do salda 100 000 EUR. Przy stopie EBC 2,50% daje to 4,20%. Standardowa stawka w euro na stronie opłat Trading 212 to 3,50%, a od 1 listopada 2026 wynosi 2,80%. Promocja dotyczy tylko Trading 212 EU GmbH, a nie klientów z Polski."
+    "Warunki promocji potwierdzone 3 listopada 2026 w regulaminie Invest Promo Rate Terms Trading 212: kampania do 30 listopada 2026, stopa depozytowa EBC plus 1,70 punktu procentowego, przez cztery miesiące, do salda 100 000 EUR. Przy stopie EBC 2,50% daje to 4,20%. Standardowa stawka w euro to 2,50%. Promocja dotyczy tylko Trading 212 EU GmbH, a nie klientów z Polski."
    ]
   },
   "trading212-cy": {

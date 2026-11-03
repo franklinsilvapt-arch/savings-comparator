@@ -44,14 +44,14 @@
   },
   "trading212-eu": {
    "product": "Rente op je saldo (Trading 212 EU GmbH)",
-   "rate_note": "4,20% actietarief voor rekeningen geopend tot en met 30 november 2026, gedurende 4 maanden, tot een saldo van €100.000. Standaardrente 3,50%, vanaf 1 november 2026 2,80%",
+   "rate_note": "4,20% actietarief voor rekeningen geopend tot en met 30 november 2026, gedurende 4 maanden, tot een saldo van €100.000. Standaardrente 2,50%",
    "paid": "Dagelijks opgebouwd en uitbetaald",
    "countries_source": "officiële lijst per juridische entiteit",
    "protection_scheme": "Duitsland",
    "notes": [
     "Alleen voor klanten van Trading 212 EU GmbH, onder toezicht van BaFin. Klanten van de Cypriotische entiteit krijgen een andere, zwakkere bescherming: zie de aparte regel.",
     "Als je rente aanzet, gaat een deel van je geld naar geldmarktfondsen, die niet onder de depositogarantie vallen.",
-    "Actievoorwaarden op 3 november 2026 bevestigd in de Invest Promo Rate Terms van Trading 212: actieperiode tot en met 30 november 2026, depositorente van de ECB plus 1,70 procentpunt, gedurende vier maanden, tot een saldo van €100.000. Met de ECB op 2,50% is dat 4,20%. De standaardrente op euro's op de tarievenpagina van Trading 212 is 3,50% en wordt 2,80% vanaf 1 november 2026."
+    "Actievoorwaarden op 3 november 2026 bevestigd in de Invest Promo Rate Terms van Trading 212: actieperiode tot en met 30 november 2026, depositorente van de ECB plus 1,70 procentpunt, gedurende vier maanden, tot een saldo van €100.000. Met de ECB op 2,50% is dat 4,20%. De standaardrente op euro's is 2,50%."
    ]
   },
   "trading212-cy": {
