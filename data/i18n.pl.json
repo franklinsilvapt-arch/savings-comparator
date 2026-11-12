@@ -35,6 +35,45 @@
     "W niektórych krajach część salda trafia do funduszu rynku pieniężnego zamiast na depozyt bankowy."
    ],
    "by_country": {
+    "AT": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "BE": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "ES": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "FI": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "IE": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "IT": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "NL": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "PT": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "SI": {
+     "rate_note": "4,00% dla nowych klientów do 1 marca 2027, do 20 000 €. Obecni klienci i nadwyżka ponad limit: 2,50% (stopa depozytowa EBC). Sprawdzono 12 listopada 2026. Zmienne",
+     "max_note": "4,00% do 20 000 €. Powyżej tej kwoty 2,50%"
+    },
+    "DE": {
+     "rate_note": "2,50% (stopa depozytowa EBC) od całego salda, bez limitu i bez promocji dla nowych klientów. Sprawdzono 12 listopada 2026. Zmienne"
+    },
     "PL": {
      "rate_note": "6% od środków w złotych (PLN), do 200 000 zł. Sprawdzono 21 października 2026. Zmienne",
      "max_note": "200 000 zł, czyli około 45 700 € po kursie referencyjnym EBC z połowy października 2026"

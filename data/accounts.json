@@ -82,6 +82,75 @@
         "In some countries part of the balance is placed in a money market fund rather than a bank deposit."
       ],
       "by_country": {
+        "AT": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-at/interest"
+        },
+        "BE": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-be/interest"
+        },
+        "ES": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-es/interest"
+        },
+        "FI": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-fi/interest"
+        },
+        "IE": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-ie/interest"
+        },
+        "IT": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-it/interest"
+        },
+        "NL": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-nl/interest"
+        },
+        "PT": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-pt/interest"
+        },
+        "SI": {
+          "rate": 4.0,
+          "rate_note": "4.00% for new clients until 1 March 2027, on up to 20,000€. Existing clients and balances above the cap earn 2.50% (ECB deposit rate). Checked on 12 November 2026. Variable",
+          "max": 20000,
+          "max_note": "4.00% applies up to 20,000€. Cash above that earns 2.50%",
+          "source_url": "https://traderepublic.com/en-si/interest"
+        },
+        "DE": {
+          "rate": 2.5,
+          "rate_note": "2.50% (ECB deposit rate) on all cash, no cap and no new-client promotion. Checked on 12 November 2026. Variable",
+          "max": null,
+          "source_url": "https://traderepublic.com/en-de/interest"
+        },
         "PL": {
           "rate": 6.0,
           "rate_note": "6% on cash in złoty (PLN), up to 200,000 PLN. Checked on 21 October 2026. Variable",
