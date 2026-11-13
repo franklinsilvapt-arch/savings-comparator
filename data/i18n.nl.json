@@ -26,8 +26,8 @@
  "accounts": {
   "trade-republic": {
    "product": "Rente op je saldo",
-   "rate_note": "3,00% voor nieuwe klanten, 2,50% standaard",
-   "max_note": "Op Duitse, Franse en Italiaanse IBAN's is er geen plafond. Elders telt rente tot 50.000€",
+   "rate_note": "4,00% voor nieuwe klanten in 15 landen tot 1 maart 2027, tot 20.000€. Standaard 2,50%. Geen actie voor nieuwe klanten in Duitsland en Frankrijk. Gecontroleerd op 13 november 2026. Variabel",
+   "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%, zonder plafond",
    "paid": "Dagelijks opgebouwd, maandelijks uitbetaald",
    "countries_source": "officiële lijst",
    "protection_scheme": "Duitsland",
@@ -72,8 +72,35 @@
      "rate_note": "4,00% voor nieuwe klanten tot 1 maart 2027, tot 20.000€. Bestaande klanten en saldo boven het plafond krijgen 2,50% (depositorente van de ECB). Gecontroleerd op 12 november 2026. Variabel",
      "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%"
     },
+    "EE": {
+     "rate_note": "4,00% voor nieuwe klanten tot 1 maart 2027, tot 20.000€. Bestaande klanten en saldo boven het plafond krijgen 2,50% (depositorente van de ECB). Gecontroleerd op 13 november 2026. Variabel",
+     "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%"
+    },
+    "GR": {
+     "rate_note": "4,00% voor nieuwe klanten tot 1 maart 2027, tot 20.000€. Bestaande klanten en saldo boven het plafond krijgen 2,50% (depositorente van de ECB). Gecontroleerd op 13 november 2026. Variabel",
+     "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%"
+    },
+    "LT": {
+     "rate_note": "4,00% voor nieuwe klanten tot 1 maart 2027, tot 20.000€. Bestaande klanten en saldo boven het plafond krijgen 2,50% (depositorente van de ECB). Gecontroleerd op 13 november 2026. Variabel",
+     "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%"
+    },
+    "LU": {
+     "rate_note": "4,00% voor nieuwe klanten tot 1 maart 2027, tot 20.000€. Bestaande klanten en saldo boven het plafond krijgen 2,50% (depositorente van de ECB). Gecontroleerd op 13 november 2026. Variabel",
+     "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%"
+    },
+    "LV": {
+     "rate_note": "4,00% voor nieuwe klanten tot 1 maart 2027, tot 20.000€. Bestaande klanten en saldo boven het plafond krijgen 2,50% (depositorente van de ECB). Gecontroleerd op 13 november 2026. Variabel",
+     "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%"
+    },
+    "SK": {
+     "rate_note": "4,00% voor nieuwe klanten tot 1 maart 2027, tot 20.000€. Bestaande klanten en saldo boven het plafond krijgen 2,50% (depositorente van de ECB). Gecontroleerd op 13 november 2026. Variabel",
+     "max_note": "4,00% geldt tot 20.000€. Daarboven krijg je 2,50%"
+    },
     "DE": {
      "rate_note": "2,50% (depositorente van de ECB) over je hele saldo, zonder plafond en zonder actie voor nieuwe klanten. Gecontroleerd op 12 november 2026. Variabel"
+    },
+    "FR": {
+     "rate_note": "2,50% (depositorente van de ECB) over je hele saldo, zonder plafond en zonder actie voor nieuwe klanten. Gecontroleerd op 13 november 2026. Variabel"
     },
     "PL": {
      "rate_note": "6% over geld in zloty (PLN), tot 200.000 PLN. Gecontroleerd op 21 oktober 2026. Variabel",
