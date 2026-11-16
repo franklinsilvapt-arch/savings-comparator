@@ -1,0 +1,129 @@
+name: Atualizar dados do ouro (EUR e BRL)
+
+# Alimenta as paginas eupersonalfinance.eu/nl/goudprijs e educacaofinanceirabrasil.com.br/preco-do-ouro.
+# As paginas buscam o preco ao vivo (gold-api.com + BCE via frankfurter) e usam este ficheiro
+# para o historico e como reserva quando as fontes ao vivo falham.
+# Historico: preco do ouro do NBP (PLN por grama, calculado a partir do fixing LBMA) convertido
+# com as taxas de referencia do BCE (EUR/PLN e BRL/PLN) do mesmo dia, como no gold-uae.
+
+on:
+  schedule:
+    - cron: '45 11 * * 1-5'
+  push:
+    paths:
+      - ".github/workflows/atualizar-ouro-eur-brl.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Buscar cotacao, cambio e historico e escrever ouro-eur-brl/dados.json
+        shell: python
+        run: |
+          import json, os, urllib.request, datetime, sys
+
+          OZ = 31.1034768
+          CAMINHO = "ouro-eur-brl/dados.json"
+
+          def get(url):
+              req = urllib.request.Request(url, headers={"User-Agent": "savings-comparator-action", "Accept": "application/json"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.load(r)
+
+          antigo = {}
+          if os.path.exists(CAMINHO):
+              with open(CAMINHO) as f:
+                  antigo = json.load(f)
+
+          # 1. Historico NBP (maximo 255 cotacoes por pedido, cerca de um ano)
+          nbp = []
+          try:
+              nbp = [(q["data"], float(q["cena"])) for q in get("https://api.nbp.pl/api/cenyzlota/last/255/?format=json") if 50 < float(q["cena"]) < 5000]
+          except Exception as e:
+              print("Aviso: historico NBP falhou:", e)
+
+          # 2. Taxas do BCE no mesmo periodo, com base PLN
+          hist = []
+          if nbp:
+              try:
+                  fx = get("https://api.frankfurter.dev/v1/%s..%s?base=PLN&symbols=EUR,BRL" % (nbp[0][0], nbp[-1][0]))["rates"]
+                  datas = sorted(fx.keys())
+                  for d, pln in nbp:
+                      ref = None
+                      for x in datas:
+                          if x <= d:
+                              ref = x
+                          else:
+                              break
+                      if not ref:
+                          continue
+                      eur, brl = fx[ref].get("EUR"), fx[ref].get("BRL")
+                      if eur and brl and 0.1 < eur < 0.5 and 0.5 < brl < 3:
+                          hist.append({"d": d, "eur": round(pln * eur, 2), "brl": round(pln * brl, 2)})
+              except Exception as e:
+                  print("Aviso: cambio historico BCE falhou:", e)
+          if len(hist) < 20 and antigo.get("hist"):
+              print("Aviso: historico novo incompleto, fica o anterior")
+              hist = antigo["hist"]
+
+          # 3. Preco atual: spot XAU/USD x taxa de referencia do BCE
+          xau = usd_eur = usd_brl = None
+          try:
+              xau = float(get("https://api.gold-api.com/price/XAU")["price"])
+              assert 500 < xau < 50000
+          except Exception as e:
+              xau = None
+              print("Aviso: spot falhou:", e)
+          try:
+              r = get("https://api.frankfurter.dev/v1/latest?base=USD&symbols=EUR,BRL")["rates"]
+              usd_eur, usd_brl = float(r["EUR"]), float(r["BRL"])
+              assert 0.4 < usd_eur < 2 and 2 < usd_brl < 15
+          except Exception as e:
+              usd_eur = usd_brl = None
+              print("Aviso: cambio atual falhou:", e)
+
+          agora = datetime.datetime.now(datetime.timezone.utc)
+          if xau and usd_eur and usd_brl:
+              eur_g, brl_g, data = round(xau * usd_eur / OZ, 2), round(xau * usd_brl / OZ, 2), agora.strftime("%Y-%m-%d")
+              fonte = "api.gold-api.com (XAU/USD) x taxa de referencia do BCE"
+          elif hist:
+              eur_g, brl_g, data = hist[-1]["eur"], hist[-1]["brl"], hist[-1]["d"]
+              fonte = "Preco do ouro NBP x taxa de referencia do BCE"
+          else:
+              print("Erro: nenhuma fonte respondeu, o ficheiro fica como estava")
+              sys.exit(1)
+
+          dados = {
+              "eurG": eur_g,
+              "brlG": brl_g,
+              "xauUsd": round(xau, 2) if xau else None,
+              "usdEur": round(usd_eur, 4) if usd_eur else None,
+              "usdBrl": round(usd_brl, 4) if usd_brl else None,
+              "data": data,
+              "atualizadoEm": agora.strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "fonte": fonte,
+              "hist": hist
+          }
+          os.makedirs("ouro-eur-brl", exist_ok=True)
+          with open(CAMINHO, "w") as f:
+              f.write(json.dumps(dados, ensure_ascii=False, indent=1) + "\n")
+          print(f"eurG={eur_g} brlG={brl_g} data={data} hist={len(hist)}")
+
+      - name: Commit e push se houver alteracoes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ouro-eur-brl/dados.json
+          if git diff --cached --quiet; then
+            echo "Sem alteracoes"
+          else
+            git commit -m "Atualizar preco do ouro em EUR e BRL ($(date -u +%F))"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
