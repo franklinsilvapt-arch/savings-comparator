@@ -15,7 +15,7 @@ próprios bancos, não arrasto da taxa diretora.
 
 ## Mudou
 
-Quatro entradas. Todas confirmadas na página do próprio fornecedor, lidas a 2026-11-16.
+Cinco entradas. Todas confirmadas na página do próprio fornecedor, lidas a 2026-11-16.
 
 - **BluOr Bank, Term deposit**: subiu em todos os quatro prazos da grelha. 3 months from 1.75% to 2.00%, 6 months from
   2.30% to 2.50%, 12 months from 2.50% to 2.70%, 24 months from 2.50% to 2.80%. O campo `rate`, que segue o melhor
@@ -28,6 +28,13 @@ Quatro entradas. Todas confirmadas na página do próprio fornecedor, lidas a 20
   2.50% to 2.75% e o piso do Standard de 1% to 1.50%. Notar que as duas traduções já têm os valores novos, "Od 1,50%
   do 2,75%" e "1,50% tot 2,75%", por isso quem lê em polaco ou em neerlandês já vê o número certo e quem lê em inglês
   não (revolut.com/en-LT/instant-access-savings).
+- **Interactive Brokers, Interest on cash (IBKR Pro)**: de 2.049% to **1.985%**. A tabela de EUR da página de taxas
+  mostra o tier `0 ≤ 10,000` a 0% e o tier `> 10,000` a "1.985% (BM - 0.5%)" para IBKR Pro. O limiar dos €10,000 e o
+  spread de 0.5 pontos percentuais continuam certos, só o número é que desceu, porque o benchmark da IBKR desceu para
+  perto de 2.485%. A mesma correção é precisa no `eu/data/brokers.json` e no `data/corretoras.json`, no repo
+  corretoras-comparator (interactivebrokers.com/en/accounts/fees/pricing-interest-rates.php, confirmado a 2026-11-16).
+  Nota adicional, que não temos no ficheiro: a mesma tabela dá "0.985% (BM - 1.5%)" para IBKR Lite. A nossa entrada é
+  explicitamente a Pro, por isso 1.985% é o valor certo, mas vale a pena decidir se a distinção merece uma nota.
 - **Lightyear, Savings Vaults**: de 2.46% to 2.48% APY. A página mostra "2.48" com "%APY", e a meta-descrição diz o
   mesmo. A nota do ficheiro está datada de 21 de outubro de 2026 (lightyear.com/en-eu/vaults). A mesma correção é
   precisa no campo `interest.s` da entrada do Lightyear em `eu/data/brokers.json`, no repo corretoras-comparator.
@@ -91,6 +98,9 @@ Aqui sim há impacto, e é largo. As três melhores taxas mudam em **20 dos 30 p
 Revolut e do Lightyear entrarem. O campo Summary desses itens da coleção Savings Countries fica a mostrar números que
 já não batem com o JSON.
 
+A descida da IBKR não entra nesta conta. A 2.049% a IBKR já não estava no top três de nenhum país, e a 1.985% fica
+ainda mais abaixo, por isso não mexe em nenhum resumo.
+
 Boa notícia do lado das traduções: a Holanda e a Polónia **não** estão entre os 20, por isso os resumos em neerlandês
 do item Netherlands e em polaco do item Poland não precisam de ser regenerados nos respetivos locais.
 
@@ -152,6 +162,11 @@ Confirmar em revolut.com/en-NL/instant-access-savings, que é o `source_url` que
 
 Linhas de i18n que ficam desatualizadas se as alterações propostas entrarem:
 
+- `accounts.ibkr-cash.rate_note` em nl e pl: as duas dizem "stand op 20 oktober 2026" e "stan na 20 października
+  2026", já atrasadas face ao inglês de hoje. Com a descida para 1.985% ficam a precisar de data nova, embora o texto
+  em si ("benchmark min 0,5%") continue correto porque não cita o número.
+  O `by_country` da Polónia é que cita um número: nl e pl dizem 1,795% sobre złoty acima de 400.000 PLN e o inglês diz
+  1.904%. Essa linha já diverge hoje e não foi verificada nesta ronda, porque é taxa em złoty e não em euros.
 - `accounts.lightyear-vaults.rate_note` em nl e pl: as duas dizem "stand op 21 oktober 2026" e "stan na 21 października
   2026". A data passa a estar errada com a subida para 2.48%.
 - `accounts.bluor-fixed.rate_note` em nl e pl: o texto é genérico ("Oprocentowanie stałe przez cały okres",
@@ -160,8 +175,6 @@ Linhas de i18n que ficam desatualizadas se as alterações propostas entrarem:
 - `accounts.klarna-fixed` em nl e pl: o `rate_note` é genérico e sobrevive, mas a última nota de cada um cita a tabela
   alemã com cinco prazos. Essa nota não é afetada pela correção portuguesa. Nada a fazer.
 - `accounts.revolut-savings.rate_note` em nl e pl: já têm o valor novo, como dito acima. Nada a fazer.
-- `accounts.ibkr-cash.rate_note` em nl e pl: já estão atrasadas hoje, as duas datadas de 20 de outubro de 2026 contra
-  1 de novembro de 2026 no inglês. Independente desta ronda.
 
 Não foi traduzido nem corrigido nada.
 
@@ -208,10 +221,6 @@ As nove entradas sem afiliado no mapa `AFF` continuam assim: `bunq-savings`, `bu
   confirma neste URL. Mesmo problema de fonte: é preciso apontar para a página de taxas do mercado alemão. Isto
   importa porque a Raisin é a primeira posição em oito países (AT, DE, ES, FI, FR, IE, NL e PL) e é o número que o
   resumo desses países mostra em primeiro lugar.
-- **Interactive Brokers, 2.049%**: a única página da IBKR Irlanda que abriu diz "Rates as of March 20, 2024" e mostra
-  na linha do EUR "3.423% (BM - 0.5%)". É um retrato de março de 2024, não serve para confirmar nem para contrariar os
-  nossos 2.049%. As páginas de benchmark e de saldos em dinheiro não abriram. Confirmar à mão. Os 2.049% são coerentes
-  com um benchmark pouco acima de 2,50%, os 3.423% não.
 - **BUX, taxas por plano**: a página mostra só o headline de "up to 2.00%" e não publica os valores por plano. Os
   nossos 2.00% no Prime e 1.75% no Plus, e o `max_note` com 1.65% e 0% acima de €100,000, não se confirmam ali.
 - **MeDirect, mínimo de €100**: não aparece na folha de taxas. E a folha tem data de fevereiro de 2026, por isso vale
@@ -226,6 +235,8 @@ As nove entradas sem afiliado no mapa `AFF` continuam assim: `bunq-savings`, `bu
   Trading 212, com a fórmula do BCE mais 1,70 pontos percentuais. Com o BCE a 2,50% dá 4,20% e o BCE não mexeu, por
   isso a aritmética fecha. Atenção que a promoção fecha a 30 de novembro de 2026, dentro de duas semanas, e nessa data
   o `rate` tem de passar a 2.5 e o top três de nove países muda outra vez.
+- **IBKR, taxa em złoty do `by_country` da Polónia**: o inglês diz 1.904% acima de 400.000 PLN e as duas traduções
+  dizem 1,795%. Não foi verificada nesta ronda, porque a tabela confirmada foi a de euros. Fica por resolver.
 - Links de afiliado do mapa `AFF` que não se conseguiram testar. Nenhum deu sinal de estar partido, simplesmente não
   foi possível obter o estado:
   - `https://www.eupersonalfinance.eu/visit/trade-republic`, erro de cliente sem código HTTP.
@@ -243,7 +254,8 @@ As nove entradas sem afiliado no mapa `AFF` continuam assim: `bunq-savings`, `bu
 ## Próximo passo
 
 Rever e decidir. Prontas a entrar, com fonte primária de hoje: BluOr nos quatro prazos, Revolut de 2.5 para 2.75,
-Lightyear de 2.46 para 2.48 e a Klarna nos prazos curtos, esta última com a ressalva da nota de pé de página. Mais a
-troca aparente dos prazos de 12 e 24 meses do Bigbank, que é correção de erro e não mudança de taxa. Se tudo entrar,
-há 20 resumos estáticos por país a regenerar, nenhum deles em neerlandês ou em polaco, e nenhuma contagem a mexer.
-A divergência da Revolut na Holanda precisa de ser resolvida antes, porque é um ponto percentual inteiro.
+IBKR de 2.049 para 1.985, Lightyear de 2.46 para 2.48 e a Klarna nos prazos curtos, esta última com a ressalva da nota
+de pé de página. Mais a troca aparente dos prazos de 12 e 24 meses do Bigbank, que é correção de erro e não mudança
+de taxa. Se tudo entrar, há 20 resumos estáticos por país a regenerar, nenhum deles em neerlandês ou em polaco, e
+nenhuma contagem a mexer. A divergência da Revolut na Holanda precisa de ser resolvida antes, porque é um ponto
+percentual inteiro.
