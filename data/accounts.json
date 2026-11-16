@@ -1,6 +1,6 @@
 {
   "meta": {
-    "verified": "2026-11-01",
+    "verified": "2026-11-16",
     "source_article": "https://www.eupersonalfinance.eu/articles/best-savings-accounts-europe",
     "note": "Source of truth. Every rate confirmed on the provider's own site on the date in `verified`. Third-party comparison sites are used to find candidates only, never as the source of a rate.",
     "cadence": "fortnightly: 1st and 16th",
@@ -470,8 +470,8 @@
       "kind": "bank",
       "product": "Instant Access Savings",
       "type": "instant",
-      "rate": 2.5,
-      "rate_note": "1% to 2.50% depending on your plan, 2.50% on Ultra. Variable",
+      "rate": 2.75,
+      "rate_note": "1.50% to 2.75% depending on your plan, 2.75% on Ultra. Standard and Plus unlock 1.50% on the first 5,000€. Variable",
       "min": 0,
       "max": 100000,
       "max_note": "The maximum eligible deposit amount is 100,000€",
@@ -575,8 +575,8 @@
       "kind": "broker",
       "product": "Savings Vaults",
       "type": "mmf",
-      "rate": 2.46,
-      "rate_note": "APY, tracks the ECB overnight rate, as of 21 October 2026. Variable",
+      "rate": 2.48,
+      "rate_note": "APY, tracks the ECB overnight rate, as of 16 November 2026. Variable",
       "min": 1,
       "max": null,
       "protection": "investor",
@@ -674,8 +674,8 @@
       "kind": "broker",
       "product": "Interest on cash (IBKR Pro)",
       "type": "instant",
-      "rate": 2.049,
-      "rate_note": "Benchmark minus 0.5%, as of 1 November 2026. Variable",
+      "rate": 1.985,
+      "rate_note": "Benchmark minus 0.5%, as of 16 November 2026. Variable",
       "min": 10000,
       "min_note": "No interest on the first 10,000€",
       "max": null,
@@ -793,12 +793,12 @@
       "kind": "bank",
       "product": "Term deposit",
       "type": "fixed",
-      "rate": 2.5,
+      "rate": 2.8,
       "terms": {
-        "3": 1.75,
-        "6": 2.3,
-        "12": 2.5,
-        "24": 2.5
+        "3": 2.0,
+        "6": 2.5,
+        "12": 2.7,
+        "24": 2.8
       },
       "rate_note": "Rate fixed for the term",
       "min": 500,
@@ -944,8 +944,8 @@
       "terms": {
         "3": 3.0,
         "6": 3.15,
-        "12": 3.6,
-        "24": 3.5
+        "12": 3.5,
+        "24": 3.6
       },
       "rate_note": "Rate fixed for the term",
       "min": 1000,
@@ -972,9 +972,9 @@
       "type": "fixed",
       "rate": 3.24,
       "terms": {
-        "3": 1.84,
-        "6": 2.15,
-        "9": 2.46,
+        "3": 2.29,
+        "6": 2.42,
+        "9": 2.54,
         "12": 2.95,
         "18": 3.11,
         "24": 3.15,
