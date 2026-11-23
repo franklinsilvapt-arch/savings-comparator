@@ -1,15 +1,11 @@
 {
- "plnG": 481.23,
- "xauUsd": null,
- "usdPln": 4.0613,
- "data": "2026-11-20",
- "atualizadoEm": "2026-11-20T19:10:19Z",
- "fonte": "Cena złota NBP",
+ "plnG": 474.42,
+ "xauUsd": 3634.4,
+ "usdPln": 4.0601,
+ "data": "2026-11-23",
+ "atualizadoEm": "2026-11-23T22:46:29Z",
+ "fonte": "api.gold-api.com (XAU/USD) x kurs średni USD NBP",
  "nbp": [
-  {
-   "d": "2025-11-18",
-   "v": 477.68
-  },
   {
    "d": "2025-11-19",
    "v": 474.39
@@ -1025,6 +1021,10 @@
   {
    "d": "2026-11-20",
    "v": 481.23
+  },
+  {
+   "d": "2026-11-23",
+   "v": 465.83
   }
  ]
 }
